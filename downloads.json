@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "0.2.0",
+  "dataVersion": "2026.11.20.1",
+  "packId": "a5023b1a7098e614f2961ccd5079ee53c72bbb15f0b458bb614b6537fc41272b",
+  "publishedAt": "2026-11-20T11:15:00.000Z",
+  "requiresGithubSignIn": true,
+  "releaseUrl": "https://github.com/tals-devbox/quest-lab-downloads/releases",
+  "artifacts": [
+    {
+      "kind": "browser-data",
+      "label": "Game data for browser play",
+      "description": "Download on Android or desktop, then import into the published app. Includes remake content and local original reference data; engine/artwork load from the website.",
+      "version": "2026.11.20.1",
+      "file": "QuestLab-GameData-v0.2.0.questlab",
+      "bytes": 18659436,
+      "sha256": "343a1d811a888e2f4c57bbd430e394bb602b3e85703c8b2f12f42db8e6d0ffaa",
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/v0.2.0/QuestLab-GameData-v0.2.0.questlab"
+    },
+    {
+      "kind": "windows-portable",
+      "label": "Complete Windows remake package",
+      "description": "Complete app, modern artwork, game data and bundled runtime. Extract the ZIP and open Start Quest Lab.cmd. No personal saves included.",
+      "version": "0.2.0",
+      "file": "QuestLab-v0.2.0-Windows.zip",
+      "bytes": 339414164,
+      "sha256": "c6791875a284b79675b942899f190f33e82b77fdf00e24db6d0ffbbbe9301b04",
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/v0.2.0/QuestLab-v0.2.0-Windows.zip"
+    }
+  ]
+}
