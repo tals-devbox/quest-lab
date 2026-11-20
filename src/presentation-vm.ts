@@ -8,6 +8,9 @@ export interface SourceDefinition {id:string;base?:string;module?:number;propert
 export interface SourceRoom {id:number;instance:string;name?:string;properties?:Record<string,any>;methods:SourceMethod[];entities:SourceDefinition[];scripts:SourceDefinition[];sourceRef:string;[key:string]:any}
 export interface PresentationOptions {
   initialLocals?:Record<string,any>; sharedDefinitions?:SourceDefinition[];
+  /** Explicit presentation-only room301 shadow. Never writes native flags.
+   * Only the caller-opted89/112/300/303 IDs may be read/written here. */
+  presentationFlags?:Record<number,boolean>;
   sharedLocals?:Record<string,Record<string,any>>; procedures?:{name:string;sourceRef:string;ast:any[]}[];
   heroPosition?:{x:number;y:number;z?:number}; entryEdge?:string|number;
   /** Explicit caller-owned presentation episode; not inferred from a quest write. */
@@ -19,10 +22,15 @@ export interface PresentationOptions {
 export interface PresentationDiagnostic {code:string;sourceRef?:string;expression?:any;detail:string;count:number}
 export interface PresentationMotion {kind:string;x:number;y:number;deferred:boolean;sequence:number;sourceRef?:string;moveSpeed:number;xStep:number;yStep:number}
 export interface SourceAudioEvent {sequence:number;dedupeKey:string;atMs:number;objectId:string;command:string;number:number|null;loop:number|null;volume:number|null;priority:number|null;sourceRef?:string;arguments?:(number|null)[]}
+export interface PresentationSpeech {id:string;sequence:number;sourceRef?:string;scriptId:string|null;callbackScript:string|null;lines:{text:string;talker:number;source:{module:number;noun:number;verb:number;condition:number;sequence:number}}[];}
+export interface PresentationFlagEvent {sequence:number;flag:number;before:boolean;value:boolean;operation:'SetFlag'|'ClearFlag'|'caller-sync';scriptId:string|null;sourceRef?:string}
 export interface PresentationResult {
   room:number;drawables:any[];offscreenDrawables:any[];conditionalDrawables:any[];hotspots:any[];hero:any;
+  controlsEnabled:boolean;controlState:{enabled:boolean;kernel:'initial'|'HandsOff'|'HandsOn'|'unknown';ownerId:string|null;scriptId:string|null;sourceRef?:string;uncertain:boolean};
+  presentationFlags:Record<number,boolean>;presentationFlagEvents:PresentationFlagEvent[];
   actors:Record<string,any>;diagnostics:PresentationDiagnostic[];
   motions:Record<string,PresentationMotion>;
+  pendingSpeech:PresentationSpeech[];speechEvents:PresentationSpeech[];
   audioSession:number;audioEvents:SourceAudioEvent[];audioRequests:SourceAudioEvent[];audioState:Record<string,any>;
   scripts:{id:string;owner:string;state:number;active:boolean;blocked:boolean;timerMs:number|null;sourceRef?:string}[];
   coverage:{knownDrawables:number;withheldDrawables:number;steps:number;timedCallbacks:number;complete:false};
@@ -32,7 +40,7 @@ type Scope={self:string;module:string;script?:string;ownerHint?:string;parameter
 type Actor=Record<string,any>&{active:boolean;hidden:boolean;uncertain:boolean;activation:string[];conditional:any[]};
 type Motion={kind:string;x:number;y:number;callback?:string;elapsed:number;sourceRef?:string;deferred:boolean;sequence:number};
 type Cycle={kind:string;target?:number;direction:number;callback?:string;elapsed:number};
-type ScriptState={id:string;owner:string;state:number;active:boolean;timer:number|null;blocked:boolean;scope:string};
+type ScriptState={id:string;owner:string;state:number;active:boolean;timer:number|null;blocked:boolean;scope:string;generation:number};
 const UNKNOWN=Symbol('unknown');
 let nextAudioSession=0;
 const audioDefaultState={number:0,loop:1,vol:127,priority:0,signal:0,prevSignal:0,playing:false,paused:false,uncertain:false}; // Sound.sc properties
@@ -41,7 +49,7 @@ const scalar=(v:any)=>typeof v==='number'||typeof v==='boolean'||typeof v==='str
 const finite=(v:any):v is number=>typeof v==='number'&&Number.isFinite(v);
 const selector=(v:any):v is string=>typeof v==='string'&&v.endsWith(':');
 const drawingDefaults={x:0,y:0,z:0,view:-1,loop:0,cel:0,priority:0,cycleSpeed:6,moveSpeed:6,xStep:3,yStep:2,scaleX:128,scaleY:128,script:0,cycler:0,mover:0};
-const ignoredKernels=new Set(['Load','LoadMany','Unload','DisposeScript','PalVary','AssertPalette','Palette','HandsOn','HandsOff','NormalEgo','EgoGait','Cursor','SetCursor','SL','Said','Print','DrawPic','Graph','Show','SetPort','ShakeScreen','Memory','SetDebug','Animate','BaseSetter','SetNowSeen','SetNowSeenRect']);
+const ignoredKernels=new Set(['Load','LoadMany','Unload','DisposeScript','PalVary','AssertPalette','Palette','NormalEgo','EgoGait','Cursor','SetCursor','SL','Said','DrawPic','Graph','Show','SetPort','ShakeScreen','Memory','SetDebug','Animate','BaseSetter','SetNowSeen','SetNowSeenRect']);
 const gameplayKernels=new Set(['SetFlag','ClearFlag','SolvePuzzle','SkillUsed','TrySkill','EatMeal','NextDay','EgoDead','SatisfyQuest','Award','GetItem','GetMoney','NewRoom','AddScore']);
 const ignoredSelectors=new Set(['ignoreActors:','ignoreControl:','illegalBits:','actions:','approachVerbs:','stopUpd:','startUpd:','forceUpd:','setHeading:','setStep:','signal:','detailLevel:','setRegions:','setFeatures:','addObstacle:','delete:','add:','eachElementDo:','doit:','setScale:','setScaler:','normal:']);
 
@@ -58,8 +66,14 @@ export class PresentationVM {
   private steps=0;private budgetSteps=0;private budgetDepth=0;private callbacks=0;private tickRemainder=0;private elapsed=0;private motionSequence=0;private features=new Set<string>();
   private conditionalKeys=new WeakMap<Actor,Map<string,any>>();
   private audioSession=++nextAudioSession;private audioSequence=0;private audioStates=new Map<string,Record<string,any>>();private audioEvents:SourceAudioEvent[]=[];
+  private speechSequence=0;private scriptGeneration=0;private speechEvents:PresentationSpeech[]=[];
+  private pendingSpeech:{event:PresentationSpeech;dedupe:string;callbackGeneration?:number;callbackState?:number}[]=[];
+  private unresolvedSpeech=new Set<string>();
+  private controlState:PresentationResult['controlState']={enabled:true,kernel:'initial',ownerId:null,scriptId:null,uncertain:false};
+  private presentationFlags=new Map<number,boolean>();private presentationFlagEvents:PresentationFlagEvent[]=[];private presentationFlagSequence=0;
   constructor(private readonly room:SourceRoom,state:PresentationState,private readonly sourceFlags:Record<string,Condition|boolean|number>,private readonly assets:any,private readonly options:PresentationOptions={}) {
     this.state=structuredClone(state);
+    if(options.presentationFlags!==undefined)for(const[flag,value]of this.checkedPresentationFlags(options.presentationFlags,false))this.presentationFlags.set(flag,value);
     for(const id of ['gLongSong','gLongSong2','gShortSong'])this.audioStates.set(id,{...audioDefaultState,...structuredClone(options.audioDefaults||{}),...structuredClone(options.initialAudio?.[id]||{})});
     for(const d of room.entities.filter(d=>d.base==='Sound'))this.audioStates.set(d.id,{...audioDefaultState,...structuredClone(options.audioDefaults||{}),...structuredClone(d.properties||{}),...structuredClone(options.initialAudio?.[d.id]||{})});
     this.variables.set('room',new Map(Object.entries(structuredClone(options.initialLocals||{}))));
@@ -129,7 +143,7 @@ export class PresentationVM {
     if(op==='not'){const v=this.value(args[0],ctx);return v===UNKNOWN?UNKNOWN:+!v;}
     if(op==='and'){const values=[];for(const a of args){const v=this.value(a,ctx);if(v!==UNKNOWN&&!v)return 0;values.push(v);}return this.and(values);}
     if(op==='or'){const values=[];for(const a of args){const v=this.value(a,ctx);if(v!==UNKNOWN&&v)return 1;values.push(v);}return this.or(values);}
-    if(op==='IsFlag'){const n=this.value(args[0],ctx);if(n===UNKNOWN)return UNKNOWN;const rule=this.sourceFlags[String(n)];if(rule===undefined){this.diag('unknown-flag','No native mapping for source flag.',ctx.sourceRef,n);return UNKNOWN;}return this.condition(rule);}
+    if(op==='IsFlag'){const n=this.value(args[0],ctx);if(n===UNKNOWN)return UNKNOWN;if(this.presentationFlags.has(n))return +this.presentationFlags.get(n)!;const rule=this.sourceFlags[String(n)];if(rule===undefined){this.diag('unknown-flag','No native mapping for source flag.',ctx.sourceRef,n);return UNKNOWN;}return this.condition(rule);}
     if(op==='IsObject'){const id=this.target(args[0],ctx);return id===UNKNOWN?UNKNOWN:+(this.actors.has(id)||this.defs.has(id));}
     if(op==='Random'){const lo=this.value(args[0],ctx),hi=this.value(args[1],ctx);if(lo===hi&&lo!==UNKNOWN)return lo;this.diag('unsupported-random','Random branch is not sampled by read-only presentation.',ctx.sourceRef,node);return UNKNOWN;}
     if(op==='SoundFX'){const number=this.value(args[0],ctx);if(args.length===1&&finite(number)&&Number.isInteger(number)&&number>=0&&number<=65535)return number;this.diag('unknown-audio-number','SoundFX identity helper requires one known numeric source number (n814.sc:554).',ctx.sourceRef,node);return UNKNOWN;}
@@ -146,6 +160,7 @@ export class PresentationVM {
     this.diag('unknown-predicate','Source branch withheld because its predicate is unknown.',ctx.sourceRef,expression);
     const visited=new Set<string>();
     const walk=(node:any,scope=ctx,depth=0)=>{if(!Array.isArray(node)||depth>8)return;const id=this.target(node[0],scope);
+      if(node[0]==='HandsOff'||node[0]==='HandsOn'){this.controlState={enabled:false,kernel:'unknown',ownerId:scope.self,scriptId:scope.script||null,sourceRef:scope.sourceRef,uncertain:true};this.diag('unknown-control-predicate','A source branch may change input ownership; control is withheld until a known HandsOn/HandsOff.',scope.sourceRef,expression);}
       if(this.audioStates.has(id)&&node.slice(1).some(selector)){this.audioStates.get(id)!.uncertain=true;this.diag('unknown-audio-predicate','Audio branch withheld; current sound state may be affected.',ctx.sourceRef,{objectId:id,expression});}
       if(this.actors.has(id)){const p=this.actors.get(id)!;const selectors=node.slice(1).filter(selector);
         if(selectors.some(v=>['init:','show:','hide:','dispose:','posn:','x:','y:','z:','view:','setMotion:'].includes(v))){p.uncertain=true;this.rememberConditional(p,{expression,sourceRef:ctx.sourceRef});}
@@ -166,9 +181,12 @@ export class PresentationVM {
     if(['=','++','--','+=','-=','*=','/=','|=','&='].includes(op))return this.value(node,ctx);
     if(op==='return')return args.length?this.value(args[0],ctx):0;
     if(op==='SoundFX')return this.value(node,ctx);
+    if(op==='HandsOff'||op==='HandsOn'){this.controlState={enabled:op==='HandsOn',kernel:op,ownerId:ctx.self,scriptId:ctx.script||null,sourceRef:ctx.sourceRef,uncertain:false};return 0;}
+    if((op==='SetFlag'||op==='ClearFlag')&&args.length===1){const flag=this.value(args[0],ctx);if(this.presentationFlags.has(flag)){this.writePresentationFlag(flag,op==='SetFlag',op,ctx);return 0;}}
     if(gameplayKernels.has(op)){this.diag('suppressed-gameplay-write','Native gameplay effect was not executed.',ctx.sourceRef,node);return 0;}
     if(ignoredKernels.has(op))return 0;
-    if(op==='gMessager'&&args[0]==='say:'){const callbacks=args.slice(1).filter(n=>n==='self'||typeof n==='string'&&this.scripts.has(n));if(callbacks.length&&ctx.script){const script=this.scripts.get(ctx.script);if(script)script.blocked=true;this.diag('speech-callback-blocked','Speech completion requires caller acknowledgement; not skipped automatically.',ctx.sourceRef,node);}return 0;}
+    if(op==='gMessager'&&args[0]==='say:')return this.recordSpeech(args.slice(1),ctx);
+    if(op==='Print'){if(ctx.script){const script=this.scripts.get(ctx.script);if(script)script.blocked=true;this.unresolvedSpeech.add(ctx.script);}this.diag('unsupported-presentation-print','Print formatting/dialog controls require a separate adapter; no text or completion was inferred.',ctx.sourceRef,node);return UNKNOWN;}
     if(this.procedures.has(op))return this.value(node,ctx);
     if(op==='gFeatures'&&(args.includes('add:')||args.includes('setFeatures:'))){const start=args.findIndex(v=>v==='add:'||v==='setFeatures:');for(const n of args.slice(start+1)){if(selector(n))break;if(typeof n==='string'&&this.defs.has(n))this.features.add(n);}return 0;}
     const id=this.target(op,ctx);if(typeof id!=='string'){this.diag('unsupported-operation','Unsupported source call was not executed.',ctx.sourceRef,node);return UNKNOWN;}
@@ -213,9 +231,39 @@ export class PresentationVM {
       else{this.diag('unsupported-audio-selector','Source sound selector is preserved as unsupported; no callback or playback inferred.',ctx.sourceRef,[id,sel,...a]);}
     }return 0;}
   private frames(view:number,loop:number):any[]{const v=this.assets.views?.[view],l=v?.loops?.[loop];if(!l)return[];const mirrored=l.mirrorOf!==null&&l.mirrorOf!==undefined,source=mirrored?v.loops[l.mirrorOf]:l;return(source?.cels||[]).map((c:any,index:number)=>({...c,index,flipX:mirrored,offsetX:mirrored?-c.x:c.x,offsetY:c.y}));}
+  /** Exact resource projection, not a general Messager interpreter. */
+  private recordSpeech(args:any[],ctx:Scope):number|symbol {
+    const values=args.map(a=>this.value(a,ctx));
+    const fail=(detail:string)=>{if(ctx.script){const script=this.scripts.get(ctx.script);if(script)script.blocked=true;this.unresolvedSpeech.add(ctx.script);}this.diag('unsupported-presentation-speech',detail,ctx.sourceRef,args);return UNKNOWN;};
+    if(args.length<1||args.length>6)return fail('Messager.say argument count is outside the known source signature.');
+    const noun=values[0],verb=values.length>1?values[1]:0,condition=values.length>2?values[2]:0,requested=values.length>3?values[3]:0,module=values.length>5?values[5]:this.room.id;
+    if(![noun,verb,condition,requested,module].every(n=>finite(n)&&Number.isInteger(n)&&n>=0&&n<=65535))return fail('Unknown/negative message key or continuation cursor; no message lookup was guessed.');
+    const callbackValue=values.length>4?values[4]:0;let callbackScript:string|null=null;
+    if(callbackValue!==0&&callbackValue!==false){if(typeof callbackValue==='string'&&this.scripts.get(callbackValue)?.active)callbackScript=callbackValue;else if(typeof callbackValue==='string'&&this.actors.get(callbackValue)?.script&&this.scripts.get(this.actors.get(callbackValue)!.script)?.active)callbackScript=this.actors.get(callbackValue)!.script;else return fail('Source speech callback is not a known active presentation script.');}
+    const entries=this.assets.messages?.[module];if(!Array.isArray(entries))return fail('Message module '+module+' is unavailable.');
+    const lines:PresentationSpeech['lines']=[];let sequence=requested||1;
+    do{const row=entries.find((r:any)=>r.noun===noun&&r.verb===verb&&r.condition===condition&&r.sequence===sequence);if(!row)break;if(typeof row.text!=='string'||!Number.isInteger(row.talker))return fail('Message resource row is invalid.');lines.push({text:row.text,talker:row.talker,source:{module,noun,verb,condition,sequence}});sequence++;}while(!requested&&sequence<=255);
+    if(!lines.length)return fail('Exact source message '+[module,noun,verb,condition,requested||1].join(':')+' is unavailable.');
+    const callback=callbackScript?this.scripts.get(callbackScript):undefined,dedupe=JSON.stringify([ctx.sourceRef,ctx.script,callback?.generation,callback?.state,module,noun,verb,condition,requested]);if(this.pendingSpeech.some(p=>p.dedupe===dedupe))return 0;
+    if(this.pendingSpeech.length>=32)return fail('Pending speech queue limit reached; source completion was withheld.');
+    const event:PresentationSpeech={id:'presentation:'+this.audioSession+':speech:'+ ++this.speechSequence,sequence:this.speechSequence,sourceRef:ctx.sourceRef,scriptId:ctx.script||null,callbackScript,lines};
+    this.pendingSpeech.push({event,dedupe,callbackGeneration:callback?.generation,callbackState:callback?.state});this.speechEvents.push(event);if(this.speechEvents.length>64)this.speechEvents.shift();if(callback)callback.blocked=true;return 0;
+  }
   /** Refreshes authoritative read context without replaying init or discarding
    * source-local timers, scripts, motions or audio sequence history. */
   updateNativeState(state:PresentationState):PresentationResult {if(state.room!==this.room.id)throw Error('Presentation VM state update must remain in its source room. Recreate on room transition.');this.state=structuredClone(state);return this.snapshot();}
+  private checkedPresentationFlags(value:Record<number,boolean>,requireOpted:boolean):[number,boolean][] {
+    if(this.room.id!==301)throw Error('Presentation flag shadows are scoped to room301.');
+    if(!value||typeof value!=='object'||Array.isArray(value))throw Error('Presentation flag shadow must be a boolean record.');
+    const entries=Object.entries(value);for(const[key,v]of entries)if(!['89','112','300','303'].includes(key)||typeof v!=='boolean'||requireOpted&&!this.presentationFlags.has(Number(key)))throw Error('Only explicitly opted room301 boolean flags89/112/300/303 may be synchronized.');
+    return entries.map(([key,v])=>[Number(key),v]);
+  }
+  private writePresentationFlag(flag:number,value:boolean,operation:PresentationFlagEvent['operation'],ctx?:Scope){const before=this.presentationFlags.get(flag)!;this.presentationFlags.set(flag,value);this.presentationFlagEvents.push({sequence:++this.presentationFlagSequence,flag,before,value,operation,scriptId:ctx?.script||null,sourceRef:ctx?.sourceRef});if(this.presentationFlagEvents.length>96)this.presentationFlagEvents.shift();}
+  /** Caller-owned seat/service boundary only. Both validation and commit are
+   * atomic; unopted IDs never become a blanket source-gameplay flag override.
+   * Source room.init ClearFlag ordering is retained, so restored native seating
+   * may be synchronized after initialization. Do not resync89false each frame. */
+  syncPresentationFlags(value:Record<number,boolean>):PresentationResult {const entries=this.checkedPresentationFlags(value,true);for(const[flag,v]of entries)this.writePresentationFlag(flag,v,'caller-sync');return this.snapshot();}
   /** Explicit native301 service-state handoff. Values0..4 match source locals
    *141/142 (absent,ordered,put-down,consumed,clearing). Validate both before
    * committing; never restarts timers, motions, scripts or audio. Call at native
@@ -229,12 +277,14 @@ export class PresentationVM {
     locals.set('local141',value.meal);locals.set('local142',value.drink);return this.snapshot();
   }
   /** Starts only an explicit parsed source presentation script. No quest effects. */
-  startScript(id:string,owner=this.room.instance,state=0):boolean {if(this.budgetDepth===0)return this.withBudget(()=>this.startScript(id,owner,state));if(!this.defs.get(id)?.methods.some(m=>m.name==='changeState')){this.diag('missing-script','Requested presentation script unavailable.',this.room.sourceRef,id);return false;}const prior=this.actors.get(owner)?.script;if(prior&&prior!==id)this.stopScript(prior);this.scripts.set(id,{id,owner,state,active:true,timer:null,blocked:false,scope:this.moduleFor(id)});const actor=this.actors.get(owner);if(actor)actor.script=id;this.enterState(id,state);return true;}
+  startScript(id:string,owner=this.room.instance,state=0):boolean {if(this.budgetDepth===0)return this.withBudget(()=>this.startScript(id,owner,state));if(!this.defs.get(id)?.methods.some(m=>m.name==='changeState')){this.diag('missing-script','Requested presentation script unavailable.',this.room.sourceRef,id);return false;}const prior=this.actors.get(owner)?.script;if(prior&&prior!==id)this.stopScript(prior);this.unresolvedSpeech.delete(id);this.scripts.set(id,{id,owner,state,active:true,timer:null,blocked:false,scope:this.moduleFor(id),generation:++this.scriptGeneration});const actor=this.actors.get(owner);if(actor)actor.script=id;this.enterState(id,state);return true;}
   private enterState(id:string,n:number){const script=this.scripts.get(id);if(!script?.active)return;script.state=n;script.timer=null;script.blocked=false;this.method(id,'changeState',{self:id,module:script.scope,script:id},[n]);}
   private cue(id:string){const s=this.scripts.get(id);if(s?.active){this.callbacks++;this.enterState(id,s.state+1);}}
   private stopScript(id:string){const s=this.scripts.get(id);if(s){s.active=false;const owner=this.actors.get(s.owner);if(owner?.script===id)owner.script=0;}}
   /** Acknowledges a speech/UI callback explicitly observed by the native caller. */
-  acknowledge(id:string):boolean{if(this.budgetDepth===0)return this.withBudget(()=>this.acknowledge(id));const s=this.scripts.get(id);if(s?.active&&s.blocked){s.blocked=false;this.cue(id);return true;}return false;}
+  acknowledge(id:string):boolean{const pending=this.pendingSpeech[0];if(pending?.event.callbackScript===id)return this.acknowledgeSpeech(pending.event.id);if(this.unresolvedSpeech.has(id))return false;if(this.budgetDepth===0)return this.withBudget(()=>this.acknowledge(id));const s=this.scripts.get(id);if(s?.active&&s.blocked){s.blocked=false;this.cue(id);return true;}return false;}
+  /** Explicit user completion, once/in order. Never cues a restarted script. */
+  acknowledgeSpeech(id:string):boolean {if(this.budgetDepth===0)return this.withBudget(()=>this.acknowledgeSpeech(id));const pending=this.pendingSpeech[0];if(!pending||pending.event.id!==id)return false;this.pendingSpeech.shift();const callback=pending.event.callbackScript;if(callback){const s=this.scripts.get(callback);if(s?.active&&s.blocked&&s.generation===pending.callbackGeneration&&s.state===pending.callbackState){s.blocked=false;this.cue(callback);}else this.diag('stale-speech-callback','Completed text belongs to a replaced source script; its old callback was not delivered.',pending.event.sourceRef,id);}return true;}
   /** Renderer can acknowledge a deferred path after physically reaching its target. */
   completeMotion(id:string):boolean{if(this.budgetDepth===0)return this.withBudget(()=>this.completeMotion(id));const m=this.motions.get(id),p=this.actors.get(id);if(!m||!p)return false;p.x=m.x;p.y=m.y;p.mover=0;this.motions.delete(id);if(m.callback)this.cue(m.callback);return true;}
   /** Advances bounded visual time only; neither game clock nor saves are mutated. */
@@ -242,11 +292,15 @@ export class PresentationVM {
     if(this.budgetDepth===0)return this.withBudget(()=>this.advance(dtMs,context));
     if(!finite(dtMs)||dtMs<0)throw Error('Presentation dt must be finite and nonnegative.');const max=this.options.maxAdvanceMs??30000;if(dtMs>max){this.diag('advance-clamped','Advance duration exceeded bounded visual interval.',this.room.sourceRef,dtMs);dtMs=max;}
     if(context.heroPosition)Object.assign(this.actors.get('gEgo')!,context.heroPosition);
+    if(this.pendingSpeech.length)return this.snapshot();
     this.tickRemainder+=dtMs;let ticks=0;while(this.tickRemainder>=1000/60&&ticks++<1801){this.tickRemainder-=1000/60;this.elapsed+=1000/60;
-      const due:string[]=[];for(const script of this.scripts.values())if(script.active&&script.timer!==null&&!script.blocked){script.timer-=1000/60;if(script.timer<=.00001){script.timer=null;due.push(script.id);}}for(const id of due)this.cue(id);
-      for(const[id,m]of [...this.motions]){const p=this.actors.get(id)!;if(!finite(p.x)||!finite(p.y))continue;if(id==='gEgo'&&context.heroPosition){if(Math.hypot(m.x-p.x,m.y-p.y)<.5)this.completeMotion(id);continue;}if(m.deferred)continue;m.elapsed+=1000/60;const interval=Math.max(1,p.moveSpeed||6)*1000/60;if(m.elapsed+1e-8<interval)continue;m.elapsed-=interval;const dx=m.x-p.x,dy=m.y-p.y,steps=Math.max(Math.abs(dx)/Math.max(1,p.xStep||3),Math.abs(dy)/Math.max(1,p.yStep||2));if(steps<=1)this.completeMotion(id);else{p.x+=dx/steps;p.y+=dy/steps;}}
-      for(const[id,c]of [...this.cycles]){const p=this.actors.get(id)!,frames=this.frames(p.view,p.loop);if(!frames.length)continue;c.elapsed+=1000/60;const interval=Math.max(1,p.cycleSpeed||6)*1000/60;if(c.elapsed+1e-8<interval)continue;c.elapsed-=interval;if(c.target!==undefined){if(p.cel!==c.target)p.cel+=Math.sign(c.target-p.cel);if(p.cel===c.target){this.cycles.delete(id);p.cycler=0;if(c.callback)this.cue(c.callback);}}else p.cel=(p.cel+c.direction+frames.length)%frames.length;}
+      const due:string[]=[];for(const script of this.scripts.values())if(script.active&&script.timer!==null&&!script.blocked){script.timer-=1000/60;if(script.timer<=.00001){script.timer=null;due.push(script.id);}}for(const id of due){this.cue(id);if(this.pendingSpeech.length)break;}if(this.pendingSpeech.length){this.tickRemainder=0;break;}
+      for(const[id,m]of [...this.motions]){if(this.pendingSpeech.length)break;const p=this.actors.get(id)!;if(!finite(p.x)||!finite(p.y))continue;if(id==='gEgo'&&context.heroPosition){if(Math.hypot(m.x-p.x,m.y-p.y)<.5)this.completeMotion(id);continue;}if(m.deferred)continue;m.elapsed+=1000/60;const interval=Math.max(1,p.moveSpeed||6)*1000/60;if(m.elapsed+1e-8<interval)continue;m.elapsed-=interval;const dx=m.x-p.x,dy=m.y-p.y,steps=Math.max(Math.abs(dx)/Math.max(1,p.xStep||3),Math.abs(dy)/Math.max(1,p.yStep||2));if(steps<=1)this.completeMotion(id);else{p.x+=dx/steps;p.y+=dy/steps;}}
+      if(this.pendingSpeech.length){this.tickRemainder=0;break;}
+      for(const[id,c]of [...this.cycles]){if(this.pendingSpeech.length)break;const p=this.actors.get(id)!,frames=this.frames(p.view,p.loop);if(!frames.length)continue;c.elapsed+=1000/60;const interval=Math.max(1,p.cycleSpeed||6)*1000/60;if(c.elapsed+1e-8<interval)continue;c.elapsed-=interval;if(c.target!==undefined){if(p.cel!==c.target)p.cel+=Math.sign(c.target-p.cel);if(p.cel===c.target){this.cycles.delete(id);p.cycler=0;if(c.callback)this.cue(c.callback);}}else p.cel=(p.cel+c.direction+frames.length)%frames.length;}
+      if(this.pendingSpeech.length){this.tickRemainder=0;break;}
       this.method(this.room.instance,'doit',{self:this.room.instance,module:'room'});
+      if(this.pendingSpeech.length){this.tickRemainder=0;break;}
       if(this.budgetSteps>(this.options.maxSteps??120000)){this.tickRemainder=Math.min(this.tickRemainder,1000/60);break;}
     }return this.snapshot();
   }
@@ -258,7 +312,7 @@ export class PresentationVM {
       if(rect&&onscreen&&(active||this.features.has(e.id))&&!portrait&&!p.uncertain)hotspots.push({entityId:e.id,name:e.name||e.id,noun:p.noun??null,rect,sourceRef:e.sourceRef,drawable:active&&onscreen});
     }
     const p=this.actors.get('gEgo')!,positionKnown=finite(p.x)&&finite(p.y)&&!p.uncertain,m=this.motions.get('gEgo');const hero={x:finite(p.x)?p.x:null,y:finite(p.y)?p.y:null,z:p.z,view:p.view,loop:p.loop,cel:p.cel,hidden:p.hidden,initialized:p.active,positionKnown,previousRoom:this.state.previousRoom??0,night:!!(this.state.minutes>=1200||this.state.minutes<300),entryEdge:p.edgeHit===UNKNOWN?null:p.edgeHit,assignments:structuredClone(p.assignments),motion:m?{type:m.kind,x:m.x,y:m.y,deferred:m.deferred,sourceRef:m.sourceRef}:null,sourceRef:p.assignments.at(-1)?.sourceRef||this.room.sourceRef,confidence:positionKnown?'explicit-source-presentation':'unresolved'};
-    return{room:this.room.id,drawables,offscreenDrawables,conditionalDrawables,hotspots,hero,actors,audioSession:this.audioSession,audioEvents:this.audioEvents.map(e=>({...e,arguments:e.arguments?[...e.arguments]:undefined})),audioRequests:this.audioEvents.filter(e=>['play','stop','pause','resume','fade','dispose'].includes(e.command)).map(e=>({...e,arguments:e.arguments?[...e.arguments]:undefined})),audioState:Object.fromEntries([...this.audioStates].map(([id,s])=>[id,Object.fromEntries(['number','loop','vol','priority','signal','prevSignal','playing','paused','uncertain','lastSequence','sourceRef'].map(k=>[k,s[k]===UNKNOWN?null:s[k]]))])),motions:Object.fromEntries([...this.motions].map(([id,m])=>{const p=this.actors.get(id)!;return[id,{kind:m.kind,x:m.x,y:m.y,deferred:m.deferred,sequence:m.sequence,sourceRef:m.sourceRef,moveSpeed:p.moveSpeed,xStep:p.xStep,yStep:p.yStep}];})),scripts:[...this.scripts.values()].map(s=>({id:s.id,owner:s.owner,state:s.state,active:s.active,blocked:s.blocked,timerMs:s.timer,sourceRef:this.defs.get(s.id)?.sourceRef})),diagnostics:[...this.diagnosticMap.values()].map(d=>({...d})),coverage:{knownDrawables:drawables.length,withheldDrawables:conditionalDrawables.length,steps:this.steps,timedCallbacks:this.callbacks,complete:false}};
+    return{room:this.room.id,presentationFlags:Object.fromEntries(this.presentationFlags),presentationFlagEvents:this.presentationFlagEvents.map(e=>({...e})),controlsEnabled:this.controlState.enabled,controlState:{...this.controlState},drawables,offscreenDrawables,conditionalDrawables,hotspots,hero,actors,pendingSpeech:structuredClone(this.pendingSpeech.map(p=>p.event)),speechEvents:structuredClone(this.speechEvents),audioSession:this.audioSession,audioEvents:this.audioEvents.map(e=>({...e,arguments:e.arguments?[...e.arguments]:undefined})),audioRequests:this.audioEvents.filter(e=>['play','stop','pause','resume','fade','dispose'].includes(e.command)).map(e=>({...e,arguments:e.arguments?[...e.arguments]:undefined})),audioState:Object.fromEntries([...this.audioStates].map(([id,s])=>[id,Object.fromEntries(['number','loop','vol','priority','signal','prevSignal','playing','paused','uncertain','lastSequence','sourceRef'].map(k=>[k,s[k]===UNKNOWN?null:s[k]]))])),motions:Object.fromEntries([...this.motions].map(([id,m])=>{const p=this.actors.get(id)!;return[id,{kind:m.kind,x:m.x,y:m.y,deferred:m.deferred,sequence:m.sequence,sourceRef:m.sourceRef,moveSpeed:p.moveSpeed,xStep:p.xStep,yStep:p.yStep}];})),scripts:[...this.scripts.values()].map(s=>({id:s.id,owner:s.owner,state:s.state,active:s.active,blocked:s.blocked,timerMs:s.timer,sourceRef:this.defs.get(s.id)?.sourceRef})),diagnostics:[...this.diagnosticMap.values()].map(d=>({...d})),coverage:{knownDrawables:drawables.length,withheldDrawables:conditionalDrawables.length,steps:this.steps,timedCallbacks:this.callbacks,complete:false}};
   }
 }
 export function createPresentationVM(room:SourceRoom,state:PresentationState,sourceFlags:Record<string,Condition|boolean|number>,assetManifest:any,options:PresentationOptions={}):PresentationVM {return new PresentationVM(room,state,sourceFlags,assetManifest,options);}

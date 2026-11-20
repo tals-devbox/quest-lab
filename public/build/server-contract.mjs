@@ -56,6 +56,22 @@ function validateSave(s, c) {
       if (c && !c.encounters.some((x) => x.id === f.id)) e.push("Unknown saved opponent.");
       if (c && !c.rooms.some((x) => x.id === f.returnRoom)) e.push("Combat return room is missing.");
       if (f.stamina !== void 0 && !nonnegative(f.stamina)) e.push("Invalid opponent stamina.");
+      if (f.heroStamina !== void 0 && (!nonnegative(f.heroStamina) || record2(s.stats) && f.heroStamina > s.stats.maxStamina)) e.push("Invalid cached warrior stamina.");
+      if (f.dazzleTicks !== void 0 && !integer(f.dazzleTicks)) e.push("Invalid combat dazzle duration.");
+      if (f.intent !== void 0 && !["guard", "idle", "windup", "recover", "dazzled"].includes(f.intent)) e.push("Invalid opponent intent.");
+      if (f.poseTicks !== void 0 && (!integer(f.poseTicks) || f.poseTicks < 1 || f.poseTicks > 65535)) e.push("Invalid opponent pose duration.");
+      if (f.clock !== void 0) {
+        const k = f.clock;
+        if (!record2(k) || k.version !== 1 || k.enemyId !== f.id || k.room !== s.room || typeof k.paused !== "boolean" || !["normal", "attack", "parry", "dodge"].includes(k.defense) || !["guard", "idle", "windup", "recover", "dazzled"].includes(k.phase)) e.push("Invalid live combat clock.");
+        else {
+          for (const field of ["elapsedMs", "enemyInMs", "playerInMs", "defenseInMs"]) if (!nonnegative(k[field])) e.push("Invalid live combat timer " + field + ".");
+          for (const field of ["enemyInMs", "playerInMs", "defenseInMs"]) if (k[field] > 6e4) e.push("Live combat timer exceeds supported bound.");
+          if (k.pendingSpell !== void 0) {
+            const p = k.pendingSpell;
+            if (!record2(p) || !["dazzleSpell", "flameDartSpell"].includes(p.id) || !integer(p.power) || p.power < 1 || p.power > 1e4 || !nonnegative(p.remainingMs) || p.remainingMs > 6e4 || p.remainingMs > k.playerInMs) e.push("Invalid pending combat spell.");
+          }
+        }
+      }
       if (f.randomEncounter !== void 0 && typeof f.randomEncounter !== "boolean") e.push("Invalid encounter marker.");
       if (f.sourceStats !== void 0) {
         if (!record2(f.sourceStats)) e.push("Invalid combat statistics.");

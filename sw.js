@@ -31,7 +31,7 @@ self.addEventListener('install',()=>self.skipWaiting());
 self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch',e=>{const url=new URL(e.request.url);if(url.origin!==self.location.origin||!url.pathname.startsWith(BASE))return;const path=decodeURIComponent(url.pathname.slice(BASE.length));
  if(path.startsWith('api/')){e.respondWith(api(e.request,path,url).catch(err=>json({error:err.message},500)));return}
- if(path==='content.snapshot.json'||path==='revisions.snapshot.json'||path.startsWith('data/')||path.startsWith('reference/pictures/')||path.startsWith('reference/views/')||path.startsWith('reference/planes/')||path==='reference/asset-manifest.json'||path==='reference/status.json'||path==='reference/original-qfg1vga.zip'){
+ if(path==='content.snapshot.json'||path==='revisions.snapshot.json'||path.startsWith('data/')||path.startsWith('reference/ega/')||path.startsWith('reference/pictures/')||path.startsWith('reference/views/')||path.startsWith('reference/planes/')||path==='reference/asset-manifest.json'||path==='reference/status.json'||path==='reference/original-qfg1vga.zip'){
   e.respondWith((async()=>{const f=await packed(path);if(!f)return json({error:'Import your Quest Lab game-data pack on this device first.'},404);if(f.type==='application/json')return json(prefix(JSON.parse(await f.blob.text())));return new Response(f.blob,{headers:{'Content-Type':f.type,'Cache-Control':'no-store'}})})());
  }
 });

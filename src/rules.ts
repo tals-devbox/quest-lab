@@ -2,7 +2,9 @@
 export type HeroClass = 'fighter' | 'magic-user' | 'thief';
 export type Stats = Record<string, number>;
 export interface SourceCombatStats {strength:number; intelligence:number; agility:number; vitality:number; luck:number; weaponUse:number; parry:number; dodge:number; armorValue:number; armorEnc:number; shieldValue:number; weaponValue:number;}
-export interface CombatState { id:string; name:string; health:number; maxHealth:number; power:number; defense:number; reward:number; defeatedFlag?:string; returnRoom:number; round:number; sourceStats?:SourceCombatStats; stamina?:number; randomEncounter?:boolean; arena?:number; canFlee?:boolean; }
+export interface PendingCombatSpell {id:'dazzleSpell'|'flameDartSpell';power:number;}
+export interface CombatClockState {version:1;enemyId:string;room:number;elapsedMs:number;enemyInMs:number;playerInMs:number;defenseInMs:number;defense:'normal'|'attack'|'parry'|'dodge';phase:'guard'|'idle'|'windup'|'recover'|'dazzled';paused:boolean;pendingSpell?:(PendingCombatSpell&{remainingMs:number});}
+export interface CombatState { id:string; name:string; health:number; maxHealth:number; power:number; defense:number; reward:number; defeatedFlag?:string; returnRoom:number; round:number; sourceStats?:SourceCombatStats; stamina?:number; randomEncounter?:boolean; arena?:number; canFlee?:boolean; intent?:'guard'|'idle'|'windup'|'recover'|'dazzled'; dazzleTicks?:number; heroStamina?:number; poseTicks?:number;clock?:CombatClockState; }
 export interface GameState {
   version:number; heroName:string; heroClass:HeroClass; room:number; stats:Stats;
   inventory:Record<string,number>; flags:Record<string,boolean>; quests:Record<string,string>;
@@ -13,6 +15,8 @@ export interface GameState {
   minigame?: {kind:'maze'|'darts'; active:boolean; round:number; player:number; opponent:number; wager?:number; force?:number; angle?:number; handX?:number; handY?:number; obstacles?:{id:string;kind:string;x:number;y:number;cleared:boolean}[];};
 }
 export interface Action { type:string; target?:string; item?:string; spell?:string; to?:number; topic?:string; amount?:number; label?:string; }
+export interface ActOptions {combatCadence?:'turn'|'clock';deferCastEffect?:boolean;}
+export interface ActionResult {state:GameState;events:string[];matchedRuleIds?:string[];combatEffect?:{hit:boolean;interrupted:boolean;pendingSpell?:PendingCombatSpell};}
 export interface Condition { flag?:string; notFlag?:string; item?:string; count?:number; skill?:string; min?:number; silver?:number; heroClass?:HeroClass; night?:boolean; minuteMin?:number; minuteMax?:number; dayFlag?:string; spell?:string; stat?:string; equals?:number; all?:Condition[]; any?:Condition[]; not?:Condition; }
 export interface Effect { item?:string; amount?:number; flag?:string; value?:boolean; quest?:string; stage?:string; score?:number; silver?:number; gold?:number; room?:number; learn?:string; skill?:string; increase?:number; combat?:string; heal?:number; win?:boolean; dayFlag?:string; stat?:string; set?:number; sleep?:boolean; }
 export interface Rule { id:string; room:number|number[]; action:Action; label?:string; requires?:Condition; unless?:Condition; effects:Effect[]; text:string; blocked?:string; once?:boolean; minutes?:number; sourceRefs?:string[]; }
@@ -80,13 +84,13 @@ function skillUsed(s:GameState,skill:string,amount:number){
   const key='practice:'+skill;s.stats[key]=(s.stats[key]||0)+amount;
   if(s.stats[key]>=s.stats[skill]){s.stats[key]-=s.stats[skill];s.stats[skill]=Math.min(100,s.stats[skill]+roll(s,1,3));recalculate(s);}
 }
-function trySkill(s:GameState,skill:string,difficulty=0){
-  let level=s.stats[skill]||0;if(!level)return false;
+function trySkill(s:GameState,skill:string,difficulty=0,bonus=0){
+  let level=s.stats[skill]||0;if(!level)return false;level+=bonus;
   const test=difficulty||roll(s,1,100);
   if(skill==='stealth')s.stats.stamina=Math.max(0,s.stats.stamina-(difficulty?Math.floor(difficulty/10):roll(s,1,6)));
   if(s.stats.luck>=roll(s,1,200))level+=roll(s,1,20);
   const gap=Math.abs(test-level),divisor=gap<=10?2:gap<=30?4:gap<=50?6:0;
-  if(divisor){const amount=skill==='stealth'?Math.floor((s.stats.agility*3+s.stats.intelligence)/8):skill==='weaponUse'?Math.floor((s.stats.agility*2+s.stats.strength*2)/16):skill.startsWith('spell:')?Math.floor((s.stats.magic*4+s.stats.intelligence*2)/6):10;skillUsed(s,skill,Math.floor(amount/divisor));}
+  if(divisor){const amount=['stealth','parry','dodge'].includes(skill)?Math.floor((s.stats.agility*3+s.stats.intelligence)/8):skill==='weaponUse'?Math.floor((s.stats.agility*2+s.stats.strength*2)/16):skill.startsWith('spell:')?Math.floor((s.stats.magic*4+s.stats.intelligence*2)/6):10;skillUsed(s,skill,Math.floor(amount/divisor));}
   return test<=level;
 }
 function log(s:GameState,events:string[],message:string){events.push(message);s.journal.push(message);if(s.journal.length>200)s.journal=s.journal.slice(-200);}
@@ -104,7 +108,7 @@ function beginCombat(s:GameState,id:string,c:Campaign,events:string[]){
   if(e.defeatedFlag&&s.flags[e.defeatedFlag]){events.push('That opponent has already been defeated.');return;}
   const units=c.items.reduce((total,item)=>total+(s.inventory[item.id]||0)*(item.weight||0),s.silver+s.gold);
   s.stats.carriedWeight=Math.floor((units+59)/60);s.stats.encumbrance=s.stats.carriedWeight>40+Math.floor(s.stats.strength/2)?s.stats.carriedWeight:Math.floor(s.stats.carriedWeight/2);
-  s.combat={...e,maxHealth:e.health,returnRoom:s.room,round:0,...(e.sourceStats?{stamina:2*(e.sourceStats.agility+e.sourceStats.vitality)}:{})};log(s,events,`${e.name} attacks. Choose attack, parry, dodge, cast or flee.`);
+  s.combat={...e,maxHealth:e.health,returnRoom:s.room,round:0,...(e.sourceStats?{stamina:2*(e.sourceStats.agility+e.sourceStats.vitality)}:{})};if(e.id==='brigand'){s.combat.intent=brigandPose(s);s.combat.heroStamina=s.stats.stamina;}log(s,events,`${e.name} attacks. Choose attack, parry, dodge, cast or flee.`);if(e.id==='brigand')events.push(combatStatus(s));
 }
 function wildernessEncounter(s:GameState,from:number,c:Campaign,events:string[]){
   const room=c.rooms.find(r=>r.id===s.room),w=c.wilderness;
@@ -124,6 +128,33 @@ function wildernessEncounter(s:GameState,from:number,c:Campaign,events:string[])
   if(s.combat){s.combat.randomEncounter=true;s.combat.canFlee=true;s.combat.reward=roll(s,species.lootMin,species.lootMax);s.combat.stamina=2*((enemy.sourceStats?.agility||0)+(enemy.sourceStats?.vitality||0));}
   s.stats.encountersSeen=(s.stats.encountersSeen||0)+1;
 }
+// brigandArena.sc:142-207: four guard poses/two idle poses; after the
+// animation only one of three state1 decisions advances to the attack. Native
+// decisions approximate these phases; they are not original animation timings.
+function brigandPose(s:GameState):'guard'|'idle'{const choice=roll(s,0,5);if(s.combat)s.combat.poseTicks=choice===2?88:choice===3?1:44;return [0,1,4,5].includes(choice)?'guard':'idle';}
+export function combatStatus(s:GameState):string{const e=s.combat;if(!e)return '';const intent=e.dazzleTicks?'dazzled':e.intent;return intent==='guard'?e.name+' is guarding. Wait for an opening.':intent==='windup'?e.name+' is winding up an attack. Parry or dodge.':intent==='recover'?e.name+' is recovering.':intent==='idle'?e.name+' has lowered his guard.':intent==='dazzled'?e.name+' is dazzled.':'You are fighting '+e.name+'.';}
+function interruptCombat(s:GameState,events:string[]){const e=s.combat;if(!e)return;if(e.dazzleTicks)e.dazzleTicks=0;if(e.id==='brigand'){e.intent='windup';events.push('Your hit interrupts the Brigand. He prepares a retaliating strike.');}else if(e.sourceStats){e.intent='recover';events.push(e.name+' reels from your hit.');}}
+/** Browser clock seam: one explicit source-informed enemy decision, no world
+ * minute or hidden elapsed-time advancement. Ordinary act() retains turns. */
+export function combatEnemyBeat(state:GameState,defense:'normal'|'attack'|'parry'|'dodge'='normal'):ActionResult{
+  if(!state.combat||state.dead)return {state,events:[]};
+  const s=copy(state),events:string[]=[];s.revision++;strikeBack(s,events,defense);if(s.stats.health<=0)s.dead=true;if(s.combat)events.push(combatStatus(s));return {state:s,events};
+}
+/** Completion seam for the live adapter. Mana/practice were committed at cast
+ * input. Source closeCombat:545/638 applies these effects at animation end;
+ * Warrior:190 cancels its spell script on hurt. No enemy turn is forced here. */
+export function resolveCombatSpell(state:GameState,spell:PendingCombatSpell):ActionResult{
+  if(!state.combat||state.dead)return {state,events:[]};
+  const s=copy(state),events:string[]=[];s.revision++;
+  if(spell.id==='dazzleSpell'){s.combat!.dazzleTicks=spell.power;s.combat!.intent='dazzled';events.push('The flash leaves your opponent dazzled.');}
+  else{s.combat!.health-=spell.power;events.push(`Flame Dart strikes for ${spell.power}.`);checkVictory(s,events);if(s.combat)interruptCombat(s,events);}
+  return {state:s,events,combatEffect:{hit:spell.id==='flameDartSpell',interrupted:spell.id==='flameDartSpell'}};
+}
+function combatTired(s:GameState,amount:number){const cached=s.combat?.id==='brigand'?(s.combat.heroStamina??s.stats.stamina):s.stats.stamina,remaining=cached-amount;s.stats.stamina=Math.max(0,remaining);if(s.combat?.id==='brigand')s.combat.heroStamina=s.stats.stamina;if(remaining<0)s.stats.health=Math.max(0,s.stats.health-Math.floor(-remaining/2));}
+// Warrior.sc:206-209 owns cached stamina. TrySkill's global-only cost is
+// overwritten by the next getTired/setEgoSP, not accumulated in that cache.
+function combatPractice(s:GameState,skill:string,bonus=0){if(!s.stats[skill])return;const remaining=s.stats.stamina-roll(s,1,6);s.stats.stamina=Math.max(0,remaining);if(remaining< -3)s.stats.health=Math.max(0,s.stats.health-Math.trunc((-3-remaining)/4));trySkill(s,skill,0,bonus);}
+function brigandResponse(s:GameState,events:string[],defense:'normal'|'attack'|'parry'|'dodge',interrupted:boolean){const e=s.combat!;e.intent??=brigandPose(s);if(interrupted){e.intent='windup';events.push('Your hit interrupts the Brigand. He prepares a retaliating strike.');return;}if(e.intent==='windup'){const hero=heroCombatStats(s),chance=clamp(attackLevel(e.sourceStats!,e.stamina||0,true)-defenseLevel(hero,e.heroStamina??s.stats.stamina,defense)+50,5,95);if(roll(s,1,100)<=chance){const damage=sourceDamage(s,e.sourceStats!,hero.armorValue);s.stats.health=Math.max(0,s.stats.health-damage);events.push(e.name+' hits for '+damage+'.');}else events.push('You evade '+e.name+'’s attack.');e.intent='recover';if(!s.stats.health)s.dead=true;return;}if(e.intent==='recover'||e.intent==='dazzled'){e.intent=brigandPose(s);return;}e.intent=roll(s,0,2)===0?'windup':brigandPose(s);}
 function heroCombatStats(s:GameState):SourceCombatStats{return {strength:s.stats.strength,intelligence:s.stats.intelligence,agility:s.stats.agility,vitality:s.stats.vitality,luck:s.stats.luck,weaponUse:s.stats.weaponUse,parry:s.stats.parry,dodge:s.stats.dodge,armorValue:s.inventory.chainMail?5:s.inventory.leather?3:0,armorEnc:s.stats.encumbrance||0,shieldValue:s.inventory.shield?10:0,weaponValue:s.inventory.sword?8:s.inventory.dagger?5:0};}
 function attackLevel(a:SourceCombatStats,stamina:number,thrust=false){let v=Math.floor((a.weaponUse*8+a.agility*4+a.strength*2+a.intelligence+a.luck)/16);if(stamina<=30)v-=10;if(stamina<=10)v-=20;return v+(thrust?10:0);}
 function defenseLevel(a:SourceCombatStats,stamina:number,action:string){let v=Math.floor((a.agility*5+a.intelligence*2+a.luck)/8)-a.armorEnc;if(stamina<=30)v-=5;if(stamina<=10)v-=10;if(action==='attack')v-=5;if(action==='parry'&&a.parry)v+=a.parry+a.shieldValue+Math.floor(a.agility/10);if(action==='dodge'&&a.dodge)v+=a.dodge+Math.floor(a.agility/5);return v;}
@@ -144,10 +175,13 @@ function applyEffect(s:GameState,e:Effect,c:Campaign,events:string[]){
   if(e.combat)beginCombat(s,e.combat,c,events);
   if(e.win){s.won=true;s.flags.heroOfSpielburg=true;}
 }
-function strikeBack(s:GameState,events:string[],defense:'normal'|'parry'|'dodge'='normal'){
+function strikeBack(s:GameState,events:string[],defense:'normal'|'attack'|'parry'|'dodge'='normal',interrupted=false){
   const e=s.combat;if(!e)return;
+  if(e.dazzleTicks){if(interrupted){e.dazzleTicks=0;e.intent=e.id==='brigand'?'windup':'recover';events.push(e.name+' reels from your hit.');return;}e.dazzleTicks=Math.max(0,e.dazzleTicks-18);if(e.dazzleTicks===0&&e.intent==='dazzled')e.intent=e.id==='brigand'?brigandPose(s):'recover';events.push(e.dazzleTicks?e.name+' is still dazzled.':e.name+' recovers its sight.');return;}
+  if(e.id==='brigand'&&e.sourceStats){brigandResponse(s,events,defense,interrupted);return;}
+  if(interrupted&&e.sourceStats){events.push(e.name+' reels from your hit.');return;}
   if(e.sourceStats){
-    const hero=heroCombatStats(s),chance=clamp(attackLevel(e.sourceStats,e.stamina||0)-defenseLevel(hero,s.stats.stamina,defense==='normal'?'attack':defense)+50,5,95);
+    const hero=heroCombatStats(s),chance=clamp(attackLevel(e.sourceStats,e.stamina||0)-defenseLevel(hero,s.stats.stamina,defense)+50,5,95);
     if(roll(s,1,100)<=chance){const damage=sourceDamage(s,e.sourceStats,hero.armorValue);s.stats.health=Math.max(0,s.stats.health-damage);events.push(`${e.name} hits for ${damage}.`);}else events.push(`You evade ${e.name}’s attack.`);
     e.stamina=Math.max(0,(e.stamina||0)-4);if(!s.stats.health)s.dead=true;return;
   }
@@ -186,7 +220,7 @@ export function innServiceFor(s:GameState):{kind:'greeting'|'meal'|'coffee';phas
 }
 export function availableActions(s:GameState,c:Campaign):Action[]{
   if(s.dead)return [];
-  if(s.combat)return [{type:'attack',label:'Attack'},{type:'parry',label:'Parry'},{type:'dodge',label:'Dodge'},{type:'flee',label:'Flee'},...s.spells.filter(x=>['flameDartSpell','dazzleSpell','calmSpell','zapSpell'].includes(x)).map(spell=>({type:'cast',spell,label:'Cast '+(c.spells.find(x=>x.id===spell)?.name||spell)})),...['healingPotion','manaPotion','staminaPotion'].filter(item=>s.inventory[item]>0).map(item=>({type:'drink',item,label:'Drink '+(c.items.find(x=>x.id===item)?.name||item)+` (${s.inventory[item]})`}))];
+  if(s.combat)return [{type:'attack',label:'Attack'},{type:'parry',label:'Parry'},{type:'dodge',label:'Dodge'},{type:'flee',label:'Flee'},{type:'wait',label:'Wait for an opening'},...s.spells.filter(x=>['flameDartSpell','dazzleSpell','calmSpell','zapSpell'].includes(x)).map(spell=>({type:'cast',spell,label:'Cast '+(c.spells.find(x=>x.id===spell)?.name||spell)})),...['healingPotion','manaPotion','staminaPotion'].filter(item=>s.inventory[item]>0).map(item=>({type:'drink',item,label:'Drink '+(c.items.find(x=>x.id===item)?.name||item)+` (${s.inventory[item]})`}))];
   const out:Action[]=[];
   if(s.droppedItems?.room===s.room)for(const [item,count]of Object.entries(s.droppedItems.items))if(count>0)out.push({type:'take',target:'dropped',item,label:'Pick up dropped '+(c.items.find(x=>x.id===item)?.name||item)+` (${count})`});
   for(const [item,count]of Object.entries(s.inventory))if(count>0&&mayDrop(s,item))out.push({type:'drop',item,label:'Drop '+(c.items.find(x=>x.id===item)?.name||item)});
@@ -222,12 +256,12 @@ export function availableActions(s:GameState,c:Campaign):Action[]{
   return out.filter((a,i,arr)=>arr.findIndex(b=>JSON.stringify({...a,label:undefined})===JSON.stringify({...b,label:undefined}))===i);
 }
 /** Original dropped inventory lasts only until the next room transition (n896.sc:40-43). */
-export function act(state:GameState,action:Action,campaign:Campaign):{state:GameState;events:string[];matchedRuleIds?:string[]}{
- const result=actInternal(state,action,campaign);
+export function act(state:GameState,action:Action,campaign:Campaign,options:ActOptions={}):ActionResult{
+ const result=actInternal(state,action,campaign,options);
  if(result.state.droppedItems&&result.state.room!==result.state.droppedItems.room){delete result.state.droppedItems;log(result.state,result.events,'You leave the unrecovered items behind. Dropped items are lost when leaving the room, as in the original game.');}
  return result;
 }
-function actInternal(state:GameState,action:Action,campaign:Campaign):{state:GameState;events:string[];matchedRuleIds?:string[]}{
+function actInternal(state:GameState,action:Action,campaign:Campaign,options:ActOptions={}):ActionResult{
   const s=copy(state),events:string[]=[];s.revision++;
   if(s.dead)return {state:s,events:['Your adventure has ended. Restore a saved game.']};
   if(action.type==='stand'){
@@ -357,38 +391,48 @@ function actInternal(state:GameState,action:Action,campaign:Campaign):{state:Gam
     // egoSez.sc:56-74,344-353; wizGame.sc:1150-1157.
     if(item==='healingPotion'){s.stats.health=Math.min(s.stats.maxHealth,s.stats.health+Math.floor(s.stats.maxHealth/2));log(s,events,'The healing potion restores half your maximum health.');}
     if(item==='manaPotion'){s.stats.mana=Math.min(s.stats.maxMana,s.stats.mana+Math.floor(s.stats.maxMana/2));log(s,events,'The power potion restores half your maximum magical energy.');}
-    if(item==='staminaPotion'){s.stats.stamina=s.stats.maxStamina;log(s,events,'You feel energetic again.');}
+    if(item==='staminaPotion'){s.stats.stamina=s.stats.maxStamina;if(s.combat?.id==='brigand')s.combat.heroStamina=s.stats.stamina;log(s,events,'You feel energetic again.');}
     if(['healingPotion','manaPotion','staminaPotion'].includes(item)){s.inventory.flask=(s.inventory.flask||0)+1;events.push('You keep the empty flask.');}
     time(s,1,events);return {state:s,events};
   }
   if(s.combat){
-    const enemy=s.combat;enemy.round++;time(s,1,events);
+    const enemy=s.combat;enemy.round++;time(s,1,events);let interrupted=false;
+    if(enemy.id==='brigand'&&!enemy.intent)enemy.intent=brigandPose(s);
     if(action.type==='flee'){
       if(enemy.randomEncounter){s.combat=null;s.stats.encountersFled=(s.stats.encountersFled||0)+1;log(s,events,'You withdraw from combat and return to the forest.');return {state:s,events};}
       if([14,171,88,89,93,73,91].includes(s.room)){events.push('You cannot escape this encounter.');return {state:s,events};}
+      if(enemy.sourceStats&&enemy.arena){s.combat=null;log(s,events,'You withdraw from combat and return to the forest.');return {state:s,events};}
       if(random(s)<0.6+s.stats.agility/250){s.combat=null;log(s,events,'You escape before the next blow.');}else{events.push('Your retreat is blocked.');strikeBack(s,events);}return {state:s,events};
     }
     if(action.type==='attack'){
-      if(s.stats.stamina<4)return {state:s,events:['You are too exhausted to attack. Drink a stamina potion or attempt to flee.']};
-      s.stats.stamina-=4;const hero=heroCombatStats(s);let hit:boolean,damage:number;
-      if(enemy.sourceStats){trySkill(s,'weaponUse');const chance=clamp(attackLevel(hero,s.stats.stamina,true)-defenseLevel(enemy.sourceStats,enemy.stamina||0,'attack')+50,5,95);hit=roll(s,1,100)<=chance;damage=hit?sourceDamage(s,hero,enemy.sourceStats.armorValue,s.flags.weaponZapped?5+Math.floor((s.stats['spell:zapSpell']||0)/10):0):0;}
+      combatTired(s,4);const hero=heroCombatStats(s);let hit:boolean,damage:number;
+      if(enemy.sourceStats){if(enemy.id==='brigand')combatPractice(s,'weaponUse');else trySkill(s,'weaponUse');if((enemy.heroStamina??s.stats.stamina)<=0){s.stats.health=0;s.dead=true;log(s,events,'You collapse from exhaustion during combat. Restore a save or retreat before exhausting your stamina.');return {state:s,events};}const chance=clamp(attackLevel(hero,enemy.heroStamina??s.stats.stamina,true)-defenseLevel(enemy.sourceStats,enemy.stamina||0,enemy.id==='brigand'?(enemy.intent==='guard'?'parry':enemy.intent==='windup'?'attack':'normal'):'attack')+50,5,95);hit=roll(s,1,100)<=chance;if(enemy.id==='brigand'&&enemy.intent==='guard')hit=false;damage=hit?sourceDamage(s,hero,enemy.sourceStats.armorValue,s.flags.weaponZapped?5+Math.floor((s.stats['spell:zapSpell']||0)/10):0):0;}
       else {hit=random(s)<0.65+s.stats.weaponUse/250-enemy.defense/200;damage=hit?sourceDamage(s,hero,enemy.defense,s.flags.weaponZapped?5+Math.floor((s.stats['spell:zapSpell']||0)/10):0):0;s.stats.weaponUse=Math.min(100,s.stats.weaponUse+1);}
-      enemy.health-=damage;events.push(hit?`You strike for ${damage}.`:'Your strike misses.');s.flags.weaponZapped=false;
+      enemy.health-=damage;events.push(hit?`You strike for ${damage}.`:'Your strike misses.');if(hit)s.flags.weaponZapped=false;interrupted=hit;
     }else if(action.type==='cast'){
       const spell=campaign.spells.find(x=>x.id===action.spell);
       if(!spell||!s.spells.includes(spell.id))return {state:s,events:['You have not learned that spell.']};
       if(s.stats.mana<spell.cost)return {state:s,events:['You do not have enough magical energy.']};
       s.stats.mana-=spell.cost;
       if(spell.id==='calmSpell'&&!['kobold','minotaur','brigand'].includes(enemy.id)){s.combat=null;events.push('The creature calms down and lets you withdraw.');return {state:s,events};}
-      if(spell.id==='dazzleSpell'){enemy.defense=Math.max(0,enemy.defense-5);events.push('The flash leaves your opponent disoriented.');return {state:s,events};}
+      if(options.deferCastEffect&&options.combatCadence==='clock'&&['dazzleSpell','flameDartSpell'].includes(spell.id)){
+        const pendingSpell:PendingCombatSpell={id:spell.id as PendingCombatSpell['id'],power:spell.id==='dazzleSpell'?Math.max(3,3*(s.stats['spell:dazzleSpell']||5)):5+Math.floor((s.stats['spell:flameDartSpell']||5)/3)};
+        if(!s.stats['spell:'+spell.id])s.stats['spell:'+spell.id]=5;trySkill(s,'spell:'+spell.id);skillUsed(s,'magic',Math.floor(spell.cost/2));skillUsed(s,'intelligence',Math.floor(spell.cost/5));
+        events.push('You begin casting '+spell.name+'.');return {state:s,events,combatEffect:{hit:false,interrupted:false,pendingSpell}};
+      }
+      if(spell.id==='dazzleSpell'){enemy.dazzleTicks=Math.max(3,3*(s.stats['spell:dazzleSpell']||5));enemy.intent='dazzled';trySkill(s,'spell:dazzleSpell');skillUsed(s,'magic',Math.floor(spell.cost/2));skillUsed(s,'intelligence',Math.floor(spell.cost/5));events.push('The flash leaves your opponent dazzled.');return {state:s,events};}
       if(spell.id==='zapSpell'){s.flags.weaponZapped=true;events.push('Your weapon glows with magical force.');}
-      else if(spell.id==='flameDartSpell'){const damage=5+Math.floor((s.stats['spell:flameDartSpell']||5)/3);enemy.health-=damage;events.push(`Flame Dart strikes for ${damage}.`);}
+      else if(spell.id==='flameDartSpell'){const damage=5+Math.floor((s.stats['spell:flameDartSpell']||5)/3);enemy.health-=damage;interrupted=true;events.push(`Flame Dart strikes for ${damage}.`);}
       else events.push('That spell does not harm this opponent.');
       if(!s.stats['spell:'+spell.id])s.stats['spell:'+spell.id]=5;trySkill(s,'spell:'+spell.id);skillUsed(s,'magic',Math.floor(spell.cost/2));skillUsed(s,'intelligence',Math.floor(spell.cost/5));
-    }else if(!['parry','dodge'].includes(action.type))return {state:s,events:['You must deal with your opponent first.']};
-    checkVictory(s,events);if(s.combat)strikeBack(s,events,action.type==='parry'?'parry':action.type==='dodge'?'dodge':'normal');
-    if(action.type==='parry'){s.stats.stamina=Math.max(0,s.stats.stamina-1);if(enemy.sourceStats)trySkill(s,'parry');else if(s.stats.parry)s.stats.parry=Math.min(100,s.stats.parry+1);}if(action.type==='dodge'){s.stats.stamina=Math.max(0,s.stats.stamina-2);if(enemy.sourceStats)trySkill(s,'dodge');else if(s.stats.dodge)s.stats.dodge=Math.min(100,s.stats.dodge+1);}
-    return {state:s,events};
+    }else if(!['parry','dodge','wait'].includes(action.type))return {state:s,events:['You must deal with your opponent first.']};
+    if(enemy.id==='brigand'&&action.type==='parry'){combatTired(s,1);combatPractice(s,'parry',20);}if(enemy.id==='brigand'&&action.type==='dodge'){combatTired(s,2);combatPractice(s,'dodge',20);}
+    if(action.type==='wait')events.push('You wait for an opening.');
+    checkVictory(s,events);if(s.combat){if(options.combatCadence==='clock'){if(interrupted)interruptCombat(s,events);}else strikeBack(s,events,action.type==='parry'?'parry':action.type==='dodge'?'dodge':action.type==='attack'?'attack':'normal',interrupted);}
+    if(enemy.id!=='brigand'&&action.type==='parry'){s.stats.stamina=Math.max(0,s.stats.stamina-1);if(enemy.sourceStats)trySkill(s,'parry');else if(s.stats.parry)s.stats.parry=Math.min(100,s.stats.parry+1);}if(enemy.id!=='brigand'&&action.type==='dodge'){s.stats.stamina=Math.max(0,s.stats.stamina-2);if(enemy.sourceStats)trySkill(s,'dodge');else if(s.stats.dodge)s.stats.dodge=Math.min(100,s.stats.dodge+1);}
+    if(s.combat&&(s.combat.heroStamina??s.stats.stamina)<=0){s.stats.health=0;s.dead=true;log(s,events,'You collapse from exhaustion during combat. Restore a save or retreat before exhausting your stamina.');}
+    if(s.combat?.id==='brigand')events.push(combatStatus(s));if(s.stats.health<=0)s.dead=true;
+    return {state:s,events,combatEffect:{hit:interrupted,interrupted}};
   }
   const candidates=campaign.rules.filter(r=>active(s,r)&&matches(action,r.action)).sort((a,b)=>['target','item','spell','topic','to'].filter(k=>(b.action as any)[k]!==undefined).length-['target','item','spell','topic','to'].filter(k=>(a.action as any)[k]!==undefined).length);
   const rule=candidates.find(r=>meets(s,r.requires));
@@ -489,6 +533,11 @@ export function validateSave(s:any,c?:Campaign):string[]{
       if(c&&!c.encounters.some(x=>x.id===f.id))e.push('Unknown saved opponent.');
       if(c&&!c.rooms.some(x=>x.id===f.returnRoom))e.push('Combat return room is missing.');
       if(f.stamina!==undefined&&!nonnegative(f.stamina))e.push('Invalid opponent stamina.');
+      if(f.heroStamina!==undefined&&(!nonnegative(f.heroStamina)||record(s.stats)&&f.heroStamina>s.stats.maxStamina))e.push('Invalid cached warrior stamina.');
+      if(f.dazzleTicks!==undefined&&!integer(f.dazzleTicks))e.push('Invalid combat dazzle duration.');
+      if(f.intent!==undefined&&!['guard','idle','windup','recover','dazzled'].includes(f.intent))e.push('Invalid opponent intent.');
+      if(f.poseTicks!==undefined&&(!integer(f.poseTicks)||f.poseTicks<1||f.poseTicks>65535))e.push('Invalid opponent pose duration.');
+      if(f.clock!==undefined){const k=f.clock;if(!record(k)||k.version!==1||k.enemyId!==f.id||k.room!==s.room||typeof k.paused!=='boolean'||!['normal','attack','parry','dodge'].includes(k.defense)||!['guard','idle','windup','recover','dazzled'].includes(k.phase))e.push('Invalid live combat clock.');else{for(const field of ['elapsedMs','enemyInMs','playerInMs','defenseInMs'])if(!nonnegative(k[field]))e.push('Invalid live combat timer '+field+'.');for(const field of ['enemyInMs','playerInMs','defenseInMs'])if(k[field]>60000)e.push('Live combat timer exceeds supported bound.');if(k.pendingSpell!==undefined){const p=k.pendingSpell;if(!record(p)||!['dazzleSpell','flameDartSpell'].includes(p.id)||!integer(p.power)||p.power<1||p.power>10000||!nonnegative(p.remainingMs)||p.remainingMs>60000||p.remainingMs>k.playerInMs)e.push('Invalid pending combat spell.');}}}
       if(f.randomEncounter!==undefined&&typeof f.randomEncounter!=='boolean')e.push('Invalid encounter marker.');
       if(f.sourceStats!==undefined){if(!record(f.sourceStats))e.push('Invalid combat statistics.');else for(const k of ['strength','intelligence','agility','vitality','luck','weaponUse','parry','dodge','armorValue','armorEnc','shieldValue','weaponValue'])if(!nonnegative(f.sourceStats[k]))e.push('Invalid combat statistic '+k+'.');}
     }
