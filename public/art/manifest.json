@@ -1,0 +1,6531 @@
+{
+  "hero": {
+    "url": "/quest-lab/public/art/hero-walk.png",
+    "frameWidth": 311,
+    "frameHeight": 315
+  },
+  "rooms": {
+    "10": {
+      "background": "/quest-lab/public/art/room-10.png"
+    },
+    "13": {
+      "background": "/quest-lab/public/art/room-13.png"
+    },
+    "14": {
+      "background": "/quest-lab/public/art/room-14.png"
+    },
+    "15": {
+      "background": "/quest-lab/public/art/room-15.png"
+    },
+    "16": {
+      "background": "/quest-lab/public/art/room-16.png"
+    },
+    "21": {
+      "background": "/quest-lab/public/art/room-21.png"
+    },
+    "22": {
+      "background": "/quest-lab/public/art/room-22.png"
+    },
+    "28": {
+      "background": "/quest-lab/public/art/room-28.png"
+    },
+    "29": {
+      "background": "/quest-lab/public/art/room-29.png"
+    },
+    "30": {
+      "background": "/quest-lab/public/art/room-30.png"
+    },
+    "31": {
+      "background": "/quest-lab/public/art/room-31.png"
+    },
+    "32": {
+      "background": "/quest-lab/public/art/room-32.png"
+    },
+    "37": {
+      "background": "/quest-lab/public/art/room-37.png"
+    },
+    "38": {
+      "background": "/quest-lab/public/art/room-38.png"
+    },
+    "39": {
+      "background": "/quest-lab/public/art/room-39.png"
+    },
+    "40": {
+      "background": "/quest-lab/public/art/room-40.png"
+    },
+    "41": {
+      "background": "/quest-lab/public/art/room-41.png"
+    },
+    "45": {
+      "background": "/quest-lab/public/art/room-45.png"
+    },
+    "53": {
+      "background": "/quest-lab/public/art/room-53.png"
+    },
+    "54": {
+      "background": "/quest-lab/public/art/room-54.png"
+    },
+    "55": {
+      "background": "/quest-lab/public/art/room-55.png"
+    },
+    "58": {
+      "background": "/quest-lab/public/art/room-58.png"
+    },
+    "60": {
+      "background": "/quest-lab/public/art/room-60.png"
+    },
+    "64": {
+      "background": "/quest-lab/public/art/room-64.png"
+    },
+    "65": {
+      "background": "/quest-lab/public/art/room-65.png"
+    },
+    "66": {
+      "background": "/quest-lab/public/art/room-66.png"
+    },
+    "67": {
+      "background": "/quest-lab/public/art/room-67.png"
+    },
+    "68": {
+      "background": "/quest-lab/public/art/room-68.png"
+    },
+    "70": {
+      "background": "/quest-lab/public/art/room-70.png"
+    },
+    "73": {
+      "background": "/quest-lab/public/art/room-73.png"
+    },
+    "76": {
+      "background": "/quest-lab/public/art/room-76.png"
+    },
+    "82": {
+      "background": "/quest-lab/public/art/room-82.png"
+    },
+    "83": {
+      "background": "/quest-lab/public/art/room-83.png"
+    },
+    "84": {
+      "background": "/quest-lab/public/art/room-84.png"
+    },
+    "87": {
+      "background": "/quest-lab/public/art/room-87.png"
+    },
+    "89": {
+      "background": "/quest-lab/public/art/room-89.png"
+    },
+    "91": {
+      "background": "/quest-lab/public/art/room-91.png"
+    },
+    "93": {
+      "background": "/quest-lab/public/art/room-93.png"
+    },
+    "94": {
+      "background": "/quest-lab/public/art/room-94.png"
+    },
+    "95": {
+      "background": "/quest-lab/public/art/room-95.png"
+    },
+    "96": {
+      "background": "/quest-lab/public/art/room-96.png"
+    },
+    "97": {
+      "background": "/quest-lab/public/art/room-97.png"
+    },
+    "141": {
+      "background": "/quest-lab/public/art/room-141.png"
+    },
+    "171": {
+      "background": "/quest-lab/public/art/room-171.png"
+    },
+    "172": {
+      "background": "/quest-lab/public/art/room-172.png"
+    },
+    "300": {
+      "background": "/quest-lab/public/art/room-300.png"
+    },
+    "301": {
+      "background": "/quest-lab/public/art/room-301.png"
+    },
+    "302": {
+      "background": "/quest-lab/public/art/room-302.png"
+    },
+    "310": {
+      "background": "/quest-lab/public/art/room-310.png"
+    },
+    "311": {
+      "background": "/quest-lab/public/art/room-311.png"
+    },
+    "313": {
+      "background": "/quest-lab/public/art/room-313.png"
+    },
+    "314": {
+      "background": "/quest-lab/public/art/room-314.png"
+    },
+    "318": {
+      "background": "/quest-lab/public/art/room-318.png"
+    },
+    "320": {
+      "background": "/quest-lab/public/art/room-320.png"
+    },
+    "321": {
+      "background": "/quest-lab/public/art/room-321.png"
+    },
+    "322": {
+      "background": "/quest-lab/public/art/room-322.png"
+    },
+    "330": {
+      "background": "/quest-lab/public/art/room-330.png"
+    },
+    "331": {
+      "background": "/quest-lab/public/art/room-331.png"
+    },
+    "332": {
+      "background": "/quest-lab/public/art/room-332.png"
+    },
+    "333": {
+      "background": "/quest-lab/public/art/room-333.png"
+    },
+    "340": {
+      "background": "/quest-lab/public/art/room-340.png"
+    }
+  },
+  "combat": {
+    "url": "/quest-lab/public/art/hero-combat.png",
+    "frameWidth": 311,
+    "frameHeight": 315
+  },
+  "characters": {
+    "sheriff": {
+      "url": "/quest-lab/public/art/sheriff-idle.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "anchorX": 326,
+      "anchorY": 599,
+      "hiddenPartEntityIds": [
+        "puff"
+      ],
+      "room": 300,
+      "entityId": "sheriff"
+    },
+    "otto": {
+      "url": "/quest-lab/public/art/otto-idle.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "anchorX": 320,
+      "anchorY": 606,
+      "hiddenPartEntityIds": [
+        "yoyo"
+      ],
+      "room": 300,
+      "entityId": "otto"
+    },
+    "21:baba": {
+      "url": "/quest-lab/public/art/character-baba.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 336,
+      "anchorY": 595,
+      "sourceX": 276,
+      "sourceY": 144,
+      "room": 21,
+      "entityId": "baba",
+      "x": 276,
+      "y": 144,
+      "view": 20,
+      "loop": 3,
+      "cel": 0,
+      "sourceRef": "rm21.sc:532",
+      "sourceWidth": 23,
+      "sourceHeight": 49,
+      "hiddenPartEntityIds": [],
+      "variant": "firstTalk standing position",
+      "visibility": "firstWitch/nextWitch/lastWitch scripts control presence. First visit firstWitch appears195,132 loop6 then firstTalk walks276,144 and changesloop3. Do not show after banishment; revisit sequence may use different station.",
+      "entryPose": {
+        "x": 195,
+        "y": 132,
+        "loop": 6,
+        "sourceRef": "rm21.sc:409"
+      },
+      "activationSourceRefs": [
+        "rm21.sc:390",
+        "rm21.sc:532",
+        "rm21.sc:540"
+      ],
+      "unlessFlag": "babaBanished"
+    },
+    "141:baron": {
+      "url": "/quest-lab/public/art/character-baron.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 388,
+      "anchorY": 602,
+      "sourceX": 51,
+      "sourceY": 130,
+      "room": 141,
+      "entityId": "baron",
+      "x": 51,
+      "y": 130,
+      "view": 141,
+      "loop": 2,
+      "cel": 0,
+      "sourceRef": "rm141.sc:181",
+      "sourceWidth": 30,
+      "sourceHeight": 43,
+      "hiddenPartEntityIds": [],
+      "variant": "seated audience",
+      "visibility": "Audience-hall scene init; follow room entry/progression gate. Generated sprite has seated body only: chair is already part of source background.",
+      "composition": "Do not hide the throne/chair in background and do not add a second chair.",
+      "whenFlag": "baronetFreed"
+    },
+    "171:baronet": {
+      "url": "/quest-lab/public/art/character-baronet.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 301,
+      "anchorY": 592,
+      "sourceX": 182,
+      "sourceY": 135,
+      "room": 171,
+      "entityId": "baronet",
+      "x": 182,
+      "y": 135,
+      "view": 421,
+      "loop": 1,
+      "cel": 0,
+      "sourceRef": "rmBear.sc:210",
+      "sourceWidth": 19,
+      "sourceHeight": 50,
+      "hiddenPartEntityIds": [],
+      "variant": "living human after bear curse lifted",
+      "visibility": "Only bearFreed state1 after SetFlag161 in state0. Initial view423 is bear/transformation and must not be replaced by this human atlas. Human disappears bearFreed state5. Dead baronet branch uses421loop0; do not use this standing living atlas for corpse.",
+      "activationSourceRefs": [
+        "rmBear.sc:203",
+        "rmBear.sc:210"
+      ],
+      "requiredFlags": [
+        161
+      ]
+    },
+    "141:son": {
+      "url": "/quest-lab/public/art/character-baronet.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 301,
+      "anchorY": 592,
+      "sourceX": 182,
+      "sourceY": 135,
+      "room": 141,
+      "entityId": "son",
+      "x": 91,
+      "y": 122,
+      "view": 141,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm141.sc:226",
+      "sourceWidth": 25,
+      "sourceHeight": 50,
+      "hiddenPartEntityIds": [],
+      "variant": "living human after bear curse lifted",
+      "visibility": "After baronet freed; follow audience entry branch.",
+      "activationSourceRefs": [
+        "rmBear.sc:203",
+        "rmBear.sc:210"
+      ],
+      "requiredFlags": [
+        161
+      ],
+      "whenFlag": "baronetFreed"
+    },
+    "60:bossMeep": {
+      "url": "/quest-lab/public/art/character-bossMeep.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 315,
+      "anchorY": 546,
+      "sourceX": 155,
+      "sourceY": 201,
+      "room": 60,
+      "entityId": "bossMeep",
+      "x": 155,
+      "y": 102,
+      "z": 100,
+      "view": 60,
+      "loop": 2,
+      "cel": 5,
+      "sourceRef": "rm60.sc:1562",
+      "parts": [
+        {
+          "view": 60,
+          "loop": 2,
+          "cel": 5,
+          "x": 155,
+          "y": 201,
+          "z": 100,
+          "frame": "/quest-lab/reference/views/60-2-5.png",
+          "rect": {
+            "left": 143,
+            "top": 67,
+            "right": 167,
+            "bottom": 102
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "bossEyes"
+      ],
+      "visibility": "Conditional emerged pose only. y201 minus z100 gives rendered feet near102, not offscreen. Original meepScript1 raises bossRock toz1000 and cycles bossMeep toEnd; retreats reverse this. Do not show a full Meep permanently while only eyes or rock should be visible.",
+      "sourceRefs": [
+        "rm60.sc:1584",
+        "rm60.sc:1614"
+      ],
+      "keepPartEntityIds": [
+        "bossRock"
+      ],
+      "occlusion": "Respect separate rock hide/show state; source full emerged cel5 used for size, not cel0 partially hidden.",
+      "groupRect": {
+        "left": 143,
+        "top": 67,
+        "right": 167,
+        "bottom": 102
+      },
+      "sourceWidth": 24,
+      "sourceHeight": 35,
+      "groupFoot": {
+        "x": 155,
+        "y": 102
+      },
+      "nativeFlagHints": {}
+    },
+    "65:bruno": {
+      "url": "/quest-lab/public/art/character-bruno.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 300,
+      "anchorY": 582,
+      "sourceX": 99,
+      "sourceY": 89,
+      "room": 65,
+      "entityId": "bruno",
+      "x": 97,
+      "y": 90,
+      "view": 65,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm65.sc:425",
+      "parts": [
+        {
+          "view": 65,
+          "loop": 4,
+          "cel": 0,
+          "x": 99,
+          "y": 89,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/65-4-0.png",
+          "rect": {
+            "left": 83,
+            "top": 41,
+            "right": 111,
+            "bottom": 90
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "visibility": "Only IsFlag199 AND(gTimeOfDay==2 OR3) AND(!IsFlag161 OR IsFlag235), rm65init. Not permanent day/night vendor.",
+      "sourceRefs": [
+        "rm65.sc:134",
+        "rm65.sc:603"
+      ],
+      "groupRect": {
+        "left": 83,
+        "top": 41,
+        "right": 111,
+        "bottom": 90
+      },
+      "sourceWidth": 28,
+      "sourceHeight": 49,
+      "groupFoot": {
+        "x": 97,
+        "y": 90
+      },
+      "nativeFlagHints": {
+        "161": "baronetFreed (missing source161 mapping; source170 currently mapped)"
+      }
+    },
+    "73:bruno": {
+      "url": "/quest-lab/public/art/character-bruno.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 300,
+      "anchorY": 582,
+      "sourceX": 99,
+      "sourceY": 89,
+      "room": 73,
+      "entityId": "bruno",
+      "x": 97,
+      "y": 90,
+      "view": 65,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm73.sc:485",
+      "parts": [
+        {
+          "view": 65,
+          "loop": 4,
+          "cel": 0,
+          "x": 99,
+          "y": 89,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/65-4-0.png",
+          "rect": {
+            "left": 83,
+            "top": 41,
+            "right": 111,
+            "bottom": 90
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "visibility": "local2 meeting only: IsFlag161&&!IsFlag235&&gTimeOfDay==2, entering from72or74. Same face/costume valid, source frame same65loop4. Other ambush branches may show Brutus without Bruno.",
+      "sourceRefs": [
+        "rm65.sc:134",
+        "rm65.sc:603"
+      ],
+      "groupRect": {
+        "left": 83,
+        "top": 41,
+        "right": 111,
+        "bottom": 90
+      },
+      "sourceWidth": 28,
+      "sourceHeight": 49,
+      "groupFoot": {
+        "x": 97,
+        "y": 90
+      },
+      "nativeFlagHints": {
+        "161": "baronetFreed (missing source161 mapping; source170 currently mapped)"
+      }
+    },
+    "320:centaur": {
+      "url": "/quest-lab/public/art/character-centaur320.png",
+      "frameWidth": 623,
+      "frameHeight": 630,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 623,
+          "h": 630
+        },
+        {
+          "x": 624,
+          "y": 0,
+          "w": 623,
+          "h": 630
+        },
+        {
+          "x": 0,
+          "y": 631,
+          "w": 623,
+          "h": 630
+        },
+        {
+          "x": 624,
+          "y": 631,
+          "w": 623,
+          "h": 630
+        }
+      ],
+      "anchorX": 325,
+      "anchorY": 588,
+      "sourceX": 268,
+      "sourceY": 136,
+      "room": 320,
+      "entityId": "centaur",
+      "x": 274,
+      "y": 163,
+      "view": 325,
+      "loop": 2,
+      "cel": 0,
+      "sourceRef": "rm320.sc:697",
+      "parts": [
+        {
+          "view": 325,
+          "loop": 2,
+          "cel": 0,
+          "x": 268,
+          "y": 136,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/325-2-0.png",
+          "rect": {
+            "left": 257,
+            "top": 111,
+            "right": 279,
+            "bottom": 138
+          }
+        },
+        {
+          "view": 325,
+          "loop": 0,
+          "cel": 0,
+          "x": 272,
+          "y": 141,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/325-0-0.png",
+          "rect": {
+            "left": 260,
+            "top": 131,
+            "right": 287,
+            "bottom": 163
+          }
+        },
+        {
+          "view": 325,
+          "loop": 1,
+          "cel": 0,
+          "x": 281,
+          "y": 133,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/325-1-0.png",
+          "rect": {
+            "left": 281,
+            "top": 132,
+            "right": 291,
+            "bottom": 150
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "centaurBody"
+      ],
+      "hiddenDynamicParts": [
+        {
+          "view": 325,
+          "loop": 1,
+          "sourceRef": "rm320.sc:90",
+          "reason": "anonymous tail Prop local0; modern whole-centaur includes tail"
+        }
+      ],
+      "keepPartEntityIds": [
+        "theApples",
+        "scales"
+      ],
+      "visibility": "Hilde market vendor only while!gNight. Whole centaur replaces torso+horse body+anonymous tail. Preserve stall/apples/scales foreground and layering.",
+      "groupRect": {
+        "left": 257,
+        "top": 111,
+        "right": 291,
+        "bottom": 163
+      },
+      "sourceWidth": 34,
+      "sourceHeight": 52,
+      "groupFoot": {
+        "x": 274,
+        "y": 163
+      },
+      "nativeFlagHints": {}
+    },
+    "53:centaur": {
+      "url": "/quest-lab/public/art/character-centaur53.png",
+      "frameWidth": 615,
+      "frameHeight": 639,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 615,
+          "h": 639
+        },
+        {
+          "x": 615,
+          "y": 0,
+          "w": 615,
+          "h": 639
+        },
+        {
+          "x": 0,
+          "y": 639,
+          "w": 615,
+          "h": 639
+        },
+        {
+          "x": 615,
+          "y": 639,
+          "w": 615,
+          "h": 639
+        }
+      ],
+      "anchorX": 299,
+      "anchorY": 608,
+      "sourceX": 50,
+      "sourceY": 111,
+      "room": 53,
+      "entityId": "centaur",
+      "x": 59,
+      "y": 112,
+      "view": 54,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm53.sc:614",
+      "parts": [
+        {
+          "view": 54,
+          "loop": 4,
+          "cel": 0,
+          "x": 50,
+          "y": 111,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/54-4-0.png",
+          "rect": {
+            "left": 28,
+            "top": 77,
+            "right": 74,
+            "bottom": 112
+          }
+        },
+        {
+          "view": 54,
+          "loop": 1,
+          "cel": 0,
+          "x": 63,
+          "y": 84,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/54-0-0.png",
+          "rect": {
+            "left": 55,
+            "top": 59,
+            "right": 96,
+            "bottom": 112
+          }
+        },
+        {
+          "view": 54,
+          "loop": 2,
+          "cel": 0,
+          "x": 34,
+          "y": 80,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/54-2-0.png",
+          "rect": {
+            "left": 22,
+            "top": 79,
+            "right": 35,
+            "bottom": 96
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "head",
+        "tail"
+      ],
+      "visibility": "Day only (!gNight). Farmer initially rakes withview53loop0 and moves; standStill combinesview54body/head/tail. x is current actor x, not always50. IsFlag323 selects mirrored side and alternates entry x250 vs50. This four-pose idle does not implement hoe-work/walking.",
+      "positionVariants": [
+        {
+          "x": 50,
+          "y": 111,
+          "condition": "!IsFlag323"
+        },
+        {
+          "x": 250,
+          "y": 111,
+          "condition": "IsFlag323",
+          "mirror": true
+        }
+      ],
+      "sourceRefs": [
+        "rm53.sc:119",
+        "rm53.sc:614",
+        "rm53.sc:634",
+        "rm53.sc:659"
+      ],
+      "groupRect": {
+        "left": 22,
+        "top": 59,
+        "right": 96,
+        "bottom": 112
+      },
+      "sourceWidth": 74,
+      "sourceHeight": 53,
+      "groupFoot": {
+        "x": 59,
+        "y": 112
+      },
+      "nativeFlagHints": {}
+    },
+    "76:dryad": {
+      "url": "/quest-lab/public/art/character-dryad.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 318,
+      "anchorY": 595,
+      "sourceX": 148,
+      "sourceY": 128,
+      "room": 76,
+      "entityId": "dryad",
+      "x": 148,
+      "y": 128,
+      "view": 76,
+      "loop": 0,
+      "cel": 14,
+      "sourceRef": "rm76.sc:578",
+      "sourceWidth": 32,
+      "sourceHeight": 49,
+      "hiddenPartEntityIds": [],
+      "variant": "emerged tree spirit",
+      "visibility": "Only while emerged from oak. Entry arms local0=1; hero.x<280, local0==1, !gNight, !IsFlag201 triggers outOfTree. Do not spawn permanently or at night. IntoTree hides/disposes after sequence; flag201 completed seed quest suppresses future ordinary emergence.",
+      "activationSourceRefs": [
+        "rm76.sc:207",
+        "rm76.sc:226",
+        "rm76.sc:731"
+      ],
+      "hideAfter": "intoTree at rm76.sc:803; seed quest completes flag201 at rm76.sc:928",
+      "composition": "Whole woody female/tree-spirit body including small root base; existing large oak remains background. No portrait subparts included.",
+      "unlessFlag": "dryadSeed",
+      "dayOnly": true
+    },
+    "30:fenrus": {
+      "url": "/quest-lab/public/art/character-fenrus.png",
+      "frameWidth": 631,
+      "frameHeight": 623,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 632,
+          "y": 0,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 0,
+          "y": 623,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 632,
+          "y": 623,
+          "w": 631,
+          "h": 623
+        }
+      ],
+      "anchorX": 342,
+      "anchorY": 552,
+      "sourceX": 263,
+      "sourceY": 171,
+      "room": 30,
+      "entityId": "fenrus",
+      "x": 268,
+      "y": 175,
+      "view": 199,
+      "loop": 1,
+      "cel": 0,
+      "sourceRef": "rm30.sc:435",
+      "parts": [
+        {
+          "view": 199,
+          "loop": 1,
+          "cel": 0,
+          "x": 263,
+          "y": 171,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/199-1-0.png",
+          "rect": {
+            "left": 250,
+            "top": 146,
+            "right": 285,
+            "bottom": 175
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "visibility": "Tower-hall familiar; use existing room/script activation. Species correction: source portrait1031 is a brown RAT with long naked pink tail, not a cat.",
+      "groupRect": {
+        "left": 250,
+        "top": 146,
+        "right": 285,
+        "bottom": 175
+      },
+      "sourceWidth": 35,
+      "sourceHeight": 29,
+      "groupFoot": {
+        "x": 268,
+        "y": 175
+      },
+      "nativeFlagHints": {}
+    },
+    "31:fenrusBody": {
+      "url": "/quest-lab/public/art/character-fenrus.png",
+      "frameWidth": 631,
+      "frameHeight": 623,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 632,
+          "y": 0,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 0,
+          "y": 623,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 632,
+          "y": 623,
+          "w": 631,
+          "h": 623
+        }
+      ],
+      "anchorX": 342,
+      "anchorY": 552,
+      "sourceX": 263,
+      "sourceY": 171,
+      "room": 31,
+      "entityId": "fenrusBody",
+      "x": 268,
+      "y": 175,
+      "view": 199,
+      "loop": 0,
+      "cel": 8,
+      "sourceRef": "rm31.sc:509",
+      "parts": [
+        {
+          "view": 199,
+          "loop": 1,
+          "cel": 0,
+          "x": 263,
+          "y": 171,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/199-1-0.png",
+          "rect": {
+            "left": 250,
+            "top": 146,
+            "right": 285,
+            "bottom": 175
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "visibility": "Conversation/gameOver sequences initialize fenrusBody. Follow intoTheTower/gameOver activation; not permanent during all entry states.",
+      "groupRect": {
+        "left": 250,
+        "top": 146,
+        "right": 285,
+        "bottom": 175
+      },
+      "sourceWidth": 35,
+      "sourceHeight": 29,
+      "groupFoot": {
+        "x": 268,
+        "y": 175
+      },
+      "nativeFlagHints": {}
+    },
+    "58:giant": {
+      "url": "/quest-lab/public/art/character-giant.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 311,
+      "anchorY": 580,
+      "sourceX": 164,
+      "sourceY": 53,
+      "room": 58,
+      "entityId": "giant",
+      "x": 162,
+      "y": 117,
+      "view": 59,
+      "loop": 1,
+      "cel": 1,
+      "sourceRef": "rm58.sc:47",
+      "parts": [
+        {
+          "view": 59,
+          "loop": 1,
+          "cel": 1,
+          "x": 164,
+          "y": 53,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/59-1-1.png",
+          "rect": {
+            "left": 142,
+            "top": 48,
+            "right": 181,
+            "bottom": 109
+          }
+        },
+        {
+          "view": 59,
+          "loop": 4,
+          "cel": 0,
+          "x": 164,
+          "y": 114,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/59-4-0.png",
+          "rect": {
+            "left": 154,
+            "top": 83,
+            "right": 180,
+            "bottom": 117
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "legs"
+      ],
+      "visibility": "Brauggi absent after IsFlag208 (fruit deal complete). egoInit->giantInit emerges from cave before giantBlocks idle. Source idle upperbody position164,53 has+55cel displacement; actual fullbody footprint near164,117. Follow cutscene; do not show at initial hidden stage.",
+      "sourceRefs": [
+        "rm58.sc:106",
+        "rm58.sc:488",
+        "rm58.sc:509",
+        "rm58.sc:47"
+      ],
+      "groupRect": {
+        "left": 142,
+        "top": 48,
+        "right": 181,
+        "bottom": 117
+      },
+      "sourceWidth": 39,
+      "sourceHeight": 69,
+      "groupFoot": {
+        "x": 162,
+        "y": 117
+      },
+      "nativeFlagHints": {
+        "208": "brauggiTrade"
+      }
+    },
+    "55:healer": {
+      "url": "/quest-lab/public/art/character-healer.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 309,
+      "anchorY": 604,
+      "sourceX": 92,
+      "sourceY": 139,
+      "room": 55,
+      "entityId": "healer",
+      "x": 92,
+      "y": 139,
+      "view": 57,
+      "loop": 5,
+      "cel": 0,
+      "sourceRef": "rm55.sc:881",
+      "sourceWidth": 29,
+      "sourceHeight": 40,
+      "hiddenPartEntityIds": [],
+      "visibility": "on-entry after egoEnters state7–9; greeting is initially151,142 loop9 at rm55.sc:787",
+      "entryPose": {
+        "x": 151,
+        "y": 142,
+        "loop": 9,
+        "cel": 0,
+        "sourceRef": "rm55.sc:787",
+        "sourceWidth": 35,
+        "sourceHeight": 46
+      }
+    },
+    "83:hermit": {
+      "url": "/quest-lab/public/art/character-hermit.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 341,
+      "anchorY": 588,
+      "sourceX": 78,
+      "sourceY": 134,
+      "room": 83,
+      "entityId": "hermit",
+      "x": 72,
+      "y": 135,
+      "view": 83,
+      "loop": 3,
+      "cel": 0,
+      "sourceRef": "rm83.sc:792",
+      "parts": [
+        {
+          "view": 83,
+          "loop": 3,
+          "cel": 0,
+          "x": 78,
+          "y": 134,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/83-3-0.png",
+          "rect": {
+            "left": 58,
+            "top": 99,
+            "right": 86,
+            "bottom": 135
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "visibility": "Hermit seated inside cave on entry. Other poof/magic sequences switch source poses; atlas only conversation idle. Chair if present remains background.",
+      "groupRect": {
+        "left": 58,
+        "top": 99,
+        "right": 86,
+        "bottom": 135
+      },
+      "sourceWidth": 28,
+      "sourceHeight": 36,
+      "groupFoot": {
+        "x": 72,
+        "y": 135
+      },
+      "nativeFlagHints": {}
+    },
+    "97:leader": {
+      "url": "/quest-lab/public/art/character-leader.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 319,
+      "anchorY": 593,
+      "sourceX": 151,
+      "sourceY": 155,
+      "room": 97,
+      "entityId": "leader",
+      "x": 151,
+      "y": 155,
+      "view": 97,
+      "loop": 5,
+      "cel": 0,
+      "sourceRef": "rm97.sc:209",
+      "sourceWidth": 20,
+      "sourceHeight": 49,
+      "hiddenPartEntityIds": [],
+      "variant": "liberated Elsa",
+      "requiredFlags": [
+        273
+      ],
+      "visibility": "Liberated conversation only: disenchant sets flag273 then cutscene172; returning from172 initializes leaderloop5 at151,155 and elsaIsBack. Do not replace normal brigand leaderloop4 at148,123 with dress atlas. Source local3 is cleared when she teleports away in elsaIsBack state15.",
+      "activationSourceRefs": [
+        "rm97.sc:209",
+        "rm97.sc:1281",
+        "rm97.sc:1344"
+      ],
+      "hideAfter": "elsaIsBack state15 sets local3=0 and plays disappearance loop5.",
+      "costume": "Green bodice/front panel, crimson skirt, blue cape and gold amulet match actual nonblank view97loop5cel0. Earlier draft green dress was rejected and replaced before integration.",
+      "whenFlag": "elsaFreed",
+      "variantOnly": true
+    },
+    "311:master": {
+      "url": "/quest-lab/public/art/character-master.png",
+      "frameWidth": 630,
+      "frameHeight": 623,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 630,
+          "h": 623
+        },
+        {
+          "x": 631,
+          "y": 0,
+          "w": 630,
+          "h": 623
+        },
+        {
+          "x": 0,
+          "y": 624,
+          "w": 630,
+          "h": 623
+        },
+        {
+          "x": 631,
+          "y": 624,
+          "w": 630,
+          "h": 623
+        }
+      ],
+      "anchorX": 427,
+      "anchorY": 590,
+      "sourceX": 76,
+      "sourceY": 137,
+      "room": 311,
+      "entityId": "master",
+      "x": 106,
+      "y": 141,
+      "view": 312,
+      "loop": 1,
+      "cel": 0,
+      "sourceRef": "rm311.sc:616",
+      "parts": [
+        {
+          "view": 312,
+          "loop": 1,
+          "cel": 0,
+          "x": 76,
+          "y": 137,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/312-1-0.png",
+          "rect": {
+            "left": 70,
+            "top": 102,
+            "right": 106,
+            "bottom": 141
+          }
+        },
+        {
+          "view": 312,
+          "loop": 5,
+          "cel": 0,
+          "x": 98,
+          "y": 104,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/312-5-0.png",
+          "rect": {
+            "left": 95,
+            "top": 96,
+            "right": 102,
+            "bottom": 105
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "masterHead"
+      ],
+      "keepPartEntityIds": [
+        "chair"
+      ],
+      "visibility": "Guild Master Wolfgang seated on normal guild entry. Fullbody/head atlas replaces separate masterHead; source chair stays.",
+      "groupRect": {
+        "left": 70,
+        "top": 96,
+        "right": 106,
+        "bottom": 141
+      },
+      "sourceWidth": 36,
+      "sourceHeight": 45,
+      "groupFoot": {
+        "x": 88,
+        "y": 141
+      },
+      "nativeFlagHints": {}
+    },
+    "301:merchant": {
+      "url": "/quest-lab/public/art/character-merchant.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 289,
+      "anchorY": 598,
+      "sourceX": 101,
+      "sourceY": 262,
+      "room": 301,
+      "entityId": "merchant",
+      "x": 109,
+      "y": 178,
+      "z": 100,
+      "view": 302,
+      "loop": 1,
+      "cel": 0,
+      "sourceRef": "rm301.sc:307",
+      "parts": [
+        {
+          "view": 302,
+          "loop": 1,
+          "cel": 0,
+          "x": 101,
+          "y": 262,
+          "z": 100,
+          "frame": "/quest-lab/reference/views/302-1-0.png",
+          "rect": {
+            "left": 97,
+            "top": 148,
+            "right": 120,
+            "bottom": 164
+          }
+        },
+        {
+          "view": 302,
+          "loop": 7,
+          "cel": 0,
+          "x": 103,
+          "y": 160,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/302-7-0.png",
+          "rect": {
+            "left": 99,
+            "top": 160,
+            "right": 119,
+            "bottom": 178
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "mLegs"
+      ],
+      "keepPartEntityIds": [
+        "mMug"
+      ],
+      "visibility": "Abdulla only when IsFlag176. Room sets176 on evenings time4/5 when local144 (first visit if!115, later random). Sets115 once initialized. Roomdispose clears176. Source torso y262,z100 renders near163; whole atlas includes legs.",
+      "sourceRefs": [
+        "rm301.sc:123",
+        "rm301.sc:131",
+        "rm301.sc:252",
+        "rm301.sc:325",
+        "rm301.sc:658"
+      ],
+      "groupRect": {
+        "left": 97,
+        "top": 148,
+        "right": 120,
+        "bottom": 178
+      },
+      "sourceWidth": 23,
+      "sourceHeight": 30,
+      "groupFoot": {
+        "x": 109,
+        "y": 178
+      },
+      "nativeFlagHints": {
+        "115": "abdullaMet",
+        "176": "abdullaPresent"
+      }
+    },
+    "322:proprietor": {
+      "url": "/quest-lab/public/art/character-proprietor.png",
+      "frameWidth": 630,
+      "frameHeight": 623,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 630,
+          "h": 623
+        },
+        {
+          "x": 631,
+          "y": 0,
+          "w": 630,
+          "h": 623
+        },
+        {
+          "x": 0,
+          "y": 624,
+          "w": 630,
+          "h": 623
+        },
+        {
+          "x": 631,
+          "y": 624,
+          "w": 630,
+          "h": 623
+        }
+      ],
+      "anchorX": 305,
+      "anchorY": 575,
+      "sourceX": 151,
+      "sourceY": 119,
+      "room": 322,
+      "entityId": "proprietor",
+      "x": 151,
+      "y": 130,
+      "view": 322,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm322.sc:587",
+      "parts": [
+        {
+          "view": 322,
+          "loop": 4,
+          "cel": 0,
+          "x": 151,
+          "y": 119,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/322-4-0.png",
+          "rect": {
+            "left": 141,
+            "top": 93,
+            "right": 160,
+            "bottom": 120
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "visibility": "General-store proprietor on normal open-store entry. Source sprite only upperbody behind counter; do not scale fullbody atlas to source27px high.",
+      "fullBodyPlacement": {
+        "x": 151,
+        "y": 130,
+        "height": 52,
+        "confidence": "estimated anatomy extension beneath counter; source visible upperbody exact"
+      },
+      "clip": {
+        "left": 0,
+        "top": 0,
+        "right": 320,
+        "bottom": 104,
+        "reason": "show only upperbody; source counter is painted background and may have no masking priority"
+      },
+      "anchorMode": "match source head/top, then clip at counter",
+      "groupRect": {
+        "left": 141,
+        "top": 93,
+        "right": 160,
+        "bottom": 120
+      },
+      "sourceWidth": 19,
+      "sourceHeight": 52,
+      "groupFoot": {
+        "x": 151,
+        "y": 120
+      },
+      "nativeFlagHints": {}
+    },
+    "301:shameen": {
+      "url": "/quest-lab/public/art/character-shameen.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 302,
+      "anchorY": 586,
+      "sourceX": 232,
+      "sourceY": 132,
+      "room": 301,
+      "entityId": "shameen",
+      "x": 238,
+      "y": 136,
+      "view": 302,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm301.sc:503",
+      "sourceWidth": 34,
+      "sourceHeight": 28,
+      "hiddenPartEntityIds": [
+        "pillow"
+      ],
+      "visibility": "normal inn scene after shameensIntro; original LickIt switches loops2/4. Generated atlas includes cushion; hide separate pillow only in modern mode.",
+      "groupRect": {
+        "left": 221,
+        "top": 109,
+        "right": 255,
+        "bottom": 137
+      },
+      "groupFoot": {
+        "x": 238,
+        "y": 136
+      }
+    },
+    "301:shema": {
+      "url": "/quest-lab/public/art/character-shema.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 314,
+      "anchorY": 605,
+      "sourceX": 163,
+      "sourceY": 149,
+      "room": 301,
+      "entityId": "shema",
+      "x": 163,
+      "y": 149,
+      "view": 303,
+      "loop": 0,
+      "cel": 0,
+      "sourceRef": "rm301.sc:1566",
+      "sourceWidth": 19,
+      "sourceHeight": 42,
+      "hiddenPartEntityIds": [],
+      "visibility": "conditional serving sequence only; baseline is intentionally500,500. sitScript state3 -> shameenClaps state14 -> comingOut. Do not show permanently on ordinary entry.",
+      "activationSourceRefs": [
+        "rm301.sc:1797",
+        "rm301.sc:1403",
+        "rm301.sc:1555",
+        "rm301.sc:1561",
+        "rm301.sc:1566"
+      ],
+      "entryRoute": [
+        {
+          "x": 160,
+          "y": 77
+        },
+        {
+          "x": 160,
+          "y": 122
+        },
+        {
+          "x": 163,
+          "y": 149
+        }
+      ],
+      "hideAfter": "goingIn state4 sets500,500 at rm301.sc:1734",
+      "whenFlag": "shemaServing"
+    },
+    "31:wizard": {
+      "url": "/quest-lab/public/art/character-wizard.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 307,
+      "anchorY": 568,
+      "sourceX": 67,
+      "sourceY": 108,
+      "room": 31,
+      "entityId": "wizard",
+      "x": 68,
+      "y": 129,
+      "view": 31,
+      "loop": 1,
+      "cel": 0,
+      "sourceRef": "rm31.sc:273",
+      "parts": [
+        {
+          "view": 31,
+          "loop": 1,
+          "cel": 0,
+          "x": 67,
+          "y": 108,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/31-1-0.png",
+          "rect": {
+            "left": 54,
+            "top": 79,
+            "right": 75,
+            "bottom": 112
+          }
+        },
+        {
+          "view": 31,
+          "loop": 2,
+          "cel": 0,
+          "x": 69,
+          "y": 128,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/31-2-0.png",
+          "rect": {
+            "left": 56,
+            "top": 105,
+            "right": 82,
+            "bottom": 129
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "wizLegs"
+      ],
+      "keepPartEntityIds": [
+        "wizChair",
+        "cup"
+      ],
+      "visibility": "Normal tower conversation scene; existing separate chair stays. Fullbody includes original upper body and legs; do not double-render wizLegs. Original room30 theWiz is a distinct scripted prop and not automatically this seated variant.",
+      "groupRect": {
+        "left": 54,
+        "top": 79,
+        "right": 82,
+        "bottom": 129
+      },
+      "sourceWidth": 28,
+      "sourceHeight": 50,
+      "groupFoot": {
+        "x": 68,
+        "y": 129
+      },
+      "nativeFlagHints": {}
+    },
+    "96:yorick": {
+      "url": "/quest-lab/public/art/character-yorick.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 284,
+      "anchorY": 588,
+      "sourceX": 161,
+      "sourceY": 69,
+      "room": 96,
+      "entityId": "yorick",
+      "x": 161,
+      "y": 69,
+      "view": 297,
+      "loop": 1,
+      "cel": 0,
+      "sourceRef": "rm96.sc:608",
+      "sourceWidth": 28,
+      "sourceHeight": 42,
+      "hiddenPartEntityIds": [],
+      "variant": "whole-body sprite; maze placement requires ledge occlusion",
+      "visibility": "Maze sequence controls his changing positions and loops. Baseline loop1 exposes upper body only above ledge: retain source foreground clipping, do not draw entire body in front.",
+      "fullBodyReference": {
+        "view": 297,
+        "loop": 5,
+        "cel": 0,
+        "sourceWidth": 31,
+        "sourceHeight": 42
+      },
+      "occlusion": {
+        "required": true,
+        "sourceVisibleRect": {
+          "left": 146,
+          "top": 44,
+          "right": 174,
+          "bottom": 70
+        }
+      },
+      "cropBottom": 0.4
+    },
+    "97:yorick": {
+      "url": "/quest-lab/public/art/character-yorick.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 284,
+      "anchorY": 588,
+      "sourceX": 161,
+      "sourceY": 69,
+      "room": 97,
+      "entityId": "yorick",
+      "x": 230,
+      "y": 114,
+      "view": 97,
+      "loop": 6,
+      "cel": 0,
+      "sourceRef": "rm97.sc:1315",
+      "sourceWidth": 29,
+      "sourceHeight": 41,
+      "hiddenPartEntityIds": [],
+      "variant": "whole-body sprite; maze placement requires ledge occlusion",
+      "visibility": "elsaIsBack state6 moves from276,114 to230,114 and sets local4=1. Hide when local4 cleared state16; liberation cutscene only.",
+      "fullBodyReference": {
+        "view": 297,
+        "loop": 5,
+        "cel": 0,
+        "sourceWidth": 31,
+        "sourceHeight": 42
+      },
+      "occlusion": {
+        "required": true,
+        "sourceVisibleRect": {
+          "left": 146,
+          "top": 44,
+          "right": 174,
+          "bottom": 70
+        }
+      },
+      "whenFlag": "elsaFreed"
+    },
+    "314:zara": {
+      "url": "/quest-lab/public/art/character-zara.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 320,
+      "anchorY": 604,
+      "sourceX": 259,
+      "sourceY": 100,
+      "room": 314,
+      "entityId": "zara",
+      "x": 259,
+      "y": 100,
+      "view": 315,
+      "loop": 0,
+      "cel": 3,
+      "sourceRef": "rm314.sc:652",
+      "sourceWidth": 22,
+      "sourceHeight": 47,
+      "hiddenPartEntityIds": [],
+      "visibility": "conditional: room doit starts familiarScript once hero.x>160; familiarScript state5 initializes Zara after effect. Not present at initial91,176 entry.",
+      "activationSourceRefs": [
+        "rm314.sc:179",
+        "rm314.sc:847"
+      ],
+      "activation": {
+        "heroXGreaterThan": 160,
+        "after": "familiarScript state5"
+      },
+      "hideAfter": "exitScript disposes Zara at rm314.sc:778",
+      "whenFlag": "zaraIntroduced"
+    },
+    "333:beggar": {
+      "url": "/quest-lab/public/art/character-beggar.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 332,
+      "anchorY": 585,
+      "sourceX": 184,
+      "sourceY": 171,
+      "room": 333,
+      "entityId": "beggar",
+      "x": 196,
+      "y": 173,
+      "view": 333,
+      "loop": 0,
+      "cel": 0,
+      "sourceRef": "rm333.sc:293",
+      "parts": [
+        {
+          "view": 333,
+          "loop": 0,
+          "cel": 0,
+          "x": 184,
+          "y": 171,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/333-0-0.png",
+          "rect": {
+            "left": 182,
+            "top": 148,
+            "right": 210,
+            "bottom": 173
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "visibility": "Day alley scene333 only. Night alley is separate room334; do not carry beggar into334. Holds out hand; separate bowl/source object interactions retain original conditions.",
+      "groupRect": {
+        "left": 182,
+        "top": 148,
+        "right": 210,
+        "bottom": 173
+      },
+      "sourceWidth": 28,
+      "sourceHeight": 25,
+      "groupFoot": {
+        "x": 196,
+        "y": 173
+      }
+    },
+    "332:chiefThief": {
+      "url": "/quest-lab/public/art/character-chiefThief.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 375,
+      "anchorY": 598,
+      "sourceX": 91,
+      "sourceY": 145,
+      "room": 332,
+      "entityId": "chiefThief",
+      "x": 80,
+      "y": 147,
+      "view": 332,
+      "loop": 5,
+      "cel": 0,
+      "sourceRef": "rm332.sc:828",
+      "parts": [
+        {
+          "view": 332,
+          "loop": 5,
+          "cel": 0,
+          "x": 91,
+          "y": 145,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/332-5-0.png",
+          "rect": {
+            "left": 67,
+            "top": 110,
+            "right": 93,
+            "bottom": 147
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "keepPartEntityIds": [
+        "chair",
+        "chairArm"
+      ],
+      "visibility": "Thieves Guild chief seated after authorized guild entry. Existing separate chair and foreground arm stay; sprite is body only. Does not replace knife-throw/dice sequence animation.",
+      "groupRect": {
+        "left": 67,
+        "top": 110,
+        "right": 93,
+        "bottom": 147
+      },
+      "sourceWidth": 26,
+      "sourceHeight": 37,
+      "groupFoot": {
+        "x": 80,
+        "y": 147
+      }
+    },
+    "39:theMaster": {
+      "url": "/quest-lab/public/art/character-theMaster.png",
+      "frameWidth": 631,
+      "frameHeight": 623,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 631,
+          "y": 0,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 0,
+          "y": 623,
+          "w": 631,
+          "h": 623
+        },
+        {
+          "x": 631,
+          "y": 623,
+          "w": 631,
+          "h": 623
+        }
+      ],
+      "anchorX": 307,
+      "anchorY": 587,
+      "sourceX": 100,
+      "sourceY": 147,
+      "room": 39,
+      "entityId": "theMaster",
+      "x": 86,
+      "y": 148,
+      "view": 639,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm39.sc:603",
+      "parts": [
+        {
+          "view": 639,
+          "loop": 4,
+          "cel": 0,
+          "x": 100,
+          "y": 147,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/639-4-0.png",
+          "rect": {
+            "left": 70,
+            "top": 101,
+            "right": 102,
+            "bottom": 148
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "visibility": "Conditional courtyard instructor. rm39init requires0<gTimeOfDay<4,!IsFlag249,global246!=gDay, then flag239 or random>50. intro/intro2 set route-dependent position; do not spawn every visit.",
+      "sourceRefs": [
+        "rm39.sc:220",
+        "intro_222.sc:107",
+        "intro_222.sc:114",
+        "intro_222.sc:127"
+      ],
+      "positionVariants": [
+        {
+          "x": 200,
+          "y": 140,
+          "from": 38
+        },
+        {
+          "x": 100,
+          "y": 140,
+          "from": 40
+        },
+        {
+          "x": 100,
+          "y": 170,
+          "from": 41,
+          "condition": "global103>160"
+        },
+        {
+          "x": 200,
+          "y": 170,
+          "from": 41,
+          "condition": "global103<=160"
+        },
+        {
+          "x": 100,
+          "y": 147,
+          "from": "other"
+        }
+      ],
+      "note": "This atlas is conversation idle, not instructor combat animation.",
+      "groupRect": {
+        "left": 70,
+        "top": 101,
+        "right": 102,
+        "bottom": 148
+      },
+      "sourceWidth": 32,
+      "sourceHeight": 47,
+      "groupFoot": {
+        "x": 86,
+        "y": 148
+      }
+    },
+    "331:bartender": {
+      "url": "/quest-lab/public/art/character-bartender.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 339,
+      "anchorY": 602,
+      "sourceX": 162,
+      "sourceY": 102,
+      "room": 331,
+      "entityId": "bartender",
+      "parts": [
+        {
+          "view": 336,
+          "loop": 2,
+          "cel": 0,
+          "x": 162,
+          "y": 102,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/336-2-0.png",
+          "rect": {
+            "left": 151,
+            "top": 79,
+            "right": 173,
+            "bottom": 103
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "variant": "upper-body behind tavern counter",
+      "visibility": "Normal rm331 init initializes bartender. Four upper-body poses only; lower body remains hidden by source counter. Native bartenderScript handles mug/breathing work and is not replaced by idle atlas.",
+      "keepPartEntityIds": [
+        "onBar"
+      ],
+      "x": 162,
+      "y": 103,
+      "z": 0,
+      "view": 336,
+      "loop": 2,
+      "cel": 0,
+      "sourceRef": "rm331.sc:1073",
+      "sourceWidth": 22,
+      "sourceHeight": 24,
+      "groupRect": {
+        "left": 151,
+        "top": 79,
+        "right": 173,
+        "bottom": 103
+      },
+      "groupFoot": {
+        "x": 162,
+        "y": 103
+      }
+    },
+    "332:borisThief": {
+      "url": "/quest-lab/public/art/character-borisThief.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 324,
+      "anchorY": 524,
+      "sourceX": 182,
+      "sourceY": 87,
+      "room": 332,
+      "entityId": "borisThief",
+      "parts": [
+        {
+          "view": 332,
+          "loop": 10,
+          "cel": 0,
+          "x": 182,
+          "y": 87,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/332-10-0.png",
+          "rect": {
+            "left": 165,
+            "top": 70,
+            "right": 183,
+            "bottom": 88
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "variant": "face and barred shutter hatch only",
+      "visibility": "NOT baseline. rm332.sc269-283 starts heComes only when hero is inRect139109212127; heComes at1386 initializes loop12 opening then loop10 idle. heGoes1411 closes loop11 and disposes on leaving rectangle. Do not show permanently merely from guild access.",
+      "activation": {
+        "heroRect": {
+          "left": 139,
+          "top": 109,
+          "right": 212,
+          "bottom": 127
+        },
+        "sourceRef": "rm332.sc:269"
+      },
+      "sourceRefs": [
+        "rm332.sc:848",
+        "rm332.sc:1386",
+        "rm332.sc:1401",
+        "rm332.sc:1411"
+      ],
+      "anchorMode": "bottom center of complete hatch; no feet",
+      "x": 174,
+      "y": 88,
+      "z": 0,
+      "view": 332,
+      "loop": 10,
+      "cel": 0,
+      "sourceRef": "rm332.sc:848",
+      "sourceWidth": 18,
+      "sourceHeight": 18,
+      "groupRect": {
+        "left": 165,
+        "top": 70,
+        "right": 183,
+        "bottom": 88
+      },
+      "groupFoot": {
+        "x": 174,
+        "y": 88
+      },
+      "heroRect": [
+        139,
+        109,
+        212,
+        127
+      ]
+    },
+    "73:brutus": {
+      "url": "/quest-lab/public/art/character-brutus.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 301,
+      "anchorY": 610,
+      "sourceX": 131,
+      "sourceY": 135,
+      "room": 73,
+      "entityId": "brutus",
+      "parts": [
+        {
+          "view": 73,
+          "loop": 4,
+          "cel": 0,
+          "x": 131,
+          "y": 135,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/73-4-0.png",
+          "rect": {
+            "left": 120,
+            "top": 87,
+            "right": 136,
+            "bottom": 136
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "variant": "living brigand meeting conversation",
+      "visibility": "Conditional localproc_0 at rm73.sc47: meeting if IsFlag161&&!235&&gTimeOfDay==2 and previous72/74. Other ambush branches use flags235/261 and entry80; corpse loop7cel8 is distinct and must not use living atlas. Native brigandPassword is not equivalent to source visibility.",
+      "sourceRefs": [
+        "rm73.sc:47",
+        "rm73.sc:92",
+        "rm73.sc:100",
+        "rm73.sc:1082"
+      ],
+      "positionVariants": [
+        {
+          "x": 128,
+          "y": 135,
+          "condition": "IsFlag235 && previousRoom80 && !IsFlag261",
+          "sourceRef": "rm73.sc:92"
+        }
+      ],
+      "x": 128,
+      "y": 136,
+      "z": 0,
+      "view": 73,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm73.sc:1082",
+      "sourceWidth": 16,
+      "sourceHeight": 49,
+      "groupRect": {
+        "left": 120,
+        "top": 87,
+        "right": 136,
+        "bottom": 136
+      },
+      "groupFoot": {
+        "x": 128,
+        "y": 136
+      }
+    },
+    "331:crusher": {
+      "url": "/quest-lab/public/art/character-crusher.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 329,
+      "anchorY": 592,
+      "sourceX": 31,
+      "sourceY": 164,
+      "room": 331,
+      "entityId": "crusher",
+      "parts": [
+        {
+          "view": 331,
+          "loop": 6,
+          "cel": 0,
+          "x": 31,
+          "y": 164,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/331-6-0.png",
+          "rect": {
+            "left": 9,
+            "top": 125,
+            "right": 52,
+            "bottom": 167
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "keepPartEntityIds": [
+        "chair"
+      ],
+      "variant": "tavern crouched goon conversation idle",
+      "visibility": "rm331 init explicitly initializes Crusher at31,164. Source ejection scripts move/animate him. This family does not replace seated cellar Crusher332 because that pose/body composite differs.",
+      "x": 30.5,
+      "y": 167,
+      "z": 0,
+      "view": 331,
+      "loop": 6,
+      "cel": 0,
+      "sourceRef": "rm331.sc:1105",
+      "sourceWidth": 43,
+      "sourceHeight": 42,
+      "groupRect": {
+        "left": 9,
+        "top": 125,
+        "right": 52,
+        "bottom": 167
+      },
+      "groupFoot": {
+        "x": 30.5,
+        "y": 167
+      }
+    },
+    "170:aFaery": {
+      "url": "/quest-lab/public/art/character-fairies.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 317,
+      "anchorY": 547,
+      "sourceX": 110,
+      "sourceY": 108,
+      "room": 170,
+      "entityId": "aFaery",
+      "parts": [
+        {
+          "view": 70,
+          "loop": 4,
+          "cel": 0,
+          "x": 110,
+          "y": 108,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/70-4-0.png",
+          "rect": {
+            "left": 109,
+            "top": 107,
+            "right": 112,
+            "bottom": 110
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "nightOnly": true,
+      "variant": "purple fairy light with butterfly wings",
+      "visibility": "Room170 night sequence localproc_3 places aFaery atlocal48[4],local53[4]=110,108 and creates four anonymous source Actor clones. Source loops0-4 are tiny3x3 dancing colored lights; detailed atlas is an interpreted close rendition, not permission to enlarge arbitrarily. Native source-height3 retained. All five move around ring via aFaeryScript.",
+      "sourceRefs": [
+        "rm170.sc:127",
+        "rm170.sc:142",
+        "rm170.sc:621",
+        "rm170.sc:722"
+      ],
+      "runtimeClones": [
+        {
+          "sourceIndex": 0,
+          "x": 74,
+          "y": 109,
+          "view": 70,
+          "loop": 0
+        },
+        {
+          "sourceIndex": 1,
+          "x": 143,
+          "y": 120,
+          "view": 70,
+          "loop": 1
+        },
+        {
+          "sourceIndex": 2,
+          "x": 52,
+          "y": 122,
+          "view": 70,
+          "loop": 2
+        },
+        {
+          "sourceIndex": 3,
+          "x": 90,
+          "y": 99,
+          "view": 70,
+          "loop": 3
+        }
+      ],
+      "alternateSourceAppearance": {
+        "view": 70,
+        "loop": 5,
+        "cel": 0,
+        "width": 9,
+        "height": 9,
+        "note": "Larger special source fairy cel exists; do not silently equate to baseline3px."
+      },
+      "x": 110.5,
+      "y": 110,
+      "z": 0,
+      "view": 70,
+      "loop": 4,
+      "cel": 0,
+      "sourceRef": "rm170.sc:621",
+      "sourceWidth": 3,
+      "sourceHeight": 3,
+      "groupRect": {
+        "left": 109,
+        "top": 107,
+        "right": 112,
+        "bottom": 110
+      },
+      "groupFoot": {
+        "x": 110.5,
+        "y": 110
+      }
+    },
+    "314:familiar": {
+      "url": "/quest-lab/public/art/character-familiar.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 306,
+      "anchorY": 564,
+      "sourceX": 202,
+      "sourceY": 59,
+      "room": 314,
+      "entityId": "familiar",
+      "parts": [
+        {
+          "view": 314,
+          "loop": 6,
+          "cel": 0,
+          "x": 202,
+          "y": 59,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/314-6-0.png",
+          "rect": {
+            "left": 191,
+            "top": 34,
+            "right": 211,
+            "bottom": 74
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "familiarFoot"
+      ],
+      "variant": "perched bat-winged magical creature",
+      "visibility": "firstScript state0 initializes sculpture loop6. Hero.x>160 starts familiarScript; state1 uses loop7 at200,61 and separate familiarFoot. Familiar remains perched after Zara reveal; source does not dispose it at reveal. Do not hide solely because zaraIntroduced. Atlas includes claws and long tail; hide duplicate familiarFoot when this whole creature is used.",
+      "sourceRefs": [
+        "rm314.sc:573",
+        "rm314.sc:735",
+        "rm314.sc:807",
+        "rm314.sc:818"
+      ],
+      "positionVariants": [
+        {
+          "x": 200,
+          "y": 61,
+          "loop": 7,
+          "cel": 0,
+          "condition": "familiarScript state1 and later",
+          "sourceRef": "rm314.sc:818"
+        }
+      ],
+      "x": 201,
+      "y": 74,
+      "z": 0,
+      "view": 314,
+      "loop": 6,
+      "cel": 0,
+      "sourceRef": "rm314.sc:573",
+      "sourceWidth": 20,
+      "sourceHeight": 40,
+      "groupRect": {
+        "left": 191,
+        "top": 34,
+        "right": 211,
+        "bottom": 74
+      },
+      "groupFoot": {
+        "x": 201,
+        "y": 74
+      }
+    },
+    "67:fox": {
+      "url": "/quest-lab/public/art/character-fox.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 129,
+      "anchorY": 530,
+      "sourceX": 137,
+      "sourceY": 90,
+      "room": 67,
+      "entityId": "fox",
+      "parts": [
+        {
+          "view": 67,
+          "loop": 0,
+          "cel": 0,
+          "x": 137,
+          "y": 90,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/67-0-0.png",
+          "rect": {
+            "left": 125,
+            "top": 72,
+            "right": 151,
+            "bottom": 93
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "keepPartEntityIds": [
+        "trap"
+      ],
+      "unlessFlag": "foxFreed",
+      "variant": "trapped crouched fox idle",
+      "visibility": "Source rm67init shows fox only global287==2; fox.init starts entry script. Local10 marks trapped state. FoxFreed sequence frees/leaves, and death branches use distinct animation. Atlas covers living trapped dialogue only; no running/dead frame or trap included.",
+      "activation": {
+        "sourceCondition": "global287 == 2",
+        "sourceRef": "rm67.sc:62"
+      },
+      "x": 138,
+      "y": 93,
+      "z": 0,
+      "view": 67,
+      "loop": 0,
+      "cel": 0,
+      "sourceRef": "rm67.sc:140",
+      "sourceWidth": 26,
+      "sourceHeight": 21,
+      "groupRect": {
+        "left": 125,
+        "top": 72,
+        "right": 151,
+        "bottom": 93
+      },
+      "groupFoot": {
+        "x": 138,
+        "y": 93
+      }
+    },
+    "29:gargoyle": {
+      "url": "/quest-lab/public/art/character-gargoyle.png",
+      "frameWidth": 724,
+      "frameHeight": 543,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 543
+        },
+        {
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 543
+        },
+        {
+          "x": 0,
+          "y": 543,
+          "w": 724,
+          "h": 543
+        },
+        {
+          "x": 724,
+          "y": 543,
+          "w": 724,
+          "h": 543
+        }
+      ],
+      "anchorX": 393,
+      "anchorY": 464,
+      "sourceX": 151,
+      "sourceY": 60,
+      "room": 29,
+      "entityId": "gargoyle",
+      "parts": [
+        {
+          "view": 29,
+          "loop": 2,
+          "cel": 2,
+          "x": 151,
+          "y": 60,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/29-2-2.png",
+          "rect": {
+            "left": 136,
+            "top": 21,
+            "right": 224,
+            "bottom": 76
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "variant": "crouched stone guardian conversation",
+      "visibility": "Room29 baseline initializes gargoyle. Original cel displacements are large (+29,+15): actual visible footprint is not simply centered on151,60. Conversation animation/doors remain runtime separate.",
+      "x": 180,
+      "y": 76,
+      "z": 0,
+      "view": 29,
+      "loop": 2,
+      "cel": 2,
+      "sourceRef": "rm29.sc:191",
+      "sourceWidth": 88,
+      "sourceHeight": 55,
+      "groupRect": {
+        "left": 136,
+        "top": 21,
+        "right": 224,
+        "bottom": 76
+      },
+      "groupFoot": {
+        "x": 180,
+        "y": 76
+      }
+    },
+    "37:karl": {
+      "url": "/quest-lab/public/art/character-karl.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 321,
+      "anchorY": 606,
+      "sourceX": 68,
+      "sourceY": 74,
+      "room": 37,
+      "entityId": "karl",
+      "parts": [
+        {
+          "view": 37,
+          "loop": 0,
+          "cel": 0,
+          "x": 68,
+          "y": 74,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/37-0-0.png",
+          "rect": {
+            "left": 60,
+            "top": 30,
+            "right": 79,
+            "bottom": 75
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "dayOnly": true,
+      "variant": "helmeted castle gatekeeper",
+      "visibility": "Day only. rm37.sc148-196 chooses greeting/patrol. Returning from39 uses158,74 loop4cel1; ordinary baseline68,74 loop0. Karl patrols horizontally on battlement; retain original priority-plane occlusion. StableMan40 and keepguards41 are different people/costumes and must not reuse this atlas.",
+      "positionVariants": [
+        {
+          "x": 158,
+          "y": 74,
+          "loop": 4,
+          "cel": 1,
+          "from": 39,
+          "sourceRef": "rm37.sc:166"
+        }
+      ],
+      "occlusion": {
+        "required": true,
+        "reason": "Gatekeeper is partly hidden by battlements; original message says little is visible over wall."
+      },
+      "x": 69.5,
+      "y": 75,
+      "z": 0,
+      "view": 37,
+      "loop": 0,
+      "cel": 0,
+      "sourceRef": "rm37.sc:228",
+      "sourceWidth": 19,
+      "sourceHeight": 45,
+      "groupRect": {
+        "left": 60,
+        "top": 30,
+        "right": 79,
+        "bottom": 75
+      },
+      "groupFoot": {
+        "x": 69.5,
+        "y": 75
+      }
+    },
+    "22:gate": {
+      "url": "/quest-lab/public/art/character-skullgate.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 307,
+      "anchorY": 577,
+      "sourceX": 194,
+      "sourceY": 158,
+      "room": 22,
+      "entityId": "gate",
+      "parts": [
+        {
+          "view": 23,
+          "loop": 0,
+          "cel": 0,
+          "x": 194,
+          "y": 158,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/23-0-0.png",
+          "rect": {
+            "left": 169,
+            "top": 89,
+            "right": 221,
+            "bottom": 159
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "keepPartEntityIds": [
+        "gateEyes"
+      ],
+      "variant": "whole closed bonegate with talking central skull",
+      "visibility": "rm22init only initializes gate while !IsFlag173; gate eyes activate once global273>=5 (gem eye progress). Source gate open/movement and disappearance sequences remain separate. This atlas is closedgate jaw idle only; all eyes stay dark so runtime gateEyes can provide gem glow. Do not remove sidefence or fixed skull1-4.",
+      "sourceRefs": [
+        "rm22.sc:90",
+        "rm22.sc:104",
+        "rm22.sc:492"
+      ],
+      "anchorMode": "bottom center of whole bonegate",
+      "x": 195,
+      "y": 159,
+      "z": 0,
+      "view": 23,
+      "loop": 0,
+      "cel": 0,
+      "sourceRef": "rm22.sc:492",
+      "sourceWidth": 52,
+      "sourceHeight": 70,
+      "groupRect": {
+        "left": 169,
+        "top": 89,
+        "right": 221,
+        "bottom": 159
+      },
+      "groupFoot": {
+        "x": 195,
+        "y": 159
+      }
+    },
+    "334:slink": {
+      "url": "/quest-lab/public/art/character-slink.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 317,
+      "anchorY": 613,
+      "sourceX": 176,
+      "sourceY": 135,
+      "room": 334,
+      "entityId": "slink",
+      "parts": [
+        {
+          "view": 333,
+          "loop": 3,
+          "cel": 8,
+          "x": 176,
+          "y": 135,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/333-3-8.png",
+          "rect": {
+            "left": 157,
+            "top": 89,
+            "right": 186,
+            "bottom": 136
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "keepPartEntityIds": [
+        "sneak",
+        "knife",
+        "knife2"
+      ],
+      "whenFlag": "slinkAmbushed",
+      "unlessFlag": "slinkReleased",
+      "variant": "hooded living alley ambusher",
+      "visibility": "Night room334. Source starts coin lure then ambush scripts; do not show at ordinary initial entry before trigger. Native approximation uses slinkAmbushed&&!slinkReleased. Knife/threat props remain separate, and Sneak is a second person, not duplicate Slink.",
+      "x": 171.5,
+      "y": 136,
+      "z": 0,
+      "view": 333,
+      "loop": 3,
+      "cel": 8,
+      "sourceRef": "rm334.sc:309",
+      "sourceWidth": 29,
+      "sourceHeight": 47,
+      "groupRect": {
+        "left": 157,
+        "top": 89,
+        "right": 186,
+        "bottom": 136
+      },
+      "groupFoot": {
+        "x": 171.5,
+        "y": 136
+      }
+    },
+    "41:lGuard": {
+      "url": "/quest-lab/public/art/character-castleGuard.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 322,
+      "anchorY": 601,
+      "sourceX": 89,
+      "sourceY": 146,
+      "room": 41,
+      "entityId": "lGuard",
+      "parts": [
+        {
+          "view": 41,
+          "loop": 0,
+          "cel": 0,
+          "x": 89,
+          "y": 146,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/41-0-0.png",
+          "rect": {
+            "left": 77,
+            "top": 98,
+            "right": 103,
+            "bottom": 147
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "lHead"
+      ],
+      "dayOnly": true,
+      "flipX": false,
+      "mirroredSource": false,
+      "variant": "lowered musical-horn castle guard",
+      "visibility": "Source rm41init79-83 initializes bothguards only !gNight. Full atlas replaces lGuard plus transient lHead while idle. GuardsGreet raises/plays horns via distinct source animation; four-pose atlas does not implement that choreography.",
+      "sourceRefs": [
+        "rm41.sc:79",
+        "rm41.sc:168",
+        "rm41.sc:300",
+        "rm41.sc:651"
+      ],
+      "x": 90,
+      "y": 147,
+      "z": 0,
+      "view": 41,
+      "loop": 0,
+      "cel": 0,
+      "sourceRef": "rm41.sc:168",
+      "sourceWidth": 26,
+      "sourceHeight": 49,
+      "groupRect": {
+        "left": 77,
+        "top": 98,
+        "right": 103,
+        "bottom": 147
+      },
+      "groupFoot": {
+        "x": 90,
+        "y": 147
+      }
+    },
+    "41:rGuard": {
+      "url": "/quest-lab/public/art/character-castleGuard.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 322,
+      "anchorY": 601,
+      "sourceX": 89,
+      "sourceY": 146,
+      "room": 41,
+      "entityId": "rGuard",
+      "parts": [
+        {
+          "view": 41,
+          "loop": 0,
+          "cel": 0,
+          "x": 89,
+          "y": 146,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/41-0-0.png",
+          "rect": {
+            "left": 77,
+            "top": 98,
+            "right": 103,
+            "bottom": 147
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [
+        "rHead"
+      ],
+      "dayOnly": true,
+      "flipX": true,
+      "mirroredSource": true,
+      "variant": "lowered musical-horn castle guard",
+      "visibility": "Rightguard is exact source mirrored loop1 of loop0. Mirror same modern atlas horizontally; preserve separate rHead hide and right position. Only !gNight.",
+      "sourceRefs": [
+        "rm41.sc:79",
+        "rm41.sc:168",
+        "rm41.sc:300",
+        "rm41.sc:651"
+      ],
+      "x": 190,
+      "y": 134,
+      "z": 0,
+      "view": 41,
+      "loop": 1,
+      "cel": 0,
+      "sourceRef": "rm41.sc:231",
+      "sourceWidth": 26,
+      "sourceHeight": 49,
+      "groupRect": {
+        "left": 177,
+        "top": 85,
+        "right": 203,
+        "bottom": 134
+      },
+      "groupFoot": {
+        "x": 190,
+        "y": 134
+      }
+    },
+    "331:player1": {
+      "url": "/quest-lab/public/art/character-player1.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 347,
+      "anchorY": 606,
+      "sourceX": 226,
+      "sourceY": 151,
+      "room": 331,
+      "entityId": "player1",
+      "parts": [
+        {
+          "view": 331,
+          "loop": 5,
+          "cel": 0,
+          "x": 226,
+          "y": 151,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/331-5-0.png",
+          "rect": {
+            "left": 208,
+            "top": 111,
+            "right": 233,
+            "bottom": 152
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "keepPartEntityIds": [
+        "caddy",
+        "onRtTableTop"
+      ],
+      "variant": "seated butcher card player",
+      "visibility": "Normal rm331init card-table actor; source player1 ofProp loop5, source Look noun6 explicitly calls him BUTCHER wearing blood-stainedapron. Preserve furniture/table occlusion; atlas body/cards only. Drunken IsFlag254 head variants and exact dealing state machine remain source/runtime work.",
+      "sourceRefs": [
+        "rm331.sc:895",
+        "rm331.sc:919"
+      ],
+      "x": 220.5,
+      "y": 152,
+      "z": 0,
+      "view": 331,
+      "loop": 5,
+      "cel": 0,
+      "sourceRef": "rm331.sc:895",
+      "sourceWidth": 25,
+      "sourceHeight": 41,
+      "groupRect": {
+        "left": 208,
+        "top": 111,
+        "right": 233,
+        "bottom": 152
+      },
+      "groupFoot": {
+        "x": 220.5,
+        "y": 152
+      }
+    },
+    "331:player2": {
+      "url": "/quest-lab/public/art/character-player2.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 265,
+      "anchorY": 609,
+      "sourceX": 262,
+      "sourceY": 148,
+      "room": 331,
+      "entityId": "player2",
+      "parts": [
+        {
+          "view": 331,
+          "loop": 7,
+          "cel": 9,
+          "x": 262,
+          "y": 148,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/331-7-9.png",
+          "rect": {
+            "left": 257,
+            "top": 109,
+            "right": 277,
+            "bottom": 150
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "keepPartEntityIds": [
+        "caddy",
+        "onRtTableTop"
+      ],
+      "variant": "seated baker card player",
+      "visibility": "Normal rm331init card-table actor; source Look noun1 identifies BAKER playing OldMaid. Original declaration cel12 exceeds extracted loop7 with10cels: presentation usesclamped availablecel9 and thismetadata followsit. Source/resourceframe mismatch remainsunresolved; no full original animation parity claim.",
+      "sourceRefs": [
+        "rm331.sc:943",
+        "rm331.sc:968"
+      ],
+      "declaredSourceCel": 12,
+      "usableExtractedCel": 9,
+      "x": 267,
+      "y": 150,
+      "z": 0,
+      "view": 331,
+      "loop": 7,
+      "cel": 9,
+      "sourceRef": "rm331.sc:943",
+      "sourceWidth": 20,
+      "sourceHeight": 41,
+      "groupRect": {
+        "left": 257,
+        "top": 109,
+        "right": 277,
+        "bottom": 150
+      },
+      "groupFoot": {
+        "x": 267,
+        "y": 150
+      }
+    },
+    "40:stableMan": {
+      "url": "/quest-lab/public/art/character-stableMan.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 297,
+      "anchorY": 608,
+      "sourceX": 234,
+      "sourceY": 82,
+      "room": 40,
+      "entityId": "stableMan",
+      "parts": [
+        {
+          "view": 42,
+          "loop": 0,
+          "cel": 0,
+          "x": 234,
+          "y": 82,
+          "z": 0,
+          "frame": "/quest-lab/reference/views/42-0-0.png",
+          "rect": {
+            "left": 223,
+            "top": 34,
+            "right": 243,
+            "bottom": 83
+          }
+        }
+      ],
+      "hiddenPartEntityIds": [],
+      "variant": "ordinary stableman idle",
+      "visibility": "Source rm40init explicitly posn23482 loop0cel0 init stopUpd without gNight guard. Later talks script uses225128 loop2. Do not treat Karl37 as sameidentity. Atlas covers idle/talk body only, not source special work sequences.",
+      "sourceRefs": [
+        "rm40.sc:119",
+        "rm40.sc:577",
+        "rm40.sc:929"
+      ],
+      "positionVariants": [
+        {
+          "x": 225,
+          "y": 128,
+          "loop": 2,
+          "cel": 0,
+          "sourceRef": "rm40.sc:929",
+          "condition": "stableMan talk/work script"
+        }
+      ],
+      "x": 233,
+      "y": 83,
+      "z": 0,
+      "view": 42,
+      "loop": 0,
+      "cel": 0,
+      "sourceRef": "rm40.sc:577",
+      "sourceWidth": 20,
+      "sourceHeight": 49,
+      "groupRect": {
+        "left": 223,
+        "top": 34,
+        "right": 243,
+        "bottom": 83
+      },
+      "groupFoot": {
+        "x": 233,
+        "y": 83
+      }
+    }
+  },
+  "pictures": {
+    "28": "/quest-lab/public/art/pic-28.png",
+    "70": "/quest-lab/public/art/room-70.png",
+    "333": "/quest-lab/public/art/room-333.png",
+    "700": "/quest-lab/public/art/pic-700.png",
+    "701": "/quest-lab/public/art/pic-701.png",
+    "702": "/quest-lab/public/art/pic-702.png",
+    "703": "/quest-lab/public/art/pic-703.png",
+    "704": "/quest-lab/public/art/pic-704.png",
+    "705": "/quest-lab/public/art/pic-705.png",
+    "706": "/quest-lab/public/art/pic-706.png",
+    "707": "/quest-lab/public/art/pic-707.png"
+  },
+  "enemies": {
+    "brigand": {
+      "url": "/quest-lab/public/art/enemy-brigand.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 342,
+      "anchorY": 558,
+      "view": 467,
+      "entityId": "brigand",
+      "sourceRef": "brigandArena.sc:68",
+      "sourceUpperLoop": 0,
+      "hiddenPartEntityIds": [],
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and weapon replace source multipart drawing in modern combat only."
+    },
+    "goblin": {
+      "url": "/quest-lab/public/art/enemy-goblin.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 342,
+      "anchorY": 533,
+      "view": 447,
+      "entityId": "goblin",
+      "sourceRef": "goblinArena.sc:38",
+      "sourceUpperLoop": 0,
+      "hiddenPartEntityIds": [],
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and weapon replace source multipart drawing in modern combat only."
+    },
+    "kobold": {
+      "url": "/quest-lab/public/art/enemy-kobold.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 357,
+      "anchorY": 548,
+      "view": 175,
+      "entityId": "kobold",
+      "sourceRef": "rm15.sc:850",
+      "sourceUpperLoop": 0,
+      "hiddenPartEntityIds": [],
+      "note": "Source cave magician ranged spell attacker; modern combat mode supplied by native engine, no original dedicated Arena.",
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and weapon replace source multipart drawing in modern combat only."
+    },
+    "minotaur": {
+      "url": "/quest-lab/public/art/enemy-minotaur.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 349,
+      "anchorY": 576,
+      "view": 427,
+      "entityId": "minotaur",
+      "sourceRef": "minotaurArena.sc:62",
+      "sourceUpperLoop": 0,
+      "sourceLowerLoop": 2,
+      "sourceWeaponLoop": 3,
+      "hiddenPartEntityIds": [
+        "legs",
+        "ball"
+      ],
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and weapon replace source multipart drawing in modern combat only."
+    },
+    "ogre": {
+      "url": "/quest-lab/public/art/enemy-ogre.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 304,
+      "anchorY": 564,
+      "view": 457,
+      "entityId": "ogre",
+      "sourceRef": "ogreArena.sc:61",
+      "sourceUpperLoop": 0,
+      "sourceLowerLoop": 2,
+      "hiddenPartEntityIds": [
+        "ogreLegs"
+      ],
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and weapon replace source multipart drawing in modern combat only."
+    },
+    "troll": {
+      "url": "/quest-lab/public/art/enemy-troll.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 355,
+      "anchorY": 561,
+      "view": 452,
+      "entityId": "troll",
+      "sourceRef": "trollArena.sc:104",
+      "sourceUpperLoop": 0,
+      "sourceLowerLoop": 2,
+      "hiddenPartEntityIds": [
+        "trollLegs"
+      ],
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and weapon replace source multipart drawing in modern combat only."
+    },
+    "cheetaur": {
+      "url": "/quest-lab/public/art/enemy-cheetaur.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 323,
+      "anchorY": 525,
+      "view": 442,
+      "entityId": "cheetaur",
+      "sourceRef": "cheetaurArena.sc:53",
+      "sourceUpperLoop": 0,
+      "sourceLowerLoop": 4,
+      "hiddenPartEntityIds": [
+        "legs"
+      ],
+      "sourceWidth": 109,
+      "sourceHeight": 80,
+      "anatomy": "Panther centaur:2arms +4lowerlegs; blue-black fur",
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and appendages replace original multipart drawables in modern combat."
+    },
+    "dragon": {
+      "url": "/quest-lab/public/art/enemy-dragon.png",
+      "frameWidth": 623,
+      "frameHeight": 630,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 623,
+          "h": 630
+        },
+        {
+          "x": 624,
+          "y": 0,
+          "w": 623,
+          "h": 630
+        },
+        {
+          "x": 0,
+          "y": 631,
+          "w": 623,
+          "h": 630
+        },
+        {
+          "x": 624,
+          "y": 631,
+          "w": 623,
+          "h": 630
+        }
+      ],
+      "anchorX": 327,
+      "anchorY": 550,
+      "view": 462,
+      "entityId": "dragon",
+      "sourceRef": "dragonArena.sc:63",
+      "sourceUpperLoop": 0,
+      "sourceTailLoop": 2,
+      "hiddenPartEntityIds": [
+        "dragonTail"
+      ],
+      "sourceWidth": 88,
+      "sourceHeight": 102,
+      "anatomy": "Wingless mottled olive/gold biped reptile / large Saurus Rex, not flying dragon",
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and appendages replace original multipart drawables in modern combat."
+    },
+    "mantray": {
+      "url": "/quest-lab/public/art/enemy-mantray.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 208,
+      "anchorY": 466,
+      "view": 437,
+      "entityId": "mantray",
+      "sourceRef": "mantrayArena.sc:83",
+      "sourceUpperLoop": 0,
+      "sourceTailLoop": 2,
+      "sourceWeaponLoop": 3,
+      "hiddenPartEntityIds": [
+        "tail",
+        "stinger"
+      ],
+      "sourceWidth": 131,
+      "sourceHeight": 85,
+      "anchorMode": "hovering creature, no feet",
+      "anatomy": "Orange/red bat-ray wings,green segmentedspine,tan fangedhead and curvedstinger; no human limbs",
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and appendages replace original multipart drawables in modern combat."
+    },
+    "saurus": {
+      "url": "/quest-lab/public/art/enemy-saurus.png",
+      "frameWidth": 627,
+      "frameHeight": 627,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627
+        }
+      ],
+      "anchorX": 313,
+      "anchorY": 564,
+      "view": 432,
+      "entityId": "saurus",
+      "sourceRef": "saurusArena.sc:65",
+      "sourceUpperLoop": 0,
+      "sourceLowerLoop": 2,
+      "hiddenPartEntityIds": [
+        "saurusTail"
+      ],
+      "sourceWidth": 47,
+      "sourceHeight": 82,
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and appendages replace original multipart drawables in modern combat."
+    },
+    "weaponMaster": {
+      "url": "/quest-lab/public/art/enemy-weaponMaster.png",
+      "frameWidth": 623,
+      "frameHeight": 631,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 623,
+          "h": 631
+        },
+        {
+          "x": 623,
+          "y": 0,
+          "w": 623,
+          "h": 631
+        },
+        {
+          "x": 0,
+          "y": 631,
+          "w": 623,
+          "h": 631
+        },
+        {
+          "x": 623,
+          "y": 631,
+          "w": 623,
+          "h": 631
+        }
+      ],
+      "anchorX": 348,
+      "anchorY": 555,
+      "view": 638,
+      "entityId": "weaponMaster",
+      "sourceRef": "opponentFight.sc:38",
+      "portraitView": 1039,
+      "sourceUpperLoop": 0,
+      "hiddenPartEntityIds": [],
+      "sourceWidth": 53,
+      "sourceHeight": 48,
+      "correction": "109 is player warrior, not instructor. Correct original combatview638; explorationview639. Costume/face continuity with character-theMaster.png.",
+      "usage": "combat only; do not infer map placement",
+      "composition": "Full coherent body and appendages replace original multipart drawables in modern combat."
+    }
+  },
+  "props": {
+    "311:chair": {
+      "url": "/quest-lab/public/art/prop-guild-chair.png",
+      "width": 1024,
+      "height": 1536,
+      "opaqueBounds": {
+        "x": 161,
+        "y": 62,
+        "w": 681,
+        "h": 1333
+      }
+    },
+    "311:theCandles": {
+      "url": "/quest-lab/public/art/effect-candles.png",
+      "frameWidth": 313,
+      "frameHeight": 313,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 314,
+          "y": 0,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 941,
+          "y": 0,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 0,
+          "y": 314,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 314,
+          "y": 314,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 627,
+          "y": 314,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 941,
+          "y": 314,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 314,
+          "y": 627,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 941,
+          "y": 627,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 0,
+          "y": 941,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 314,
+          "y": 941,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 627,
+          "y": 941,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 941,
+          "y": 941,
+          "w": 313,
+          "h": 313
+        }
+      ],
+      "anchorX": 159.37209302325581,
+      "anchorY": 282,
+      "room": 311,
+      "entityId": "theCandles",
+      "view": 311,
+      "loop": 4,
+      "sourceRef": "rm311.sc:589",
+      "sourceRect": {
+        "left": 129,
+        "top": 32,
+        "right": 195,
+        "bottom": 48
+      },
+      "sourceActor": {
+        "x": 157,
+        "y": 47,
+        "z": 0,
+        "priority": 0
+      },
+      "sourceCycleSpeed": 12,
+      "sourceFrames": 4,
+      "contents": "ONE candle flame per animation frame. Reuse at each source wick; no wax/holder/chandelier.",
+      "visibility": "Ordinary Guild baseline init starts Fwd cycle. Original source loop has5 candle flames; painted background has6 candles, so modern wick positions need explicit alignment rather than stretching group image blindly.",
+      "instances": [
+        {
+          "id": "wick1",
+          "x": 139,
+          "y": 42,
+          "width": 3,
+          "height": 5
+        },
+        {
+          "id": "wick2",
+          "x": 152,
+          "y": 40,
+          "width": 3,
+          "height": 5
+        },
+        {
+          "id": "wick3",
+          "x": 158,
+          "y": 42,
+          "width": 3,
+          "height": 5
+        },
+        {
+          "id": "wick4",
+          "x": 171,
+          "y": 40,
+          "width": 3,
+          "height": 5
+        },
+        {
+          "id": "wick5",
+          "x": 181,
+          "y": 41,
+          "width": 3,
+          "height": 5
+        }
+      ],
+      "instanceCoordinateNote": "Bottom-center flame anchors read from source warm pixels, approximately ±1 source pixel; exact original group rectangle is separately preserved. Phase-shift instances to avoid synchronized candle motion.",
+      "whenArtMode": "modern",
+      "effectOnly": true,
+      "excludeFurniture": true,
+      "sourceWidth": 66,
+      "sourceHeight": 16,
+      "sourceAnchor": {
+        "x": 162,
+        "y": 48
+      },
+      "placementMode": "shared flame atlas at per-wick instances",
+      "anchorUsage": "Per-frame anchors represent effect base/emission point in local frame pixels. Keep world emission point fixed while swapping frame; do not independently fit each changing silhouette to full rectangle.",
+      "modernInstances": [
+        {
+          "id": "painted-wick1",
+          "x": 138,
+          "y": 34,
+          "width": 3,
+          "height": 5,
+          "phaseOffset": 0
+        },
+        {
+          "id": "painted-wick2",
+          "x": 150,
+          "y": 31,
+          "width": 3,
+          "height": 5,
+          "phaseOffset": 3
+        },
+        {
+          "id": "painted-wick3",
+          "x": 161,
+          "y": 37,
+          "width": 3,
+          "height": 5,
+          "phaseOffset": 6
+        },
+        {
+          "id": "painted-wick4",
+          "x": 175,
+          "y": 32,
+          "width": 3,
+          "height": 5,
+          "phaseOffset": 9
+        },
+        {
+          "id": "painted-wick5",
+          "x": 188,
+          "y": 37,
+          "width": 3,
+          "height": 5,
+          "phaseOffset": 12
+        }
+      ],
+      "modernPlacementNote": "Approximate visible painted wick anchors in original320x190 logical units. Original five source wick instances preserved separately. Painting includes an additional partially occluded candle; extra wick not invented into this mapping. Parent native screenshot QA pending.",
+      "effect": true,
+      "frameRate": 7,
+      "frameAnchors": [
+        {
+          "x": 159.37209302325581,
+          "y": 282
+        },
+        {
+          "x": 157.93401015228426,
+          "y": 282
+        },
+        {
+          "x": 158.98958333333334,
+          "y": 282
+        },
+        {
+          "x": 157.8051282051282,
+          "y": 282
+        },
+        {
+          "x": 158.315,
+          "y": 281
+        },
+        {
+          "x": 157.89949748743717,
+          "y": 281
+        },
+        {
+          "x": 158.74093264248705,
+          "y": 281
+        },
+        {
+          "x": 158.13793103448276,
+          "y": 281
+        },
+        {
+          "x": 158.8941798941799,
+          "y": 281
+        },
+        {
+          "x": 157.07575757575756,
+          "y": 281
+        },
+        {
+          "x": 157.29468599033817,
+          "y": 281
+        },
+        {
+          "x": 154.6872037914692,
+          "y": 281
+        },
+        {
+          "x": 157.20754716981133,
+          "y": 281
+        },
+        {
+          "x": 157.97524752475246,
+          "y": 281
+        },
+        {
+          "x": 158.84375,
+          "y": 281
+        },
+        {
+          "x": 158.7462686567164,
+          "y": 281
+        }
+      ],
+      "frameBounds": {
+        "x": 100,
+        "y": 130,
+        "width": 85,
+        "height": 152
+      }
+    },
+    "311:theFire": {
+      "url": "/quest-lab/public/art/effect-fire.png",
+      "frameWidth": 313,
+      "frameHeight": 313,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 314,
+          "y": 0,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 941,
+          "y": 0,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 0,
+          "y": 314,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 314,
+          "y": 314,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 627,
+          "y": 314,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 941,
+          "y": 314,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 314,
+          "y": 627,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 941,
+          "y": 627,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 0,
+          "y": 941,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 314,
+          "y": 941,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 627,
+          "y": 941,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 941,
+          "y": 941,
+          "w": 313,
+          "h": 313
+        }
+      ],
+      "anchorX": 153.9549356223176,
+      "anchorY": 276,
+      "room": 311,
+      "entityId": "theFire",
+      "view": 311,
+      "loop": 1,
+      "sourceRef": "rm311.sc:578",
+      "sourceRect": {
+        "left": 206,
+        "top": 73,
+        "right": 258,
+        "bottom": 129
+      },
+      "sourceActor": {
+        "x": 239,
+        "y": 121,
+        "z": 0,
+        "priority": 0
+      },
+      "sourceCycleSpeed": 8,
+      "sourceFrames": 4,
+      "contents": "Flames and tiny embers only; no grate/logs/masonry.",
+      "visibility": "Ordinary Guild baseline init starts Fwd cycle. Modern painting already includes hearth/grate/logs/static fire; do not layer original fire sprite with modern effect.",
+      "whenArtMode": "modern",
+      "effectOnly": true,
+      "excludeFurniture": true,
+      "sourceWidth": 52,
+      "sourceHeight": 56,
+      "sourceAnchor": {
+        "x": 232,
+        "y": 129
+      },
+      "placementMode": "anchored source effect rectangle",
+      "anchorUsage": "Per-frame anchors represent effect base/emission point in local frame pixels. Keep world emission point fixed while swapping frame; do not independently fit each changing silhouette to full rectangle.",
+      "modernAnchor": {
+        "x": 232,
+        "y": 109
+      },
+      "modernWidth": 32,
+      "modernHeight": 35,
+      "modernPlacementNote": "Modern painted hearth override, separated from preserved original52x56rect/sourceAnchor232129. Parent observed original-rect overlay floating on floor; approximate painted placement supplied for native screenshot QA.",
+      "effect": true,
+      "frameRate": 7,
+      "frameAnchors": [
+        {
+          "x": 153.9549356223176,
+          "y": 276
+        },
+        {
+          "x": 155.8120728929385,
+          "y": 276
+        },
+        {
+          "x": 154.7981651376147,
+          "y": 276
+        },
+        {
+          "x": 154.92847503373818,
+          "y": 277
+        },
+        {
+          "x": 156.23921085080147,
+          "y": 275
+        },
+        {
+          "x": 155.17307692307693,
+          "y": 275
+        },
+        {
+          "x": 155.5442424242424,
+          "y": 275
+        },
+        {
+          "x": 154.0289156626506,
+          "y": 275
+        },
+        {
+          "x": 155.47826086956522,
+          "y": 275
+        },
+        {
+          "x": 154.9102564102564,
+          "y": 274
+        },
+        {
+          "x": 156.9376590330789,
+          "y": 275
+        },
+        {
+          "x": 157.96381182147167,
+          "y": 275
+        },
+        {
+          "x": 155.15081967213115,
+          "y": 275
+        },
+        {
+          "x": 154.4762443438914,
+          "y": 275
+        },
+        {
+          "x": 155.5937846836848,
+          "y": 275
+        },
+        {
+          "x": 154.6838156484459,
+          "y": 275
+        }
+      ],
+      "frameBounds": {
+        "x": 63,
+        "y": 90,
+        "width": 191,
+        "height": 186
+      }
+    },
+    "300:smoke": {
+      "url": "/quest-lab/public/art/effect-smoke.png",
+      "frameWidth": 313,
+      "frameHeight": 313,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 314,
+          "y": 0,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 627,
+          "y": 0,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 941,
+          "y": 0,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 0,
+          "y": 314,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 314,
+          "y": 314,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 627,
+          "y": 314,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 941,
+          "y": 314,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 0,
+          "y": 627,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 314,
+          "y": 627,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 627,
+          "y": 627,
+          "w": 314,
+          "h": 314
+        },
+        {
+          "x": 941,
+          "y": 627,
+          "w": 313,
+          "h": 314
+        },
+        {
+          "x": 0,
+          "y": 941,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 314,
+          "y": 941,
+          "w": 313,
+          "h": 313
+        },
+        {
+          "x": 627,
+          "y": 941,
+          "w": 314,
+          "h": 313
+        },
+        {
+          "x": 941,
+          "y": 941,
+          "w": 313,
+          "h": 313
+        }
+      ],
+      "anchorX": 158.42372881355934,
+      "anchorY": 304,
+      "room": 300,
+      "entityId": "smoke",
+      "view": 300,
+      "loop": 5,
+      "sourceRef": "rm300.sc:647",
+      "sourceRect": {
+        "left": 166,
+        "top": 79,
+        "right": 175,
+        "bottom": 97
+      },
+      "sourceActor": {
+        "x": 170,
+        "y": 96,
+        "z": 0,
+        "priority": 9
+      },
+      "sourceCycleSpeed": 9,
+      "sourceFrames": 5,
+      "contents": "Semitransparent pipe-smoke wisps only, no pipe/hand/person.",
+      "visibility": "Sheriff daytime scene. Follow source Sheriff visibility and source smoke activation rm300.sc278; do not show when Sheriff absent. Original modern Sheriff atlas includes pipe and a small puff in one frame, so avoid double smoke mass.",
+      "attachTo": "sheriff",
+      "whenArtMode": "modern",
+      "effectOnly": true,
+      "excludeFurniture": true,
+      "sourceWidth": 9,
+      "sourceHeight": 18,
+      "sourceAnchor": {
+        "x": 170.5,
+        "y": 97
+      },
+      "placementMode": "anchored source effect rectangle",
+      "anchorUsage": "Per-frame anchors represent effect base/emission point in local frame pixels. Keep world emission point fixed while swapping frame; do not independently fit each changing silhouette to full rectangle.",
+      "effect": true,
+      "frameRate": 7,
+      "frameAnchors": [
+        {
+          "x": 158.42372881355934,
+          "y": 304
+        },
+        {
+          "x": 157.72916666666666,
+          "y": 304
+        },
+        {
+          "x": 156.91666666666666,
+          "y": 305
+        },
+        {
+          "x": 157.0188679245283,
+          "y": 304
+        },
+        {
+          "x": 158.73584905660377,
+          "y": 296
+        },
+        {
+          "x": 158.04347826086956,
+          "y": 296
+        },
+        {
+          "x": 157.01923076923077,
+          "y": 296
+        },
+        {
+          "x": 157.02,
+          "y": 296
+        },
+        {
+          "x": 159,
+          "y": 289
+        },
+        {
+          "x": 158.71186440677965,
+          "y": 288
+        },
+        {
+          "x": 157.2280701754386,
+          "y": 288
+        },
+        {
+          "x": 157.19230769230768,
+          "y": 288
+        },
+        {
+          "x": 159.390625,
+          "y": 280
+        },
+        {
+          "x": 158.60377358490567,
+          "y": 281
+        },
+        {
+          "x": 157.45652173913044,
+          "y": 281
+        },
+        {
+          "x": 155.375,
+          "y": 281
+        }
+      ],
+      "frameBounds": {
+        "x": 155,
+        "y": 240,
+        "width": 18,
+        "height": 64
+      }
+    }
+  },
+  "inventoryIcons": {
+    "silver": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/950-0-0.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:601",
+      "sciIndex": 0,
+      "opaqueBounds": {
+        "x": 66,
+        "y": 72,
+        "w": 271,
+        "h": 274
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "rations": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 397,
+        "y": 0,
+        "w": 396,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 1,
+        "url": "/quest-lab/reference/views/950-0-1.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:741",
+      "sciIndex": 1,
+      "opaqueBounds": {
+        "x": 448,
+        "y": 79,
+        "w": 304,
+        "h": 257
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "sword": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 793,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 4,
+        "url": "/quest-lab/reference/views/950-0-4.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:749",
+      "sciIndex": 2,
+      "opaqueBounds": {
+        "x": 845,
+        "y": 64,
+        "w": 299,
+        "h": 287
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "chainMail": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 1190,
+        "y": 0,
+        "w": 396,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 14,
+        "url": "/quest-lab/reference/views/950-2-14.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:757",
+      "sciIndex": 3,
+      "opaqueBounds": {
+        "x": 1275,
+        "y": 62,
+        "w": 229,
+        "h": 294
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "leather": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 1586,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 6,
+        "url": "/quest-lab/reference/views/950-0-6.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:766",
+      "sciIndex": 4,
+      "opaqueBounds": {
+        "x": 1665,
+        "y": 57,
+        "w": 249,
+        "h": 299
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "shield": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 0,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 7,
+        "url": "/quest-lab/reference/views/950-0-7.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:774",
+      "sciIndex": 5,
+      "opaqueBounds": {
+        "x": 89,
+        "y": 447,
+        "w": 215,
+        "h": 295
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "dagger": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 397,
+        "y": 397,
+        "w": 396,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 5,
+        "url": "/quest-lab/reference/views/950-0-5.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:782",
+      "sciIndex": 6,
+      "opaqueBounds": {
+        "x": 474,
+        "y": 464,
+        "w": 257,
+        "h": 261
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "lockPick": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 793,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 4,
+        "url": "/quest-lab/reference/views/950-2-4.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:790",
+      "sciIndex": 7,
+      "opaqueBounds": {
+        "x": 861,
+        "y": 501,
+        "w": 249,
+        "h": 179
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "thiefKit": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 1190,
+        "y": 397,
+        "w": 396,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 5,
+        "url": "/quest-lab/reference/views/950-2-5.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:799",
+      "sciIndex": 8,
+      "opaqueBounds": {
+        "x": 1307,
+        "y": 442,
+        "w": 153,
+        "h": 296
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "thiefLicense": {
+      "url": "/quest-lab/public/art/inventory-a.png",
+      "frame": {
+        "x": 1586,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 6,
+        "url": "/quest-lab/reference/views/950-2-6.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:808",
+      "sciIndex": 9,
+      "opaqueBounds": {
+        "x": 1628,
+        "y": 500,
+        "w": 299,
+        "h": 183
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-a-metadata.json"
+    },
+    "rock": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 2,
+        "url": "/quest-lab/reference/views/950-2-2.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:817",
+      "sciIndex": 10,
+      "opaqueBounds": {
+        "x": 82,
+        "y": 114,
+        "w": 287,
+        "h": 220
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "flask": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 397,
+        "y": 0,
+        "w": 396,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 7,
+        "url": "/quest-lab/reference/views/950-2-7.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:826",
+      "sciIndex": 11,
+      "opaqueBounds": {
+        "x": 527,
+        "y": 53,
+        "w": 173,
+        "h": 308
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "healingPotion": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 793,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 4,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/950-4-0.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:835",
+      "sciIndex": 12,
+      "opaqueBounds": {
+        "x": 910,
+        "y": 51,
+        "w": 162,
+        "h": 314
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "manaPotion": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 1190,
+        "y": 0,
+        "w": 396,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 4,
+        "cel": 1,
+        "url": "/quest-lab/reference/views/950-4-1.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:843",
+      "sciIndex": 13,
+      "opaqueBounds": {
+        "x": 1278,
+        "y": 59,
+        "w": 198,
+        "h": 303
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "staminaPotion": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 1586,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 4,
+        "cel": 2,
+        "url": "/quest-lab/reference/views/950-4-2.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:852",
+      "sciIndex": 14,
+      "opaqueBounds": {
+        "x": 1698,
+        "y": 56,
+        "w": 127,
+        "h": 303
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "disenchant": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 0,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 4,
+        "cel": 3,
+        "url": "/quest-lab/reference/views/950-4-3.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:861",
+      "sciIndex": 15,
+      "opaqueBounds": {
+        "x": 143,
+        "y": 432,
+        "w": 162,
+        "h": 313
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "brassKey": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 397,
+        "y": 397,
+        "w": 396,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 3,
+        "url": "/quest-lab/reference/views/950-0-3.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:870",
+      "sciIndex": 16,
+      "opaqueBounds": {
+        "x": 474,
+        "y": 461,
+        "w": 255,
+        "h": 259
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "magicGem": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 793,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 10,
+        "url": "/quest-lab/reference/views/950-0-10.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:878",
+      "sciIndex": 17,
+      "opaqueBounds": {
+        "x": 866,
+        "y": 457,
+        "w": 243,
+        "h": 254
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source red-orange glowing gem; generated icon has bright internal facets but no external rays to preserve clean alpha.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "ring": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 1190,
+        "y": 397,
+        "w": 396,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/950-2-0.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:886",
+      "sciIndex": 18,
+      "opaqueBounds": {
+        "x": 1239,
+        "y": 479,
+        "w": 262,
+        "h": 217
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "ghostOil": {
+      "url": "/quest-lab/public/art/inventory-b.png",
+      "frame": {
+        "x": 1586,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 4,
+        "cel": 4,
+        "url": "/quest-lab/reference/views/950-4-4.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:894",
+      "sciIndex": 19,
+      "opaqueBounds": {
+        "x": 1633,
+        "y": 463,
+        "w": 261,
+        "h": 258
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-b-metadata.json"
+    },
+    "magicMirror": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 4,
+        "cel": 5,
+        "url": "/quest-lab/reference/views/950-4-5.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:903",
+      "sciIndex": 20,
+      "opaqueBounds": {
+        "x": 127,
+        "y": 38,
+        "w": 217,
+        "h": 342
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "mandrake": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 397,
+        "y": 0,
+        "w": 396,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 2,
+        "url": "/quest-lab/reference/views/950-0-2.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:912",
+      "sciIndex": 21,
+      "opaqueBounds": {
+        "x": 457,
+        "y": 47,
+        "w": 306,
+        "h": 340
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "fruit": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 793,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 9,
+        "url": "/quest-lab/reference/views/950-0-9.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:920",
+      "sciIndex": 22,
+      "opaqueBounds": {
+        "x": 839,
+        "y": 67,
+        "w": 294,
+        "h": 294
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "vegetables": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 1190,
+        "y": 0,
+        "w": 396,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 15,
+        "url": "/quest-lab/reference/views/950-2-15.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:928",
+      "sciIndex": 23,
+      "opaqueBounds": {
+        "x": 1209,
+        "y": 53,
+        "w": 322,
+        "h": 311
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "acorn": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 1586,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 4,
+        "cel": 6,
+        "url": "/quest-lab/reference/views/950-4-6.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:937",
+      "sciIndex": 24,
+      "opaqueBounds": {
+        "x": 1647,
+        "y": 79,
+        "w": 230,
+        "h": 254
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "seed": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 0,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 1,
+        "url": "/quest-lab/reference/views/950-2-1.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:946",
+      "sciIndex": 25,
+      "opaqueBounds": {
+        "x": 83,
+        "y": 457,
+        "w": 269,
+        "h": 266
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "flowers": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 397,
+        "y": 397,
+        "w": 396,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 3,
+        "url": "/quest-lab/reference/views/950-2-3.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:955",
+      "sciIndex": 26,
+      "opaqueBounds": {
+        "x": 442,
+        "y": 425,
+        "w": 326,
+        "h": 328
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "greenFur": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 793,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 8,
+        "url": "/quest-lab/reference/views/950-2-8.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:964",
+      "sciIndex": 27,
+      "opaqueBounds": {
+        "x": 818,
+        "y": 458,
+        "w": 335,
+        "h": 280
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "fairyDust": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 1190,
+        "y": 397,
+        "w": 396,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 9,
+        "url": "/quest-lab/reference/views/950-2-9.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:973",
+      "sciIndex": 28,
+      "opaqueBounds": {
+        "x": 1264,
+        "y": 441,
+        "w": 212,
+        "h": 297
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "flyingWater": {
+      "url": "/quest-lab/public/art/inventory-c.png",
+      "frame": {
+        "x": 1586,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 10,
+        "url": "/quest-lab/reference/views/950-2-10.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:982",
+      "sciIndex": 29,
+      "opaqueBounds": {
+        "x": 1653,
+        "y": 441,
+        "w": 213,
+        "h": 296
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-c-metadata.json"
+    },
+    "mushroom": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 11,
+        "url": "/quest-lab/reference/views/950-2-11.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:991",
+      "sciIndex": 30,
+      "opaqueBounds": {
+        "x": 89,
+        "y": 80,
+        "w": 263,
+        "h": 269
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "vase": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 397,
+        "y": 0,
+        "w": 396,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 11,
+        "url": "/quest-lab/reference/views/950-0-11.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:1000",
+      "sciIndex": 31,
+      "opaqueBounds": {
+        "x": 493,
+        "y": 75,
+        "w": 219,
+        "h": 281
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "candelabra": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 793,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 12,
+        "url": "/quest-lab/reference/views/950-0-12.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:1008",
+      "sciIndex": 32,
+      "opaqueBounds": {
+        "x": 860,
+        "y": 50,
+        "w": 259,
+        "h": 308
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "musicBox": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 1190,
+        "y": 0,
+        "w": 396,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 13,
+        "url": "/quest-lab/reference/views/950-0-13.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:1016",
+      "sciIndex": 33,
+      "opaqueBounds": {
+        "x": 1239,
+        "y": 74,
+        "w": 254,
+        "h": 275
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "candleSticks": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 1586,
+        "y": 0,
+        "w": 397,
+        "h": 397
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 14,
+        "url": "/quest-lab/reference/views/950-0-14.png",
+        "width": 32,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:1024",
+      "sciIndex": 34,
+      "opaqueBounds": {
+        "x": 1617,
+        "y": 82,
+        "w": 272,
+        "h": 265
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "pearls": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 0,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 15,
+        "url": "/quest-lab/reference/views/950-0-15.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:1032",
+      "sciIndex": 35,
+      "opaqueBounds": {
+        "x": 96,
+        "y": 442,
+        "w": 256,
+        "h": 283
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "cheetaurClaw": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 397,
+        "y": 397,
+        "w": 396,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 12,
+        "url": "/quest-lab/reference/views/950-2-12.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:1040",
+      "sciIndex": 36,
+      "opaqueBounds": {
+        "x": 472,
+        "y": 462,
+        "w": 286,
+        "h": 248
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "trollBeard": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 793,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 2,
+        "cel": 13,
+        "url": "/quest-lab/reference/views/950-2-13.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:1049",
+      "sciIndex": 37,
+      "opaqueBounds": {
+        "x": 843,
+        "y": 442,
+        "w": 294,
+        "h": 282
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "gold": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 1190,
+        "y": 397,
+        "w": 396,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 6,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/950-6-0.png",
+        "width": 2,
+        "height": 2,
+        "placeholder": true
+      },
+      "sourceRef": "gloryInv.sc:733",
+      "sciIndex": 38,
+      "opaqueBounds": {
+        "x": 1219,
+        "y": 481,
+        "w": 293,
+        "h": 201
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source icon is blank2x2; gold coins are a semantic reconstruction from item identity.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    },
+    "paper": {
+      "url": "/quest-lab/public/art/inventory-d.png",
+      "frame": {
+        "x": 1586,
+        "y": 397,
+        "w": 397,
+        "h": 396
+      },
+      "atlasWidth": 1983,
+      "atlasHeight": 793,
+      "sourceIcon": {
+        "view": 950,
+        "loop": 0,
+        "cel": 8,
+        "url": "/quest-lab/reference/views/950-0-8.png",
+        "width": 30,
+        "height": 30,
+        "placeholder": false
+      },
+      "sourceRef": "gloryInv.sc:1058",
+      "sciIndex": 39,
+      "opaqueBounds": {
+        "x": 1618,
+        "y": 433,
+        "w": 272,
+        "h": 295
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Source colors and recognizable silhouette retained; modern painterly redraw, not source-frame equivalence.",
+      "metadataFile": "public/art/prompts/inventory-d-metadata.json"
+    }
+  },
+  "spellIcons": {
+    "openSpell": {
+      "url": "/quest-lab/public/art/spell-icons.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 444,
+        "h": 444
+      },
+      "atlasWidth": 1774,
+      "atlasHeight": 887,
+      "sourceIcon": {
+        "view": 992,
+        "loop": 0,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/992-0-0.png",
+        "width": 30,
+        "height": 30
+      },
+      "sourceRef": "glorySpells.sc:135",
+      "sciIndex": 0,
+      "opaqueBounds": {
+        "x": 104,
+        "y": 73,
+        "w": 233,
+        "h": 317
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
+      "metadataFile": "public/art/prompts/spell-icons-metadata.json"
+    },
+    "detectMagicSpell": {
+      "url": "/quest-lab/public/art/spell-icons.png",
+      "frame": {
+        "x": 444,
+        "y": 0,
+        "w": 443,
+        "h": 444
+      },
+      "atlasWidth": 1774,
+      "atlasHeight": 887,
+      "sourceIcon": {
+        "view": 992,
+        "loop": 1,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/992-1-0.png",
+        "width": 30,
+        "height": 30
+      },
+      "sourceRef": "glorySpells.sc:190",
+      "sciIndex": 1,
+      "opaqueBounds": {
+        "x": 494,
+        "y": 91,
+        "w": 337,
+        "h": 275
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
+      "metadataFile": "public/art/prompts/spell-icons-metadata.json"
+    },
+    "triggerSpell": {
+      "url": "/quest-lab/public/art/spell-icons.png",
+      "frame": {
+        "x": 887,
+        "y": 0,
+        "w": 444,
+        "h": 444
+      },
+      "atlasWidth": 1774,
+      "atlasHeight": 887,
+      "sourceIcon": {
+        "view": 992,
+        "loop": 2,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/992-2-0.png",
+        "width": 30,
+        "height": 30
+      },
+      "sourceRef": "glorySpells.sc:250",
+      "sciIndex": 2,
+      "opaqueBounds": {
+        "x": 950,
+        "y": 93,
+        "w": 296,
+        "h": 298
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
+      "metadataFile": "public/art/prompts/spell-icons-metadata.json"
+    },
+    "dazzleSpell": {
+      "url": "/quest-lab/public/art/spell-icons.png",
+      "frame": {
+        "x": 1331,
+        "y": 0,
+        "w": 443,
+        "h": 444
+      },
+      "atlasWidth": 1774,
+      "atlasHeight": 887,
+      "sourceIcon": {
+        "view": 992,
+        "loop": 4,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/992-4-0.png",
+        "width": 30,
+        "height": 30
+      },
+      "sourceRef": "glorySpells.sc:282",
+      "sciIndex": 3,
+      "opaqueBounds": {
+        "x": 1383,
+        "y": 56,
+        "w": 317,
+        "h": 351
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
+      "metadataFile": "public/art/prompts/spell-icons-metadata.json"
+    },
+    "zapSpell": {
+      "url": "/quest-lab/public/art/spell-icons.png",
+      "frame": {
+        "x": 0,
+        "y": 444,
+        "w": 444,
+        "h": 443
+      },
+      "atlasWidth": 1774,
+      "atlasHeight": 887,
+      "sourceIcon": {
+        "view": 992,
+        "loop": 3,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/992-3-0.png",
+        "width": 30,
+        "height": 30
+      },
+      "sourceRef": "glorySpells.sc:379",
+      "sciIndex": 4,
+      "opaqueBounds": {
+        "x": 87,
+        "y": 479,
+        "w": 279,
+        "h": 350
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
+      "metadataFile": "public/art/prompts/spell-icons-metadata.json"
+    },
+    "calmSpell": {
+      "url": "/quest-lab/public/art/spell-icons.png",
+      "frame": {
+        "x": 444,
+        "y": 444,
+        "w": 443,
+        "h": 443
+      },
+      "atlasWidth": 1774,
+      "atlasHeight": 887,
+      "sourceIcon": {
+        "view": 992,
+        "loop": 5,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/992-5-0.png",
+        "width": 30,
+        "height": 30
+      },
+      "sourceRef": "glorySpells.sc:458",
+      "sciIndex": 5,
+      "opaqueBounds": {
+        "x": 522,
+        "y": 479,
+        "w": 275,
+        "h": 352
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
+      "metadataFile": "public/art/prompts/spell-icons-metadata.json"
+    },
+    "flameDartSpell": {
+      "url": "/quest-lab/public/art/spell-icons.png",
+      "frame": {
+        "x": 887,
+        "y": 444,
+        "w": 444,
+        "h": 443
+      },
+      "atlasWidth": 1774,
+      "atlasHeight": 887,
+      "sourceIcon": {
+        "view": 992,
+        "loop": 6,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/992-6-0.png",
+        "width": 30,
+        "height": 30
+      },
+      "sourceRef": "glorySpells.sc:546",
+      "sciIndex": 6,
+      "opaqueBounds": {
+        "x": 934,
+        "y": 503,
+        "w": 332,
+        "h": 285
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
+      "metadataFile": "public/art/prompts/spell-icons-metadata.json"
+    },
+    "fetchSpell": {
+      "url": "/quest-lab/public/art/spell-icons.png",
+      "frame": {
+        "x": 1331,
+        "y": 444,
+        "w": 443,
+        "h": 443
+      },
+      "atlasWidth": 1774,
+      "atlasHeight": 887,
+      "sourceIcon": {
+        "view": 992,
+        "loop": 7,
+        "cel": 0,
+        "url": "/quest-lab/reference/views/992-7-0.png",
+        "width": 30,
+        "height": 30
+      },
+      "sourceRef": "glorySpells.sc:572",
+      "sciIndex": 7,
+      "opaqueBounds": {
+        "x": 1363,
+        "y": 551,
+        "w": 358,
+        "h": 210
+      },
+      "visuallyReviewed": true,
+      "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
+      "metadataFile": "public/art/prompts/spell-icons-metadata.json"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "app": "Quest Lab",
+  "mode": "static-device-storage",
+  "builtAt": "2026-11-20T10:31:38.101Z",
+  "sourceRevision": "98a487c06cfb38b6ea309bfe94e5b9d8e32a48b2",
+  "base": "/quest-lab/",
+  "packId": "61094772ef4cdeab3f1ee2d642b3ccb67f7d7550efa532ee939d3129bcbc8de6",
+  "privateGameDataNotPublished": true,
+  "limitations": [
+    "One-time private game-data import required per browser.",
+    "Native reconstruction incomplete.",
+    "Android hardware verification pending.",
+    "Saves are local; export to transfer or back up."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "retrievedAt": "2026-11-19T21:46:14.221Z",
+  "page": "https://playold.games/games/quest-for-glory-i-so-you-want-to-be-a-hero/play",
+  "archiveUrl": "https://playold.games/api/game-files/file/quest-for-glory-i-so-you-want-to-be-a-hero_1992_dos.zip?prefix=games",
+  "archiveBytes": 6758148,
+  "archiveSHA256": "27efb2a0d35295d5cd488e01b6590e45b53a1592ec3e60a733dcba1823cd361c",
+  "version": "2.000",
+  "runtime": {
+    "name": "js-dos",
+    "version": "6.22.60",
+    "source": "https://cdn.jsdelivr.net/npm/js-dos@6.22.60/dist/",
+    "license": "GPL-2.0-or-later"
+  },
+  "decompressor": {
+    "source": "https://github.com/sluicebox/sci-tools",
+    "license": "MIT"
+  },
+  "formatReferences": [
+    "https://github.com/Kawa-oneechan/SCICompanion",
+    "https://github.com/scummvm/scummvm"
+  ],
+  "limitations": [
+    "Downloaded public archive; not an official release or permission to redistribute.",
+    "Raw resource and PNG extraction does not establish complete gameplay.",
+    "Extracted source priority/control planes require native rendering alignment review against modern artwork.",
+    "Extracted source priority/control planes require native rendering alignment review against modern artwork."
+  ],
+  "picturePlanes": {
+    "manifest": "/reference/planes/manifest.json",
+    "tool": "tools/extract-picture-planes.mjs",
+    "license": "GPL-3.0-or-later",
+    "counts": {
+      "pictures": 84,
+      "errors": 0
+    },
+    "sourceReferences": [
+      "https://github.com/scummvm/scummvm/blob/master/engines/sci/graphics/picture.cpp",
+      "https://github.com/scummvm/scummvm/blob/master/engines/sci/graphics/screen.cpp",
+      "https://github.com/scummvm/scummvm/blob/master/engines/sci/graphics/ports.cpp"
+    ]
+  }
+}
