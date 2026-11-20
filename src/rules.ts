@@ -12,6 +12,7 @@ export interface GameState {
   dead:boolean; won:boolean; journal:string[]; revision:number; seed:number; spells:string[];
   droppedItems?:{room:number;items:Record<string,number>};
   loot?:{id:string;name:string;silver:number;arena?:number};
+  fallen?:{id:string;name:string};
   minigame?: {kind:'maze'|'darts'; active:boolean; round:number; player:number; opponent:number; wager?:number; force?:number; angle?:number; handX?:number; handY?:number; obstacles?:{id:string;kind:string;x:number;y:number;cleared:boolean}[];};
 }
 export interface Action { type:string; target?:string; item?:string; spell?:string; to?:number; topic?:string; amount?:number; label?:string; }
@@ -194,7 +195,13 @@ function strikeBack(s:GameState,events:string[],defense:'normal'|'attack'|'parry
   if(e.id==='weaponMaster'&&(e.round>=6||s.stats.health<=Math.ceil(s.stats.maxHealth/4))){s.stats.weaponUse=Math.min(100,s.stats.weaponUse+2);s.stats.parry=Math.min(100,s.stats.parry+2);s.combat=null;log(s,events,'The Weapon Master ends the practice bout before it becomes dangerous. You have gained experience with sword and shield.');}
   if(s.stats.health===0)s.dead=true;
 }
-function checkVictory(s:GameState,events:string[]){const e=s.combat;if(!e||e.health>0)return;log(s,events,`You defeat ${e.name}.`);if(e.defeatedFlag)s.flags[e.defeatedFlag]=true;if(e.randomEncounter){s.loot={id:e.id,name:e.name,silver:e.reward,arena:e.arena};s.stats.encountersDefeated=(s.stats.encountersDefeated||0)+1;events.push('You can search the fallen opponent.');}else s.silver+=e.reward;if(e.id==='weaponMaster'){s.stats.weaponUse=Math.min(100,s.stats.weaponUse+3);s.stats.parry=Math.min(100,s.stats.parry+2);}if(!s.flags['score:encounter:'+e.id]){s.score+=5;s.flags['score:encounter:'+e.id]=true;}s.combat=null;}
+function checkVictory(s:GameState,events:string[]){const e=s.combat;if(!e||e.health>0)return;log(s,events,`You defeat ${e.name}.`);if(e.defeatedFlag)s.flags[e.defeatedFlag]=true;if(e.id!=='weaponMaster')s.fallen={id:e.id,name:e.name};if(e.randomEncounter){s.loot={id:e.id,name:e.name,silver:e.reward,arena:e.arena};s.stats.encountersDefeated=(s.stats.encountersDefeated||0)+1;events.push('You can search the fallen opponent.');}else s.silver+=e.reward;if(e.id==='weaponMaster'){s.stats.weaponUse=Math.min(100,s.stats.weaponUse+3);s.stats.parry=Math.min(100,s.stats.parry+2);}if(!s.flags['score:encounter:'+e.id]){s.score+=5;s.flags['score:encounter:'+e.id]=true;}s.combat=null;}
+/** Explicit testing shortcut. Uses the same victory and loot lifecycle as combat. */
+export function winCombatForTesting(state:GameState):ActionResult{
+  if(state.dead||state.won||!state.combat)return {state:copy(state),events:['There is no active combat to win.']};
+  const s=copy(state),events:string[]=[];s.revision++;s.flags.testCombatAssisted=true;s.stats.testCombatWins=(s.stats.testCombatWins||0)+1;
+  log(s,events,'Testing shortcut used: combat victory was assisted.');s.combat!.health=0;checkVictory(s,events);return {state:s,events};
+}
 // gloryInv.sc:111-160, silver override:690-726; pageCode blocks inventory in combat/Maze.
 const protectedDrops=new Set(['sword','shield','disenchant','thiefKit','magicGem','ring','brassKey','magicMirror','seed','acorn','fairyDust','greenFur']);
 function mayDrop(s:GameState,item:string){return s.room!==322&&s.room!==32&&!s.combat&&!protectedDrops.has(item)&&item!=='gold'&&!(item==='dagger'&&s.inventory.dagger===1&&!s.inventory.sword);}
@@ -241,12 +248,13 @@ export function availableActions(s:GameState,c:Campaign):Action[]{
     else out.push({type:'dart-start',amount:5,label:'Play Dag-Nab-It — wager 5 silver'},{type:'dart-start',amount:25,label:'Play Dag-Nab-It — wager 25 silver'});
   }
   for(const r of c.rules)if(active(s,r)){
-    if(r.action.type==='dialogue')continue;
+    if(r.action.type==='dialogue'||(r.id==='brauggi-food'&&s.won))continue;
     if(!meets(s,r.requires))continue;
     if(r.action.item&&!(r.action.item==='silver'?s.gold*10+s.silver:s.inventory[r.action.item]))continue;
     if(r.action.spell&&!s.spells.includes(r.action.spell))continue;
-    out.push({...r.action,label:r.label||r.action.label||r.action.type+' '+(r.action.target||r.action.item||'')});
+    out.push({...r.action,label:r.id==='brauggi-food'?`Give apples to Brauggi (${Math.min(50,s.stats.brauggiFruitGiven||0)}/50 given)`:r.label||r.action.label||r.action.type+' '+(r.action.target||r.action.item||'')});
   }
+  if(s.room===58&&!s.flags.brauggiTrade&&!s.won&&s.inventory.vegetables>0)out.push({type:'use',target:'brauggi',item:'vegetables',label:'Offer vegetables to Brauggi'});
   for(const a of c.rooms.find(r=>r.id===s.room)?.actions||[])out.push(a);
   for(const offer of commerceOptionsFor(s,c))if(offer.enabled)out.push(offer.action);
   for(const to of c.rooms.find(r=>r.id===s.room)?.exits||[])out.push({type:'move',to,label:'Go to '+(c.rooms.find(r=>r.id===to)?.name||to)});
@@ -258,6 +266,7 @@ export function availableActions(s:GameState,c:Campaign):Action[]{
 /** Original dropped inventory lasts only until the next room transition (n896.sc:40-43). */
 export function act(state:GameState,action:Action,campaign:Campaign,options:ActOptions={}):ActionResult{
  const result=actInternal(state,action,campaign,options);
+ if(result.state.room!==state.room){delete result.state.fallen;delete result.state.loot;}
  if(result.state.droppedItems&&result.state.room!==result.state.droppedItems.room){delete result.state.droppedItems;log(result.state,result.events,'You leave the unrecovered items behind. Dropped items are lost when leaving the room, as in the original game.');}
  return result;
 }
@@ -434,9 +443,40 @@ function actInternal(state:GameState,action:Action,campaign:Campaign,options:Act
     if(s.combat?.id==='brigand')events.push(combatStatus(s));if(s.stats.health<=0)s.dead=true;
     return {state:s,events,combatEffect:{hit:interrupted,interrupted}};
   }
+  // rm58.sc:396-451, 596-610, 795-830: fruit accumulates toward 50;
+  // vegetables are refused without taking them. No class gate applies.
+  if(s.room===58&&action.type==='use'&&action.target==='brauggi'&&(action.item==='fruit'||action.item==='vegetables')){
+    if(s.flags.brauggiTrade||s.won)return {state:s,events:['Brauggi has departed.']};
+    if(!(s.inventory[action.item]>0))return {state:s,events:['You do not have that item.']};
+    if(action.item==='vegetables')return {state:s,events:['Brauggi refuses the vegetables. He wants fruit: apples from Hilde at the market will do.']};
+    const given=Math.min(50,Math.max(0,s.stats.brauggiFruitGiven||0)),amount=Math.min(s.inventory.fruit,50-given);
+    s.inventory.fruit-=amount;if(!s.inventory.fruit)delete s.inventory.fruit;s.stats.brauggiFruitGiven=given+amount;
+    if(s.stats.brauggiFruitGiven>=50){s.inventory.magicGem=(s.inventory.magicGem||0)+1;s.flags.brauggiTrade=true;s.flags['rule:brauggi-food']=true;if(!s.flags['score:brauggi-food']){s.score+=8;s.flags['score:brauggi-food']=true;}log(s,events,'Brauggi accepts the apples and gives you a glowing gem.');}
+    else log(s,events,`Brauggi accepts ${amount} apples. You have given him ${s.stats.brauggiFruitGiven} of the 50 he wants.`);
+    time(s,5,events);return {state:s,events,matchedRuleIds:['brauggi-food']};
+  }
   const candidates=campaign.rules.filter(r=>active(s,r)&&matches(action,r.action)).sort((a,b)=>['target','item','spell','topic','to'].filter(k=>(b.action as any)[k]!==undefined).length-['target','item','spell','topic','to'].filter(k=>(a.action as any)[k]!==undefined).length);
   const rule=candidates.find(r=>meets(s,r.requires));
   if(rule){
+    // rm54.sc:1903-1922: attempts teach climbing even when the tree is too
+    // difficult. The actual ring remains available after an unsuccessful try.
+    if(rule.id==='ring-physical'&&!trySkill(s,'climbing',30)){
+      time(s,rule.minutes??5,events);log(s,events,'You cannot climb high enough yet. Keep practicing, throw a stone, or use Fetch.');return {state:s,events};
+    }
+    // rm54.sc:1760-1780 uses this exact throwing/luck threshold and practices
+    // a missed throw; every attempt spends one rock.
+    if(rule.id==='ring-rock'&&!(s.stats.throwing>25||s.stats.throwing+s.stats.luck>50)){
+      trySkill(s,'throwing');s.inventory.rock--;if(!s.inventory.rock)delete s.inventory.rock;
+      time(s,rule.minutes??5,events);log(s,events,'The stone misses the nest. Try again; throwing practice improves your aim.');return {state:s,events};
+    }
+    // rm16.sc:1934-1954: each throw consumes a rock and uses the ordinary
+    // throwing skill check with a -10 penalty, including skill practice.
+    // A miss keeps the seed available for another attempt.
+    if(rule.id==='seed-throw'&&!trySkill(s,'throwing',0,-10)){
+      s.inventory.rock--;if(!s.inventory.rock)delete s.inventory.rock;
+      time(s,rule.minutes??5,events);log(s,events,s.stats.throwing>0?'Your stone misses the moving seed. Try another throw; practice improves your aim.':'Your stone misses the moving seed. You have no throwing skill; try another approach, such as Fetch.');
+      return {state:s,events};
+    }
     if(rule.id.startsWith('wall-climb-')&&(!trySkill(s,'climbing',35)||(rule.id==='wall-climb-64'&&!trySkill(s,'climbing',35)))){time(s,1,events);return {state:s,events:['Climbing this wall is too difficult for your level of skill. Keep practicing.']};}
     if(['sleep-ejected-38','sleep-ejected-41'].includes(rule.id)&&s.minutes>300&&s.minutes<1020)time(s,1260-s.minutes,events);
     if(action.type==='cast'){
@@ -463,7 +503,14 @@ function actInternal(state:GameState,action:Action,campaign:Campaign,options:Act
     if(s.room===301){s.flags.innCoffeeConsumed=false;s.flags.innSeated=false;s.flags.shemaServing=false;s.flags.innMealConsumed=false;s.flags.innDrinkConsumed=false;}
     const from=s.room;if(from===93)s.flags.minotaurCalmed=false;if(from===97)s.flags.brigandsPursue=true;if(from===83)s.flags.hermitHospitality=true;if(from===301)s.flags.abdullaPresent=false;if(from===331)s.stats.crusherQuestions=0;delete s.loot;
     if(s.minigame?.active)s.minigame.active=false;
-    s.room=action.to!;s.flags['visited:'+s.room]=true;time(s,5,events);if(s.room===331)s.stats.crusherQuestions=0;if(s.room===301){s.flags.abdullaPresent=s.minutes>=1020&&s.minutes<1380&&(!s.flags.abdullaMet||roll(s,0,1)===1);if(s.flags.abdullaPresent)s.flags.abdullaMet=true;}s.stats.stamina=Math.max(0,s.stats.stamina-1);events.push('You enter '+(campaign.rooms.find(r=>r.id===s.room)?.name||s.room)+'.');if(!s.dead)wildernessEncounter(s,from,campaign,events);return {state:s,events};
+    s.room=action.to!;s.flags['visited:'+s.room]=true;time(s,5,events);if(s.room===331)s.stats.crusherQuestions=0;if(s.room===301){s.flags.abdullaPresent=s.minutes>=1020&&s.minutes<1380&&(!s.flags.abdullaMet||roll(s,0,1)===1);if(s.flags.abdullaPresent)s.flags.abdullaMet=true;}s.stats.stamina=Math.max(0,s.stats.stamina-1);events.push('You enter '+(campaign.rooms.find(r=>r.id===s.room)?.name||s.room)+'.');
+    // rm41.sc:593-597, 699-741: on first daytime arrival after the
+    // Baronet's rescue, the guards escort the hero into the Baron's hall.
+    // The native reward flag corresponds to the completed escort/return.
+    if(!s.dead&&s.room===41&&from!==141&&s.flags.baronetFreed&&!s.flags.baronetReward&&!isNight(s)){
+      s.room=141;s.flags['visited:141']=true;events.push('The guards welcome you and escort you to the Baron.');
+    }
+    if(!s.dead)wildernessEncounter(s,from,campaign,events);return {state:s,events};
   }
   if(action.type==='buy'){
     const shop=campaign.shops.find(x=>x.room===s.room&&x.items.some(i=>i.item===action.item));if(!shop)return {state:s,events:['That item is not sold here.']};
@@ -543,6 +590,7 @@ export function validateSave(s:any,c?:Campaign):string[]{
     }
   }
   if(s.loot!==undefined){const loot=s.loot;if(!record(loot)||!integer(loot.silver)||!text(loot.id)||!text(loot.name))e.push('Invalid saved loot.');}
+  if(s.fallen!==undefined&&(!record(s.fallen)||!text(s.fallen.id)||!text(s.fallen.name)))e.push('Invalid fallen opponent.');
   if(s.minigame!==undefined){
     const g=s.minigame;
     if(!record(g))e.push('Invalid minigame state.');

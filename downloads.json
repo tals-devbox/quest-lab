@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "version": "0.3.0",
-  "dataVersion": "2026.11.20.2",
-  "packId": "c6d26a34c176dd4fa39bd9a17e448a9897165c40167f10d168cbac409fd65f1d",
-  "publishedAt": "2026-11-20T13:25:41.885Z",
+  "version": "0.4.0",
+  "dataVersion": "2026.11.20.3",
+  "packId": "608e8ece9abb46064557274bccfd61b038c5c33af287b8caae26f2c64356b10e",
+  "publishedAt": "2026-11-20T19:06:06.550Z",
   "requiresGithubSignIn": true,
   "releaseUrl": "https://github.com/tals-devbox/quest-lab-downloads/releases",
   "artifacts": [
@@ -11,21 +11,21 @@
       "kind": "browser-data",
       "label": "Game data for browser play",
       "description": "Download on Android or desktop, then import into the published app. Includes remake content and local original reference data; engine/artwork load from the website.",
-      "version": "2026.11.20.2",
-      "file": "QuestLab-GameData-v0.3.0.questlab",
-      "bytes": 22942481,
-      "sha256": "564859fe859547898bf17a7d338ccf7c736e4362b28d2e9c3db3a2e115961d9e",
-      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/v0.3.0/QuestLab-GameData-v0.3.0.questlab"
+      "version": "2026.11.20.3",
+      "file": "QuestLab-GameData-v0.4.0.questlab",
+      "bytes": 22945233,
+      "sha256": "14fc9a90a17673313fa29c0847ee99cf0605423dcd1be30f5d6605916d115fd2",
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/v0.4.0/QuestLab-GameData-v0.4.0.questlab"
     },
     {
       "kind": "windows-portable",
       "label": "Complete Windows remake package",
       "description": "Complete app, modern artwork, game data and bundled runtime. Extract the ZIP and open Start Quest Lab.cmd. No personal saves included.",
-      "version": "0.3.0",
-      "file": "QuestLab-v0.3.0-Windows.zip",
-      "bytes": 342477644,
-      "sha256": "6b9d343002dfc58deeb485e6da0b2aed6039b05f2df67f0fc163a8b4018cbc0c",
-      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/v0.3.0/QuestLab-v0.3.0-Windows.zip"
+      "version": "0.4.0",
+      "file": "QuestLab-v0.4.0-Windows.zip",
+      "bytes": 342495037,
+      "sha256": "d0fd07d9629f013cb5ee587fada6796db4f83bfe2e3cc689f3a219bfbb2b638a",
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/v0.4.0/QuestLab-v0.4.0-Windows.zip"
     }
   ]
 }

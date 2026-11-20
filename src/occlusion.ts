@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import {visibleInPriorityPlane} from './scene-hit';
 export interface PriorityPlane {priorityRaw:string;priorityAtY:number[];priorityBands:number[]}
 const cache=new Map<string,Uint8Array>();
 export async function loadPriority(info?:PriorityPlane):Promise<Uint8Array|undefined>{
@@ -28,5 +29,6 @@ export class SourceOcclusion {
   }
   actor.setMask(entry.mask);this.applied.set(actor,priority);
  }
+ visibleAt(actor:Phaser.GameObjects.Image|Phaser.GameObjects.Sprite,worldX:number,worldY:number){return visibleInPriorityPlane(this.bytes,this.applied.get(actor),worldX,worldY);}
  destroy(){for(const {mask,image,key}of this.masks.values()){mask.destroy();image.destroy();if(this.scene.textures.exists(key))this.scene.textures.remove(key)}this.masks.clear();}
 }

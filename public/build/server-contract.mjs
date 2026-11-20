@@ -83,6 +83,7 @@ function validateSave(s, c) {
     const loot = s.loot;
     if (!record2(loot) || !integer(loot.silver) || !text(loot.id) || !text(loot.name)) e.push("Invalid saved loot.");
   }
+  if (s.fallen !== void 0 && (!record2(s.fallen) || !text(s.fallen.id) || !text(s.fallen.name))) e.push("Invalid fallen opponent.");
   if (s.minigame !== void 0) {
     const g = s.minigame;
     if (!record2(g)) e.push("Invalid minigame state.");
