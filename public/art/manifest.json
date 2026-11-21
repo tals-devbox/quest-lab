@@ -6527,5 +6527,268 @@
       "interpretation": "Original warm-gold symbolic gesture/pictogram redrawn in painterly style with source tan button background removed. Static symbol only, not spell VFX or casting animation.",
       "metadataFile": "public/art/prompts/spell-icons-metadata.json"
     }
+  },
+  "hotspots": {
+    "10": [
+      {
+        "entityId": "fruit",
+        "label": "Fruit tree",
+        "left": 106,
+        "top": 20,
+        "right": 255,
+        "bottom": 90
+      }
+    ],
+    "16": [
+      {
+        "entityId": "flower0",
+        "label": "Spitting Spirea",
+        "left": 3,
+        "top": 36,
+        "right": 75,
+        "bottom": 91
+      },
+      {
+        "entityId": "flower1",
+        "label": "Spitting Spirea",
+        "left": 82,
+        "top": 36,
+        "right": 132,
+        "bottom": 98
+      },
+      {
+        "entityId": "flower2",
+        "label": "Spitting Spirea",
+        "left": 169,
+        "top": 36,
+        "right": 219,
+        "bottom": 98
+      },
+      {
+        "entityId": "flower3",
+        "label": "Spitting Spirea",
+        "left": 230,
+        "top": 35,
+        "right": 284,
+        "bottom": 96
+      }
+    ],
+    "55": [
+      {
+        "entityId": "woodTable",
+        "label": "Finished Dispel Potion",
+        "left": 39,
+        "top": 112,
+        "right": 123,
+        "bottom": 148,
+        "when": {
+          "flag": "dispelReady"
+        },
+        "unless": {
+          "flag": "dispelMade"
+        }
+      },
+      {
+        "entityId": "woodTable",
+        "label": "Dispel Potion",
+        "left": 141,
+        "top": 126,
+        "right": 153,
+        "bottom": 144,
+        "when": {
+          "flag": "dispelReady"
+        },
+        "unless": {
+          "flag": "dispelMade"
+        }
+      }
+    ],
+    "94": [
+      {
+        "entityId": "onWire1",
+        "label": "Lower tripwire",
+        "left": 85,
+        "top": 148,
+        "right": 220,
+        "bottom": 158,
+        "visual": "wire"
+      },
+      {
+        "entityId": "onWire2",
+        "label": "Upper tripwire",
+        "left": 132,
+        "top": 94,
+        "right": 190,
+        "bottom": 104,
+        "visual": "wire"
+      },
+      {
+        "entityId": "safeBridge",
+        "label": "Wooden bridge",
+        "left": 136,
+        "top": 110,
+        "right": 184,
+        "bottom": 144,
+        "visual": "bridge"
+      }
+    ],
+    "95": [
+      {
+        "entityId": "table",
+        "label": "Dining table",
+        "left": 42,
+        "top": 102,
+        "right": 95,
+        "bottom": 132
+      }
+    ],
+    "96": [
+      {
+        "entityId": "theHandle",
+        "label": "Ring handle",
+        "left": 269,
+        "top": 64,
+        "right": 300,
+        "bottom": 88
+      }
+    ],
+    "311": [
+      {
+        "entityId": "book",
+        "label": "Guild register",
+        "left": 139,
+        "top": 122,
+        "right": 177,
+        "bottom": 137
+      }
+    ],
+    "318": [
+      {
+        "entityId": "poster1",
+        "label": "Lost ring",
+        "left": 23,
+        "top": 27,
+        "right": 93,
+        "bottom": 80
+      },
+      {
+        "entityId": "poster2",
+        "label": "Missing Elsa",
+        "left": 94,
+        "top": 50,
+        "right": 152,
+        "bottom": 112
+      },
+      {
+        "entityId": "poster3",
+        "label": "Brigand Warlock",
+        "left": 159,
+        "top": 25,
+        "right": 218,
+        "bottom": 79
+      },
+      {
+        "entityId": "poster4",
+        "label": "Brigand Leader",
+        "left": 225,
+        "top": 39,
+        "right": 297,
+        "bottom": 127
+      },
+      {
+        "entityId": "poster5",
+        "label": "Spell components",
+        "left": 22,
+        "top": 110,
+        "right": 106,
+        "bottom": 154
+      },
+      {
+        "entityId": "poster6",
+        "label": "Missing Baronet",
+        "left": 141,
+        "top": 97,
+        "right": 227,
+        "bottom": 163
+      }
+    ],
+    "340": [
+      {
+        "entityId": "theBoard",
+        "label": "Dag-Nab-It board",
+        "left": 88,
+        "top": 8,
+        "right": 230,
+        "bottom": 151
+      }
+    ]
+  },
+  "passages": {
+    "76": [
+      {
+        "passageId": "76:east:77",
+        "hitRects": [
+          {
+            "left": 296,
+            "top": 95,
+            "right": 320,
+            "bottom": 160
+          }
+        ]
+      }
+    ],
+    "93": [
+      {
+        "passageId": "93:secretBush:94",
+        "copyOf": "93:gate:94",
+        "entityId": "bush",
+        "kind": "secret",
+        "when": {
+          "flag": "fortressEntry"
+        },
+        "hitRects": [
+          {
+            "left": 5,
+            "top": 105,
+            "right": 59,
+            "bottom": 160
+          }
+        ],
+        "approach": {
+          "x": 38,
+          "y": 164
+        }
+      }
+    ],
+    "310": [
+      {
+        "passageId": "310:enterMagicShop:314",
+        "hitRects": [
+          {
+            "left": 258,
+            "top": 74,
+            "right": 295,
+            "bottom": 131
+          }
+        ]
+      }
+    ],
+    "332": [
+      {
+        "passageId": "332:onBoard:340",
+        "hitRects": [
+          {
+            "left": 64,
+            "top": 55,
+            "right": 108,
+            "bottom": 92
+          }
+        ],
+        "approach": {
+          "x": 100,
+          "y": 125
+        }
+      }
+    ]
   }
 }

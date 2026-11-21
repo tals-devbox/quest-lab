@@ -38,11 +38,11 @@ const aliases:Record<number,Record<string,string[]>>={
  15:{kobKey:['key']},
  16:{catchingFeat:['seed','spirea'],flyingSeed:['seed'],flower0:['spirea'],flower1:['spirea'],flower2:['spirea'],flower3:['spirea']},
  22:{skull1:['skull'],skull2:['skull'],skull3:['skull'],skull4:['skull']},
- 54:{ground:['rocks'],tree:['nest']},
+ 54:{ground:['rocks'],tree:['nest'],bird:['nest'],birdFeature:['nest'],theRing:['nest']},
  55:{woodTable:['dispelPotion']},
  58:{giant:['brauggi'],giantTeller:['brauggi'],brauggiTalker:['brauggi']},
  73:{bruno:['brigands'],brutus:['brigands']},
- 82:{onFall:['waterfall']},
+ 82:{onFall:['waterfall'],onWater:['waterfall'],bottomSplash:['waterfall'],smlSplash1:['waterfall'],smlSplash2:['waterfall'],smlSplash3:['waterfall'],smlSplash4:['waterfall'],smlSplash5:['waterfall'],smlSplash6:['waterfall']},
  84:{theRock:['secretDoor']},
  89:{troll:['sneak']},
  95:{fDoor:['brigands'],rDoor:['brigands'],brig1:['brigands'],brig2:['brigands'],brig3:['brigands'],table:['knochelkopfs'],chandelier:['knochelkopfs'],curly:['knochelkopfs'],moe:['knochelkopfs'],larry:['knochelkopfs']},
@@ -75,5 +75,12 @@ export function contextualItemAttempts(s:GameState,c:Campaign,d:DialogueData,ent
   if(!out.some(x=>JSON.stringify({...x,label:undefined})===JSON.stringify({...a,label:undefined})))out.push({...a});
  }
  return out;
+}
+/** A deliberate empty-hand click can explain a locked puzzle without listing
+ * unavailable actions in a menu or turning it into a generic passage error. */
+export function contextualUseAttempts(s:GameState,c:Campaign,d:DialogueData,entity:SceneEntityRef):Action[]{
+ if(s.dead||s.combat)return [];
+ const names=contextualNames(s,d,entity);if(!names)return [];
+ return c.rules.filter(r=>(Array.isArray(r.room)?r.room.includes(s.room):r.room===s.room)&&r.action.type==='use'&&!r.action.item&&!r.action.spell&&!!r.action.target&&names.has(key(r.action.target))&&!(r.once!==false&&s.flags['rule:'+r.id])&&!(r.unless&&meets(s,r.unless))).map(r=>({...r.action})).filter((a,i,all)=>all.findIndex(x=>JSON.stringify(x)===JSON.stringify(a))===i);
 }
 export function validSceneEntity(room:{id:number;entities:{id:string}[]},entityId:string,originRoom:number){return room.id===originRoom&&room.entities.some(e=>e.id===entityId);}

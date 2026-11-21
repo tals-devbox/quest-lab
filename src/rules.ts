@@ -491,6 +491,7 @@ function actInternal(state:GameState,action:Action,campaign:Campaign,options:Act
     if(rule.text)log(s,events,rule.text);time(s,rule.minutes??5,events);return {state:s,events,matchedRuleIds:[rule.id]};
   }
   const blocked=candidates[0];
+  if(blocked?.id==='fortress-gate-force'&&s.flags.minotaurDefeated)return {state:s,events:['The Minotaur is defeated. The heavy gate still requires strength60 to force; you may need another entrance.']};
   if(blocked)return {state:s,events:[blocked.blocked||'You are not yet prepared for that. Explore, practice your skills or find the required item.']};
   if(action.type==='dialogue'){s.flags[`heard:${s.room}:${action.target}:${action.topic}`]=true;return {state:s,events};}
   if(action.type==='move'){

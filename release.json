@@ -1,12 +1,12 @@
 {
   "app": "Quest Lab",
-  "version": "0.4.0",
-  "dataVersion": "2026.11.20.3",
+  "version": "0.5.0",
+  "dataVersion": "2026.11.21.1",
   "mode": "static-device-storage",
-  "builtAt": "2026-11-20T19:07:44.763Z",
-  "sourceRevision": "73f88305e482efa4ceaf9e05d211e92481fdb7fc",
+  "builtAt": "2026-11-21T15:40:11.819Z",
+  "sourceRevision": "9fa4df078509fea1cf173f4317ffe9022f8827eb",
   "base": "/quest-lab/",
-  "packId": "608e8ece9abb46064557274bccfd61b038c5c33af287b8caae26f2c64356b10e",
+  "packId": "a13fad45cc0baaa38ecdd0ed9a3c41370ddc4ee49316f42a30cfa7b59e6c3003",
   "privateGameDataNotPublished": true,
   "limitations": [
     "One-time private game-data import required per browser.",
