@@ -1,10 +1,10 @@
 {
   "app": "Quest Lab",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "dataVersion": "2026.11.21.1",
   "mode": "static-device-storage",
-  "builtAt": "2026-11-21T15:40:11.819Z",
-  "sourceRevision": "9fa4df078509fea1cf173f4317ffe9022f8827eb",
+  "builtAt": "2026-11-21T16:27:16.011Z",
+  "sourceRevision": "9afd311af6ac80f4cefc753fd252a2e3700c08bb",
   "base": "/quest-lab/",
   "packId": "a13fad45cc0baaa38ecdd0ed9a3c41370ddc4ee49316f42a30cfa7b59e6c3003",
   "privateGameDataNotPublished": true,

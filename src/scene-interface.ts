@@ -46,7 +46,7 @@ const aliases:Record<number,Record<string,string[]>>={
  84:{theRock:['secretDoor']},
  89:{troll:['sneak']},
  95:{fDoor:['brigands'],rDoor:['brigands'],brig1:['brigands'],brig2:['brigands'],brig3:['brigands'],table:['knochelkopfs'],chandelier:['knochelkopfs'],curly:['knochelkopfs'],moe:['knochelkopfs'],larry:['knochelkopfs']},
- 170:{fairyFeat:['fairyDance','fairies'],firstTime:['fairyDance','fairies'],aFaery:['fairies']},
+ 170:{fairyFeat:['fairyDance','fairies'],firstTime:['fairyDance','fairies'],aFaery:['fairyDance','fairies']},
  301:{Chair:['bench'],egoOnChair:['bench'],onLargeTable:['Food','Drink'],onTable:['Food','Drink'],merchant:['abdulla'],shameen:['shameen'],shema:['shema']},
  311:{book:['register'],desk:['register']},
  320:{centaur:['hilde'],centaurBody:['hilde'],sheriffsDoor:['sheriffDoor']},
