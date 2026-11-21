@@ -1,0 +1,28 @@
+{
+  "format": "quest-lab-gameplay-loop",
+  "schemaVersion": 0,
+  "id": "food-trade-gem-return",
+  "status": "unqualified-design-example",
+  "purpose": "Earn food in town, reach another location, exchange it for a persistent quest item, revisit and save/reload.",
+  "editions": ["vga1992", "ega1989"],
+  "heroClasses": ["fighter"],
+  "fingerprints": {"sourcePack":null,"gameResources":null,"engineBuild":null,"behaviorPack":null,"artPack":null,"scenario":null},
+  "setup": {"kind":"fresh-earned-prefix","startingAt":"character-creation","debugGrants":false,"teleports":false,"assistedCombat":false,"prefixReceiptRequired":true,"rng":"record ordinary initial RNG state through the qualified backend; do not force later outcomes"},
+  "sourceOracle": {"qualified":false,"sourceRefs":[],"originalInputTrace":null,"originalObservableMilestones":null,"approvedDeviations":[],"whyUnqualified":"EGA source/resource match, exact commands and original reference observations have not been established for this example."},
+  "variants": {
+    "vga1992": {"interaction":"point-and-click","sourceBackedCandidate":{"tradeItem":"fruit","requiredCount":50},"sourceVersion":"qfg1vga-dos-2.000","qualifiedOriginalRecipe":null},
+    "ega1989": {"interaction":"typed-commands-and-topics","sourceVersion":null,"requiredCount":null,"acceptedItem":null,"exactParserRecipes":null,"note":"Do not infer EGA trade semantics or commands from VGA."}
+  },
+  "steps": [
+    {"id":"earn-town-prefix","intent":"Complete normal creation/arrival and earn an ordinary route to the food seller","crossRoom":true,"inputBindings":"edition-specific, to be captured","assert":["No debug state/item/stat injection","Cash and skills follow ordinary chosen creation/progression"]},
+    {"id":"buy-food","intent":"Buy the edition-qualified food quantity through its normal interaction","assert":["Original-priced money delta","Correct inventory quantity","Cancel/insufficient-cash branches do not grant items"]},
+    {"id":"travel","intent":"Walk through the required connected rooms to Brauggi","crossRoom":true,"assert":["Visible/typed movement works","Correct entry and exit positions","Original encounter policy retained; no assisted victory qualifies"]},
+    {"id":"refusal","intent":"Attempt an oracle-qualified wrong or insufficient offering","assert":["No unearned gem","Consumption/refusal matches source","Expected feedback visible"]},
+    {"id":"exchange","intent":"Offer the qualified item/quantity through ordinary UI","assert":["Correct item delta","Exactly one expected reward","Expected dialogue/state transition and time delta"]},
+    {"id":"return","intent":"Leave, revisit and test the repeat/reward branch","crossRoom":true,"assert":["NPC and quest state remain consistent","Repeat cannot duplicate a one-time reward unless the original explicitly permits it"]},
+    {"id":"persist","intent":"Save, reload and continue to a dependent quest milestone","crossRoom":true,"assert":["Inventory, clock, flags and actor/sequence state survive","Payoff remains usable through the normal interface"]}
+  ],
+  "negativeCases": ["unknown EGA command","ambiguous EGA noun/topic","wrong VGA verb/item target","below/at/above required quantity","leave during pending approach","stale callback after room change","repeat reward","reload at a pending state"],
+  "evidenceRequired": ["independent edition source/original oracle","earned engine trace","real UI input trace and checkpoint captures","per-step expected versus actual","build/device/setup/assistance identity"],
+  "qualificationRule": "A draft with null fingerprints, missing exact inputs or an unqualified oracle must not pass an acceptance gate. This file is a specification example, not a completed test."
+}
