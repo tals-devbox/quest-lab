@@ -11,10 +11,11 @@ export async function loadPriority(info?:PriorityPlane):Promise<Uint8Array|undef
 export class SourceOcclusion {
  private masks=new Map<number,{mask:Phaser.Display.Masks.BitmapMask;image:Phaser.GameObjects.Image;key:string}>();
  private applied=new WeakMap<object,number>();
- constructor(private scene:Phaser.Scene,private picture:number,private info:PriorityPlane,private bytes:Uint8Array){}
- apply(actor:Phaser.GameObjects.Image|Phaser.GameObjects.Sprite,footY:number,explicitPriority=-1){
+ constructor(private scene:Phaser.Scene,private picture:number,private info:PriorityPlane,private bytes:Uint8Array,private sourcePriority=true){}
+ get kind(){return this.sourcePriority?'original-priority':'painted-occluders';}
+ apply(actor:Phaser.GameObjects.Image|Phaser.GameObjects.Sprite|Phaser.GameObjects.Ellipse,footY:number,explicitPriority=-1){
   if(this.scene.sys.game.renderer.type!==Phaser.WEBGL)return;
-  const priority=explicitPriority>=0?explicitPriority:this.info.priorityAtY[Phaser.Math.Clamp(Math.floor(footY),0,189)]??0;
+  const priority=this.sourcePriority&&explicitPriority>=0?explicitPriority:this.info.priorityAtY[Phaser.Math.Clamp(Math.floor(footY),0,189)]??0;
   if(this.applied.get(actor)===priority)return;
   let entry=this.masks.get(priority);
   if(!entry){

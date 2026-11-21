@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quest Lab · How the game works</title><link rel="stylesheet" href="./style.css"><style>main{max-width:920px;margin:0 auto;padding:24px 20px 60px}h1{font-size:34px}h2{font-size:22px;margin-top:30px}p,li,td,th{font:16px/1.55 Segoe UI,sans-serif}table{width:100%;border-collapse:collapse}td,th{padding:10px;text-align:left;border:1px solid #526764;vertical-align:top}code{overflow-wrap:anywhere}a{color:#e5d99e}.flow{padding:18px;border:1px solid #526764;background:#213638}small{font:13px/1.5 Segoe UI,sans-serif}</style></head><body><main>
+<a href="../">← Back to Quest Lab</a><h1>How rooms and game mechanics work</h1>
+<p><strong>Your room-and-engine model is substantially correct.</strong> A room supplies its particular places, objects, entrances and behavior. The engine supplies shared movement, interaction, inventory, conversation, timing and rendering. Room state also depends on shared world state: what you carry, what you learned, time, character skills and earlier quests.</p>
+<h2>What the original SCI game contains</h2>
+<table><thead><tr><th>Part</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Room and object scripts</td><td>Enter/leave behavior, objects and characters, allowed verbs, prerequisites, reactions, and scripted sequences. An actor, room and running sequence can each have its own state.</td></tr>
+<tr><td>Shared world state</td><td>Inventory, flags, quests, abilities, money and clock. A room is not an isolated state machine: progress in one room changes another.</td></tr>
+<tr><td>Walk polygons / control regions</td><td>Where the actor's feet may move; trigger regions, door approaches and scene boundaries. A clickable doorway and a walkable path to it are separate things.</td></tr>
+<tr><td>Priority / occlusion</td><td>Which background pixels or foreground objects cover an actor at a given depth. This is separate from collision: a canopy can hide you while the ground beneath remains walkable.</td></tr>
+<tr><td>Sprites and presentation</td><td>Animation frames, foot anchors, scale, depth, sound, message lines and camera/view type. A close-up of a notice board has no walking hero.</td></tr>
+</tbody></table>
+<p>There is no single universal “all possible room states” table in the original. Some state machines are explicit <code>changeState</code> scripts; others are conditions in verb handlers or inherited shared classes. Understanding a room requires those dependencies as well as its script.</p>
+<h2>What this remake actually runs</h2>
+<p><strong>The current Remake is based on the 1992 VGA point-and-click game.</strong> The 1989 EGA game uses typed commands, including conversation topics. The changes are broader than image quality; your decision about which edition to follow remains deferred.</p>
+<ol>
+<li><strong>Original reference players:</strong> the EGA and VGA tabs run their original programs in the bundled js-dos/DOSBox interpreter, with separate saves. They do not use the remake's rules.</li>
+<li><strong>Main Remake:</strong> Phaser renders the scene. Native TypeScript rules and structured campaign data decide gameplay. Imported source metadata supplies many objects, messages, polygons and exits. This is a reconstruction, not complete execution of the original scripts.</li>
+<li><strong>Limited source presentation:</strong> a bounded parsed-SCI runtime supplies timed presentation in the inn, Guild and magic shop (301,311,314). Native gameplay remains authoritative. Other rooms mostly use inspected baseline staging plus native rules.</li>
+<li><strong>Experimental source preview:</strong> a separate, incomplete SCI runtime exists locally. It can stop at unsupported operations; it is not the full original reference player and does not establish remake parity.</li>
+</ol>
+<p>The imported inventory contains 100 room definitions and 1,553 extracted interaction cases; the native campaign contains 168 rules. These are different counting units, not a completion percentage. Many imported cases are not mapped or verified as equivalent gameplay. A room with a picture and exits is not a completed reconstruction.</p>
+<h2>Why the reported failures happened</h2>
+<p>Some behavior was manually adapted into the native rule set, leaving incomplete dependencies and sequences. The renderer also treated every scene as a walkable room, and applied original masks to newly painted shapes. The hero's separate shadow was not masked with the actor. Those are reconstruction defects, not missing concepts in the original game.</p>
+<h2>What changed in v0.5.2</h2>
+<ul>
+<li><strong>Files and version:</strong> an always-visible navigation button and title-screen entry show the running app version and installed data. Game-data import and save import are separate; pack validation and atomic replacement preserve saved adventures. The download panel distinguishes the latest version from the app actually running.</li>
+<li><strong>Reversible creation:</strong> plus/minus and left/right arrows change an ability by five. Creation allocations have a refund ledger; undo returns the absent-skill surcharge. Reset restores the initial 50-point budget. Once creation finishes, later earned skills cannot be refunded.</li>
+<li><strong>Explicit view types:</strong> the notice board and the two game boards do not spawn a walking hero or shadow.</li>
+<li><strong>Art-bound geometry:</strong> town square, Guild street and Erana's Peace have authored walk areas or occluders bound to their particular paintings. The pathfinder uses those same boundaries. Replacing the art does not silently reuse its old authored mask.</li>
+<li><strong>Consistent depth:</strong> modern actors sort by their feet. The hero and its shadow use the same occlusion depth. Original priority planes apply only to matching original artwork; other paintings need their own occluders.</li>
+<li><strong>Dialog ownership:</strong> the opening speech waits for an existing file/stat dialog rather than replacing it.</li>
+</ul>
+<p><strong>Limits:</strong> only six explicit view contracts and three authored painting geometries are included in this correction. Other paintings still need visual/collision review. The tree matte uses approximate polygons, not a detailed leaf silhouette. Full source behavior, ordinary combat and all class routes remain incomplete or unverified.</p>
+<h2>Where an edit belongs</h2>
+<table><thead><tr><th>Edit</th><th>Owning content / code</th></tr></thead><tbody>
+<tr><td>Imported original metadata</td><td><code>data/source-index.json</code>, extracted resources and source references. Originals stay preserved.</td></tr>
+<tr><td>Native quests and consequences</td><td><code>data/campaign.json</code> conditions/effects and <code>src/rules.ts</code> shared mechanics.</td></tr>
+<tr><td>Conversation text and availability</td><td><code>data/dialogue.json</code>, its prerequisites and native actions, with source links.</td></tr>
+<tr><td>Door connections and entry points</td><td><code>data/scene-navigation.json</code> plus state-dependent passage conditions.</td></tr>
+<tr><td>Painting-specific view, walking and masks</td><td><code>public/art/scene-contracts.json</code>; a room override may provide a validated <code>scene</code> contract.</td></tr>
+<tr><td>Visible click targets and replacements</td><td><code>public/art/manifest.json</code> and versioned content overrides.</td></tr>
+<tr><td>Saved progress</td><td>World state, inventory, clock, skills, quest flags and revision. The save is not the room definition.</td></tr>
+</tbody></table>
+<h2>What reliable prompt-driven extensions require</h2>
+<div class="flow">Prompt → room / quest / art changes → reference and geometry validation → scenario checks → rendered click-through → versioned preview → saved revision.</div>
+<p>A new room needs its view type, art, foot anchors, walk boundaries, entrances, active objects, interactions, prerequisites and consequences, plus scenarios for its important states. Shared world state should drive both visible affordances and permitted actions. Navigation and occlusion must be reviewed against the actual painting.</p>
+<p>The new presentation contract corrects renderer assumptions; it does not yet unify every legacy behavior path. After choosing the edition, the next architectural step is a single resolved scene description for rendering/input and one authoritative gameplay transition path, with explicit coverage for unsupported original behavior. Arbitrary extensions working perfectly in one shot are a goal to test, not something this build can guarantee.</p>
+<p><small>Sources: inspected local Quest Lab source and extracted VGA scripts; <a href="https://scicompanion.com/Documentation/pics.html">SCI Companion picture/priority/control documentation</a>; <a href="https://scicompanion.com/Documentation/polygons.html">polygon documentation</a>; <a href="https://www.mocagh.org/sierra/hq-manual.pdf">original Hero's Quest manual</a>. Owner review21November2026; counts and implementation status are this checkpoint, not timeless guarantees.</small></p>
+</main></body></html>

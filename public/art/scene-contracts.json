@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "rooms": {
+    "10": {
+      "mode": "world",
+      "sourceRefs": ["rm10.sc:init", "n101.sc:shared forest navigation"],
+      "review": "Painted tree/ground authored against room-10.png. Polygon canopy is approximate, not a pixel-perfect matte.",
+      "modern": {
+        "background": "/quest-lab/public/art/room-10.png",
+        "replaceWalkmesh": true,
+        "walkable": [{"points": [[0,106],[44,91],[91,85],[113,85],[137,94],[204,94],[224,85],[264,86],[290,101],[320,105],[320,190],[0,190]]}],
+        "blocked": [{"points": [[157,124],[174,124],[183,131],[177,135],[159,134],[154,131]]}],
+        "occluders": [
+          {"id":"tree-crown","baselineY":132,"points":[[106,78],[113,66],[134,56],[153,52],[175,55],[188,53],[207,60],[220,72],[233,82],[229,93],[215,99],[202,96],[191,100],[179,98],[166,101],[153,98],[139,100],[123,95],[111,96],[104,89]]},
+          {"id":"tree-trunk","baselineY":132,"points":[[142,84],[153,88],[169,104],[187,84],[198,86],[182,110],[178,124],[184,130],[177,133],[159,133],[157,124],[158,109]]}
+        ]
+      }
+    },
+    "300": {
+      "mode":"world",
+      "sourceRefs":["rm300.sc:56"],
+      "review":"Town ground, stairs and foreground wall authored for this painting; original script arrival retained.",
+      "modern":{
+        "background":"/quest-lab/public/art/room-300.png",
+        "replaceWalkmesh":true,
+        "walkable":[{"points":[[0,119],[28,118],[43,122],[75,116],[95,121],[121,121],[140,115],[162,105],[184,100],[208,97],[226,101],[248,94],[272,88],[293,80],[320,76],[320,190],[0,190]]}],
+        "blocked":[{"points":[[0,164],[22,169],[37,181],[48,190],[0,190]]},{"points":[[280,178],[289,162],[302,151],[320,144],[320,190],[280,190]]}],
+        "occluders":[{"id":"foreground-left-wall","baselineY":189,"points":[[0,164],[22,169],[37,181],[48,190],[0,190]]},{"id":"foreground-right-wall","baselineY":189,"points":[[280,178],[289,162],[302,151],[320,144],[320,190],[280,190]]}]
+      }
+    },
+    "310":{
+      "mode":"world",
+      "sourceRefs":["rm310.sc:25"],
+      "review":"Painted street ground and Guild/magic doorway approaches. Original building masks deliberately not reused.",
+      "modern":{
+        "background":"/quest-lab/public/art/room-310.png",
+        "replaceWalkmesh":true,
+        "walkable":[{"points":[[0,128],[28,122],[60,125],[106,124],[141,125],[174,129],[192,126],[206,120],[220,117],[241,124],[262,122],[280,124],[301,130],[320,132],[320,190],[0,190]]}],
+        "blocked":[],"occluders":[]
+      }
+    },
+    "318":{"mode":"close-up","sourceRefs":["rm318.sc:38-74; no gEgo init; User canControl:0; doVerb returns311"],"review":"Notice board from the hero's viewpoint. Read notices and return; no world actor, shadow or free walking."},
+    "340":{"mode":"minigame","sourceRefs":["rm340.sc:186; game panels, hand, knife and scoring"],"review":"First-person throwing board, with native adapted throwing controls. No walking hero."},
+    "32":{"mode":"minigame","sourceRefs":["wizGame.sc:743; game board and spell-controlled racers"],"review":"Mage's Maze board; native adapted game controls. No walking hero."}
+  }
+}

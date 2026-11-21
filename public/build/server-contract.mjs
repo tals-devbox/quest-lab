@@ -30,6 +30,18 @@ function validateSave(s, c) {
     }
   }
   if (record2(s.flags) && Object.values(s.flags).some((v) => typeof v !== "boolean")) e.push("Invalid flag value.");
+  if (s.allocation !== void 0) {
+    const a = s.allocation, skills = ["strength", "agility", "vitality", "intelligence", "luck", "weaponUse", "parry", "dodge", "stealth", "climbing", "throwing", "pickLocks", "magic"];
+    if (!record2(a) || typeof a.open !== "boolean" || !record2(a.points) || !record2(a.costs)) e.push("Invalid character creation ledger.");
+    else {
+      for (const [k, n] of Object.entries(a.points)) {
+        const cost = a.costs[k];
+        if (!skills.includes(k) || !integer(n) || n % 5 || !integer(cost) || ![n, n + 10].includes(cost) || !record2(s.stats) || s.stats[k] < n) e.push("Invalid character allocation " + k + ".");
+      }
+      if (Object.keys(a.costs).some((k) => !Object.hasOwn(a.points, k))) e.push("Unknown allocation cost.");
+      if (a.open && record2(s.stats) && s.stats.unspent + Object.values(a.costs).reduce((n, v) => n + (Number.isFinite(v) ? v : 0), 0) !== 50) e.push("Character creation budget must total 50.");
+    }
+  }
   if (record2(s.flags) && record2(s.stats)) {
     const ordered = +!!s.flags.innMealOrdered + +!!s.flags.innDrinkOrdered, served = +!!s.flags.innMealReady + +!!s.flags.innDrinkReady;
     if (ordered > 1 || served > 1 || ordered && served) e.push("Conflicting inn serving state.");
@@ -170,6 +182,36 @@ function validateCampaign(c) {
   return e;
 }
 
+// src/scene-contract.ts
+function validateSceneContract(c, label = "scene") {
+  const errors = [];
+  if (!c || !["world", "close-up", "minigame", "cinematic"].includes(c.mode)) return [label + ": invalid presentation mode"];
+  if (c.sourceRefs !== void 0 && (!Array.isArray(c.sourceRefs) || c.sourceRefs.some((r) => typeof r !== "string"))) errors.push(label + ": invalid source references");
+  const g = c.modern;
+  if (!g) return errors;
+  if (typeof g.background !== "string" || !g.background.startsWith("/") || g.background.startsWith("//") || g.background.includes("..")) errors.push(label + ": invalid background binding");
+  for (const name of ["walkable", "blocked", "occluders"]) {
+    const regions = g[name];
+    if (regions === void 0) continue;
+    if (!Array.isArray(regions)) {
+      errors.push(label + ": invalid " + name);
+      continue;
+    }
+    for (const r of regions) {
+      if (!Array.isArray(r?.points) || r.points.length < 3 || r.points.length > 256 || r.points.some((p) => !Array.isArray(p) || p.length !== 2 || !Number.isFinite(p[0]) || !Number.isFinite(p[1]) || p[0] < 0 || p[0] > 320 || p[1] < 0 || p[1] > 190)) errors.push(label + ": invalid " + name + " polygon");
+      else if (Math.abs(r.points.reduce((area, p, i) => {
+        const q = r.points[(i + 1) % r.points.length];
+        return area + p[0] * q[1] - q[0] * p[1];
+      }, 0)) < 1) errors.push(label + ": empty " + name + " polygon");
+      if (name === "occluders" && (typeof r.id !== "string" || !Number.isFinite(r.baselineY) || r.baselineY < 0 || r.baselineY > 189)) errors.push(label + ": invalid occluder depth");
+    }
+  }
+  if (g.replaceWalkmesh && (!Array.isArray(g.walkable) || g.walkable.length === 0)) errors.push(label + ": replacement walkmesh needs a walkable region");
+  if (g.replaceWalkmesh && Array.isArray(g.walkable) && g.walkable.length > 1) errors.push(label + ": use one outer walkable polygon and blocked polygons for holes");
+  if (c.mode !== "world" && (g.walkable?.length || g.occluders?.length)) errors.push(label + ": non-world scenes cannot define world geometry");
+  return errors;
+}
+
 // src/content.ts
 function normalizedExits(exits) {
   return [...new Set(exits.map((e) => typeof e === "number" ? e : e?.to).filter(Number.isInteger))];
@@ -241,6 +283,7 @@ function validateContentDocument(doc, source, base) {
     if (r.entities !== void 0 && !Array.isArray(r.entities)) errors.push("Invalid room entities " + id);
     if (r.polygons !== void 0 && !Array.isArray(r.polygons)) errors.push("Invalid room polygons " + id);
     if (r.background !== void 0 && !localURL(r.background)) errors.push("Background must be a local asset URL " + id);
+    if (r.scene !== void 0) errors.push(...validateSceneContract(r.scene, "Room " + id));
   }
   for (const [id, r] of Object.entries(doc.overrides.quests || {})) {
     if (r.disabled) continue;

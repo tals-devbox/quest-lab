@@ -1,4 +1,5 @@
 import {validateCampaign,type Campaign} from './rules';
+import {validateSceneContract} from './scene-contract';
 export interface ContentDocument {revision:number;overrides:Record<string,Record<string,any>>}
 export function normalizedExits(exits:any[]):number[]{return [...new Set(exits.map(e=>typeof e==='number'?e:e?.to).filter(Number.isInteger))]}
 export function mergeCampaign(base:Campaign,source:any,content:ContentDocument):Campaign{
@@ -23,6 +24,7 @@ export function validateContentDocument(doc:ContentDocument,source:any,base:Camp
   if(r.entities!==undefined&&!Array.isArray(r.entities))errors.push('Invalid room entities '+id);
   if(r.polygons!==undefined&&!Array.isArray(r.polygons))errors.push('Invalid room polygons '+id);
   if(r.background!==undefined&&!localURL(r.background))errors.push('Background must be a local asset URL '+id);
+  if(r.scene!==undefined)errors.push(...validateSceneContract(r.scene,'Room '+id));
  }
  for(const [id,r]of Object.entries(doc.overrides.quests||{})){
   if(r.disabled)continue;const prior=base.rules.find(x=>x.id===id),merged={...prior,...r};

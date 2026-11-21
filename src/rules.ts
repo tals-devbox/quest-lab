@@ -10,6 +10,7 @@ export interface GameState {
   inventory:Record<string,number>; flags:Record<string,boolean>; quests:Record<string,string>;
   minutes:number; day:number; gold:number; silver:number; score:number; combat:CombatState|null;
   dead:boolean; won:boolean; journal:string[]; revision:number; seed:number; spells:string[];
+  allocation?:{open:boolean;points:Record<string,number>;costs:Record<string,number>};
   droppedItems?:{room:number;items:Record<string,number>};
   loot?:{id:string;name:string;silver:number;arena?:number};
   fallen?:{id:string;name:string};
@@ -50,7 +51,7 @@ export function createGame(heroName:string,heroClass:HeroClass='fighter'):GameSt
   const s:GameState={version:1,heroName:heroName.trim().slice(0,48)||'Hero',heroClass:cls,room:300,stats,
     inventory:{rations:5,leather:1,...(cls==='fighter'?{sword:1,shield:1}:{dagger:1}),...(cls==='thief'?{lockPick:1}:{})},
     flags:{},quests:{hero:'Explore Spielburg and learn who needs help.'},minutes:480,day:1,gold:4,silver:10,score:0,combat:null,dead:false,won:false,journal:['You arrive at Spielburg seeking adventure. Visit the Adventurer’s Guild to learn about the missing children and the brigands.'],revision:0,seed:1234567,
-    spells:cls==='magic-user'?['zapSpell']:[]};if(cls==='magic-user')s.stats['spell:zapSpell']=10;recalculate(s,true);return s;
+    allocation:{open:true,points:{},costs:{}},spells:cls==='magic-user'?['zapSpell']:[]};if(cls==='magic-user')s.stats['spell:zapSpell']=10;recalculate(s,true);return s;
 }
 export function meets(s:GameState,c?:Condition):boolean {
   if(!c)return true;
@@ -273,6 +274,19 @@ export function act(state:GameState,action:Action,campaign:Campaign,options:ActO
 function actInternal(state:GameState,action:Action,campaign:Campaign,options:ActOptions={}):ActionResult{
   const s=copy(state),events:string[]=[];s.revision++;
   if(s.dead)return {state:s,events:['Your adventure has ended. Restore a saved game.']};
+  if(s.allocation?.open&&!['allocate','unallocate','reset-allocation'].includes(action.type))s.allocation.open=false;
+  if(action.type==='finish-creation')return {state:s,events:[]};
+  if(action.type==='reset-allocation'){
+    if(!s.allocation?.open)return {state:s,events:['Character creation is already complete.']};
+    for(const [skill,points]of Object.entries(s.allocation.points)){s.stats[skill]-=points;s.stats.unspent+=s.allocation.costs[skill];}
+    s.allocation.points={};s.allocation.costs={};recalculate(s,true);return {state:s,events:['Character creation points reset.']};
+  }
+  if(action.type==='unallocate'){
+    const skill=action.target||'',ledger=s.allocation,points=ledger?.points[skill]||0;
+    if(!ledger?.open||points<5)return {state:s,events:['Only points assigned during character creation can be taken back.']};
+    const refund=points===5?ledger.costs[skill]:5;s.stats[skill]-=5;s.stats.unspent+=refund;ledger.points[skill]-=5;ledger.costs[skill]-=refund;recalculate(s,true);
+    return {state:s,events:[`Five points removed from ${skill}; ${refund} points returned.`]};
+  }
   if(action.type==='stand'){
     if(s.room!==301||action.target!=='bench'||!s.flags.innSeated)return {state:s,events:['You are already standing.']};
     if(s.flags.innMealOrdered||s.flags.innDrinkOrdered)return {state:s,events:['You should wait for Shema to bring you what you ordered.']};
@@ -387,9 +401,10 @@ function actInternal(state:GameState,action:Action,campaign:Campaign,options:Act
     time(s,1,events);return {state:s,events};
   }
   if(action.type==='allocate'){
-    const skill=action.target||'',amount=Math.floor(action.amount||5),cost=amount+(s.stats[skill]===0?10:0);
+    const skill=action.target||'',amount=Math.floor(action.amount??5),cost=amount+(s.stats[skill]===0?10:0);
     if(!['strength','agility','vitality','intelligence','luck','weaponUse','parry','dodge','stealth','climbing','throwing','pickLocks','magic'].includes(skill)||amount<=0||cost>s.stats.unspent||(s.stats[skill]===0&&amount<5))return {state:s,events:['Allocate within your remaining points. Learning an absent skill costs ten extra points and starts at five.']};
-    s.stats[skill]=clamp(s.stats[skill]+amount,0,100);s.stats.unspent-=cost;recalculate(s);
+    if(!Number.isFinite(amount)||amount%5||s.stats[skill]+amount>100)return {state:s,events:['Assign multiples of five, up to an ability of 100.']};
+    s.stats[skill]+=amount;s.stats.unspent-=cost;if(s.allocation?.open){s.allocation.points[skill]=(s.allocation.points[skill]||0)+amount;s.allocation.costs[skill]=(s.allocation.costs[skill]||0)+cost;}recalculate(s,s.allocation?.open===true);
     return {state:s,events:[`${amount} points assigned to ${skill}.`]};
   }
   if(action.type==='drink'||action.type==='eat'){
@@ -561,6 +576,13 @@ export function validateSave(s:any,c?:Campaign):string[]{
   if(record(s.inventory))for(const [k,v] of Object.entries(s.inventory)){if(!integer(v))e.push('Invalid item amount '+k+'.');if(c&&!c.items.some(item=>item.id===k))e.push('Saved item absent from this content revision: '+k+'.');}
   if(s.droppedItems!==undefined){const d=s.droppedItems;if(!record(d)||!integer(d.room)||d.room!==s.room||!record(d.items))e.push('Invalid dropped inventory.');else for(const [item,count]of Object.entries(d.items)){if(!integer(count)||count<1)e.push('Invalid dropped item amount '+item+'.');if(c&&!c.items.some(x=>x.id===item))e.push('Unknown dropped item '+item+'.');}}
   if(record(s.flags)&&Object.values(s.flags).some(v=>typeof v!=='boolean'))e.push('Invalid flag value.');
+  if(s.allocation!==undefined){
+    const a=s.allocation,skills=['strength','agility','vitality','intelligence','luck','weaponUse','parry','dodge','stealth','climbing','throwing','pickLocks','magic'];
+    if(!record(a)||typeof a.open!=='boolean'||!record(a.points)||!record(a.costs))e.push('Invalid character creation ledger.');
+    else{for(const [k,n]of Object.entries(a.points)){const cost=a.costs[k];if(!skills.includes(k)||!integer(n)||n%5||!integer(cost)||![n,n+10].includes(cost)||!record(s.stats)||s.stats[k]<n)e.push('Invalid character allocation '+k+'.');}
+    if(Object.keys(a.costs).some(k=>!Object.hasOwn(a.points,k)))e.push('Unknown allocation cost.');
+    if(a.open&&record(s.stats)&&s.stats.unspent+Object.values(a.costs).reduce((n:number,v:any)=>n+(Number.isFinite(v)?v:0),0)!==50)e.push('Character creation budget must total 50.');}
+  }
   if(record(s.flags)&&record(s.stats)){
     const ordered=+!!s.flags.innMealOrdered + +!!s.flags.innDrinkOrdered,served=+!!s.flags.innMealReady + +!!s.flags.innDrinkReady;
     if(ordered>1||served>1||ordered&&served)e.push('Conflicting inn serving state.');
