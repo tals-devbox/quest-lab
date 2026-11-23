@@ -64,6 +64,8 @@ class Author {
    using(var b=Mask(delegate(Bitmap a){if(n==1){Rect(a,195,70,15,115,1);Rect(a,164,30,80,60,1);}})) {Call(native,"ImportAreaMask",room,RoomAreaMaskType.WalkBehinds,b);b.Save("room"+n+"-foreground.png");}
    room.Script.Text="function room_Load() { Arrive(); }\n";room.Script.SaveToDisk(true);
    Call(native,"SaveRoom",room);Call(native,"UnloadRoom",room);
+   // Native SaveRoom may retain compiled bytecode. Force /compile to rebuild the .asc.
+   File.SetLastWriteTimeUtc(room.FileName,new DateTime(2000,1,1,0,0,0,DateTimeKind.Utc));
    Console.WriteLine((fresh?"created ":"edited ")+room.FileName);
  }
  [STAThread] static int Main(string[] args) {

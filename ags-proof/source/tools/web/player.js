@@ -6,11 +6,12 @@ function search(base,name,depth=0){if(depth>5)return null;try{for(const n of FS.
 function installSyncQueue(){const original=FS.syncfs.bind(FS);let busy=false,queue=[];FS.syncfs=(populate,callback)=>{queue.push({populate,callback});drain();};function drain(){if(busy||!queue.length)return;busy=true;const job=queue.shift();original(job.populate,e=>{busy=false;try{job.callback?.(e);}finally{drain();}});}}
 function sync(){return new Promise((resolve,reject)=>FS.syncfs(false,e=>e?reject(e):resolve()));}
 async function digest(bytes){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))).map(n=>n.toString(16).padStart(2,'0')).join('');}
-const inputs=[];
-function key(key){if(!['1','2','3','4','t','s','l','i'].includes(key))throw Error('Unsupported input');inputs.push('@'+key);canvas.focus();}
+const inputs=[];let pendingMode=null;const modes={'1':0,'2':1,'3':3,'4':2};
+function pumpInput(){if(inputPath&&inputs.length&&!FS.analyzePath(inputPath).exists)FS.writeFile(inputPath,inputs.shift()+'\n');}
+function key(key){if(!['1','2','3','4','t','s','l','i'].includes(key))throw Error('Unsupported input');if(key in modes){pendingMode=modes[key];canvas.style.pointerEvents='none';}inputs.push('@'+key);canvas.focus();pumpInput();}
 function poll(){try{
  if(!statePath){statePath=search('/home/web_user','proof-state.json');if(statePath)inputPath=statePath.replace('proof-state.json','proof-input.txt');}
- if(statePath){if(inputs.length&&!FS.analyzePath(inputPath).exists){FS.writeFile(inputPath,inputs.shift()+'\n');canvas.focus();}const text=FS.readFile(statePath,{encoding:'utf8'}).trim();const s=JSON.parse(text);if(text!==lastState){lastState=text;report('state',{state:s});}
+ if(statePath){pumpInput();const text=FS.readFile(statePath,{encoding:'utf8'}).trim();const s=JSON.parse(text);if(pendingMode!==null&&s.verb===pendingMode){pendingMode=null;canvas.style.pointerEvents='auto';}if(text!==lastState){lastState=text;report('state',{state:s});}
   if(saveWaiting&&s.serial>saveWaiting.serial){const waiter=saveWaiting;saveWaiting=null;sync().then(()=>report('saved',{serial:s.serial})).catch(e=>report('error',{message:'Save could not persist: '+e}));}
  }
  if(saveWaiting&&Date.now()-saveWaiting.started>10000){saveWaiting=null;report('error',{message:'Save timed out; no durable save confirmation.'});}
@@ -35,5 +36,5 @@ window.addEventListener('message',async e=>{if(e.source!==parent||e.origin!==loc
 var Module={noInitialRun:true,arguments:[],canvas:document.getElementById('canvas'),print:t=>console.log(t),printErr:t=>console.error(t),onAbort:e=>report('error',{message:'AGS stopped: '+e}),onRuntimeInitialized:async function(){try{
  installSyncQueue();FS.mkdirTree(root);FS.mount(IDBFS,{},root);await new Promise((resolve,reject)=>FS.syncfs(true,e=>e?reject(e):resolve()));
  for(const n of ['questlab-proof.ags','acsetup.cfg']){const r=await fetch(n);if(!r.ok)throw Error(n+' HTTP'+r.status);FS.writeFile('/'+n,new Uint8Array(await r.arrayBuffer()));}
- setInterval(poll,150);window.focus();canvas.focus();Module.callMain(['/questlab-proof.ags','--windowed']);
+ setInterval(poll,25);window.focus();canvas.focus();Module.callMain(['/questlab-proof.ags','--windowed']);
 }catch(e){report('error',{message:e.message});document.querySelector('#error').textContent=e.message;}}};

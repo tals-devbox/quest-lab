@@ -1,8 +1,10 @@
-# AGS proof 0.1.0
+# AGS proof 0.1.1
 
 23 November 2026 · Engine: official AGS 3.6.3.17. This is an original three-room test adventure, not a Quest for Glory port. The existing Quest Lab v0.5.2 is unchanged.
 
-**Decision: promising; full migration remains on hold until an actual Android-browser check passes.**
+**Decision: proceed with staged native AGS ports.** Tal reported acceptable Android playability on23November. This is user-reported playability, not an exhaustive phone save/offline certification. Full campaign migration remains unproven.
+
+Version0.1.1 fixes Tal's two reported defects: post-herb Talk reflects the completed quest; background, doorway and garden Look clicks preserve the hero's position and room. Six desktop Chromium regression checks passed through ordinary mouse/typed input, including post-reward revisit and save/reload (`evidence/regression-0.1.1.json`). Verb changes now wait for the native engine acknowledgement before accepting the next canvas tap.
 
 ## Observed results
 
@@ -18,11 +20,11 @@
 | Cold offline play | Stopped the local origin server, closed the game, launched a fresh tab, restored, completed the quest, saved offline, closed/reopened again and restored the offline-created state. Separately, the actual HTTPS GitHub Pages build passed fresh game launches with Chrome networking disabled, restore, quest completion, offline save and restore after closing the game again. Desktop browser evidence, not Android. |
 | Compatible content edit | Earlier save restored after adding the room/art changes. General save compatibility across future script/engine changes is not claimed. |
 | Layout | 360×640 portrait, 915×412 landscape and a reduced412×400 viewport kept game/Save controls visible without horizontal overflow. The reduced viewport is only a keyboard-layout proxy. Final412×640 screenshot is Chrome mobile emulation. |
-| Actual Android keyboard/storage/offline | **Pending.** No Android debug session was available to the agent. Automatic approval review blocked the attempted device query without a detailed reason. An access question was sent. |
+| Actual Android keyboard/storage/offline | Tal reports acceptable Android playability, with two defects fixed in0.1.1. Exhaustive durable-save/cold-offline phone steps remain unobserved by the agent. The earlier device query was automatically blocked. |
 
 ## Try it
 
-Desktop shortcut: **Quest Lab - AGS Proof**. Its underlying service passed cold-start and reuse checks; automatic approval review blocked opening the shortcut itself, without a detailed reason. The independent local service uses port4330. Public preview: [open the proof](https://tals-devbox.github.io/quest-lab/ags-proof/). Core offline files total8,789,512bytes before transport compression, approximately8.8MB.
+Desktop shortcut: **Quest Lab - AGS Proof**. Its underlying service passed cold-start and reuse checks; automatic approval review blocked opening the shortcut itself, without a detailed reason. The independent local service uses port4330. Public preview: [open the proof](https://tals-devbox.github.io/quest-lab/ags-proof/). Core offline files total8,794,503bytes before transport compression, approximately8.8MB.
 
 Save export produced a valid checksummed backup. End-to-end import automation was blocked by the Chrome extension's file-access permission; browser permissions were not changed. Save/load and offline durability checks used ordinary buttons and were completed independently of import.
 
@@ -52,6 +54,6 @@ Record the phone/browser and any failed step. This is the outstanding platform g
 
 Setup issue: the Windows package needed missing32-bit Microsoft C++ runtime libraries. An attempted system installation was automatically blocked; no system runtime installation was performed. Microsoft-signed libraries were instead extracted into this proof's vendor folder. AGS/source/Web downloads matched the official release checksums.
 
-Approximately50minutes of wall-clock work to the playable/verified technical checkpoint; package download timestamps start05:37UTC and verification extended through06:25UTC. Token/provider cost was not measured. The Android gate remains open rather than being substituted with emulation.
+Approximately50minutes of wall-clock work to the playable/verified technical checkpoint; package download timestamps start05:37UTC and verification extended through06:25UTC. Token/provider cost was not measured. Tal subsequently reported acceptable Android playability; exhaustive phone storage/offline certification remains separate.
 
-Sources and credits: [AGS release](https://github.com/adventuregamestudio/ags/releases/tag/v3.6.3.17), [source](https://github.com/adventuregamestudio/ags/tree/v3.6.3.17), bundled `web/licenses/`. Runtime, test-art, project and browser changes are separate from the Quest Lab reconstruction. Gauge supplied browser/storage research; Loom implemented and exercised the proof. Full migration has not begun.
+Sources and credits: [AGS release](https://github.com/adventuregamestudio/ags/releases/tag/v3.6.3.17), [source](https://github.com/adventuregamestudio/ags/tree/v3.6.3.17), bundled `web/licenses/`. Runtime, test-art, project and browser changes are separate from the Quest Lab reconstruction. Gauge supplied browser/storage research; Loom implemented and exercised the proof. Source-based pilot ports are being developed separately under ags-next. This sample does not establish original-game coverage.
