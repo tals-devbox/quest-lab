@@ -1,0 +1,139 @@
+{
+  "format": 1,
+  "version": "0.2.1",
+  "engine": "AGS3.6.3.17",
+  "build": "3c875e70c5731ebff60a",
+  "privateGameFiles": 0,
+  "files": [
+    {
+      "name": "index.html",
+      "bytes": 6684,
+      "sha256": "da0bccedeb1ab98d417d08a9848df4433647afd249375aff4e01c788ecb81fb4"
+    },
+    {
+      "name": "style.css",
+      "bytes": 9373,
+      "sha256": "8f8bc505e6de625eddf5e085875a6452eab3ff8df2f0da38666fdff1760d7942"
+    },
+    {
+      "name": "player.html",
+      "bytes": 825,
+      "sha256": "5d55cc30dfd841c3e21787e88780c1be179ee3452542aaea0de8decad53cf410"
+    },
+    {
+      "name": "storage.js",
+      "bytes": 6074,
+      "sha256": "ba61cae17ea99a5c1aba0d4ce2a94975a42d13b3a29c5f1ed0c3df6a194d26f3"
+    },
+    {
+      "name": "shell.js",
+      "bytes": 18400,
+      "sha256": "3cfd4b349884bc9ed385c48bba43706bfeca9ecc7742e57e8769f0ec0238585f"
+    },
+    {
+      "name": "player.js",
+      "bytes": 13444,
+      "sha256": "d9fe503c8d3b287696d1a5e715ef9b21d123949a9972309127eb6daaf6c2c229"
+    },
+    {
+      "name": "ags.js",
+      "bytes": 269703,
+      "sha256": "462fd0745ea9d70231e163cd34da6246d26ddadad11f907d20be808e76bbcd2e"
+    },
+    {
+      "name": "ags.wasm",
+      "bytes": 8422113,
+      "sha256": "d6e8fa93f1907bda5b6a0916c34d8242536baf5f7b888561fae4d679dfcdcb1d"
+    },
+    {
+      "name": "licenses/AGS-Copyright.txt",
+      "bytes": 2082,
+      "sha256": "14cedfe812c6ef0a6ec6226a9b1572bc56aad874d0508719ffce38aad81be531"
+    },
+    {
+      "name": "licenses/AGS-License.txt",
+      "bytes": 9320,
+      "sha256": "1d19d625ba031d117b8bf0143fdefcc22800e46c9ed9d8fc3993e3149ebf7dbd"
+    },
+    {
+      "name": "licenses/AllegroFont.txt",
+      "bytes": 3285,
+      "sha256": "a2f07e108c921cdb665f0c96e6005f39a67d0081aa1125abaa577b718339c5b0"
+    },
+    {
+      "name": "licenses/FTL.txt",
+      "bytes": 6912,
+      "sha256": "650737ec7589c35600de73b0db88dafb314f7e32e7e3cf38d0c87ceb1a7ed31b"
+    },
+    {
+      "name": "licenses/glm.txt",
+      "bytes": 2919,
+      "sha256": "48a257765ea19d81252ee44cba0f0eda525c6b2dcbf483cc39015dd76a6f0a20"
+    },
+    {
+      "name": "licenses/GNU GPL v2.1.txt",
+      "bytes": 26930,
+      "sha256": "3bbcf3184f9bba7fcb9d2ee1545e3dc3a970675125bb42cf4c3e4c32b506d44e"
+    },
+    {
+      "name": "licenses/irrKlang.txt",
+      "bytes": 3468,
+      "sha256": "ebf5df955f78b03d4faecd7cc62ff57eca1d3cc399a44544e9f25a1a4f09c0a9"
+    },
+    {
+      "name": "licenses/Magick.NET.txt",
+      "bytes": 605,
+      "sha256": "86ad155dfbbe9b3953a61559eea6e80e89884c36155ca18c7c4994e12c082e1f"
+    },
+    {
+      "name": "licenses/mojoAL.txt",
+      "bytes": 972,
+      "sha256": "3263580960e475d2808e84749a16cf2919b07449ab857997145d9bf5bfd12f61"
+    },
+    {
+      "name": "licenses/Newtonsoft JSON.NET.txt",
+      "bytes": 1098,
+      "sha256": "082b9d95b4f4461127a6773dabacf3257cba645b76d5b5888936f67ca017f31e"
+    },
+    {
+      "name": "licenses/Scintilla.txt",
+      "bytes": 888,
+      "sha256": "35ff6ebcfc1aca5f4cf9137425f7288916f5a50249ba3ad7b6bfa27158a8a019"
+    },
+    {
+      "name": "licenses/SDL_sound.txt",
+      "bytes": 913,
+      "sha256": "afa914cf461d3680449c169046bf8e9b6cafbe94c6b398a65ac4d93fc96fb08f"
+    },
+    {
+      "name": "licenses/SDL.txt",
+      "bytes": 902,
+      "sha256": "7fca59b190e27d42885bda1606a4013f8e1139a48dd5e267bd75aa416984d1bd"
+    },
+    {
+      "name": "licenses/Weifen Luo DockPanel Suite.txt",
+      "bytes": 1120,
+      "sha256": "6ec49d89636617f3dfc485ae2558ed21af8647e930dfff216f60b22cd041575f"
+    },
+    {
+      "name": "licenses/Xiph.txt",
+      "bytes": 1516,
+      "sha256": "25b4c566b1858bdedf7abb8389eef0846c1383fcef8a2a9bc157c4b52508c4fd"
+    },
+    {
+      "name": "downloads.json",
+      "bytes": 1751,
+      "sha256": "da69991789585cc671fe9bf3e030c05d7554696981f91f883ad64cf114346590"
+    },
+    {
+      "name": "delivery.js",
+      "bytes": 753,
+      "sha256": "a9de4bdafd319b0841ab7c518bee7ff92c98dbdfab51f4140e5b835f90450f77"
+    },
+    {
+      "name": "sw.js",
+      "bytes": 1715,
+      "sha256": "1a92e905bbf2ff040547e79539f728310a2906c90fd0fc0c83595c0820d9e51d"
+    }
+  ]
+}
