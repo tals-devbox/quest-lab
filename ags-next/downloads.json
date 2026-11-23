@@ -1,12 +1,25 @@
 {
   "format": 1,
-  "version": "0.2.1",
+  "version": "0.3.0",
+  "releaseVersion": "0.3.0",
+  "appVersion": "0.2.2",
   "engine": "AGS3.6.3.17",
   "private": true,
   "repository": "tals-devbox/quest-lab-downloads",
-  "tag": "ags-v0.2.1",
-  "releaseUrl": "https://github.com/tals-devbox/quest-lab-downloads/releases/tag/ags-v0.2.1",
+  "tag": "ags-v0.3.0",
+  "releaseUrl": "https://github.com/tals-devbox/quest-lab-downloads/releases/tag/ags-v0.3.0",
   "artifacts": [
+    {
+      "id": "questlab-ega",
+      "edition": "ega",
+      "title": "Quest Lab EGA 0.3 — Eight-room fruit-route preview",
+      "version": "0.3.0",
+      "file": "questlab-ega-0.3.0.qlags",
+      "bytes": 1741309,
+      "sha256": "6c137698ba144e1458c3153176586c827fdd245e99246e2d2c0dc282f8148ccd",
+      "gameSha256": "e03211805b780bee9023ff5f4571788987cc45ea847825f97e49f4ea3c49c222",
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.3.0/questlab-ega-0.3.0.qlags"
+    },
     {
       "id": "questlab-vga",
       "edition": "vga",
@@ -16,18 +29,7 @@
       "bytes": 1801091,
       "sha256": "26392d47f23a63c9aa796470b024343070f8f4ba8fc732a11dc35143f209858f",
       "gameSha256": "db859cac48e69bd5103bebf7639b8a866e2d04d1b2e0bb0c1e5b4c2bc7b34200",
-      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.2.1/questlab-vga-0.2.1.qlags"
-    },
-    {
-      "id": "questlab-ega",
-      "edition": "ega",
-      "title": "Quest Lab · EGA",
-      "version": "0.2.1",
-      "file": "questlab-ega-0.2.1.qlags",
-      "bytes": 1212661,
-      "sha256": "5cc1c146730e8f8757ee32af6870b364a9467b8f6b5405297c84262799be7e60",
-      "gameSha256": "e0bc0c2d286cecd9e69a4732e6e5c266e4e5f6312502c5237bf0233854c0238b",
-      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.2.1/questlab-ega-0.2.1.qlags"
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.3.0/questlab-vga-0.2.1.qlags"
     },
     {
       "id": "questlab-vga-combat",
@@ -38,7 +40,7 @@
       "bytes": 1801127,
       "sha256": "7f8d419dfcf8b8d5d7dbe623601cf22581531c09c4bd05b5c957cfce33241bfd",
       "gameSha256": "6790a47bf69554aee7ecf9297c320e871e5a300d6ca645b4490d13678280dc22",
-      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.2.1/questlab-vga-combat-0.2.1.qlags"
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.3.0/questlab-vga-combat-0.2.1.qlags"
     }
   ]
 }
