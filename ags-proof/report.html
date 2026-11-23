@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#142728"><title>AGS proof — observed results</title><style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#142728;color:#e8e4d3;font:16px/1.65 system-ui,sans-serif}main{max-width:1020px;margin:auto;padding:24px 22px 70px}a{color:#e5d398;overflow-wrap:anywhere}h1,h2,h3{color:#f4e4b9;line-height:1.2;scroll-margin-top:16px}h1{font-size:clamp(28px,5vw,43px)}h2{margin-top:38px;font-size:25px;border-top:1px solid #526763;padding-top:20px}h3{margin-top:24px}p,li{max-width:84ch}li{margin:7px 0}code{font:0.88em/1.5 Consolas,monospace;overflow-wrap:anywhere;background:#203536;border-radius:3px;padding:1px 3px}pre{max-width:100%;overflow:auto;background:#102022;padding:16px;border:1px solid #526763;border-radius:8px}pre code{padding:0;white-space:pre;background:none;overflow-wrap:normal}.table-scroll{overflow-x:auto;max-width:100%;border:1px solid #526763;border-radius:7px}table{border-collapse:collapse;width:100%}th,td{text-align:left;vertical-align:top;padding:10px 12px;border:1px solid #526763;font-size:14px}th{background:#25413e}nav{border:1px solid #526763;border-radius:8px;padding:14px 20px;background:#1c3433}nav ol{margin:4px 0;padding-left:21px}nav li{margin:3px 0;font-size:14px}.toplink{display:block;margin-bottom:20px;font-size:14px}.document-status{font-size:13px;color:#bfcec4}.print-note{font-size:12px;color:#bfcec4}@media(max-width:600px){main{padding:18px 14px 45px}body{font-size:15px}h2{font-size:22px}table{min-width:660px}th,td{font-size:13px}pre{font-size:12px}}@media print{body{background:white;color:black}a,h1,h2,h3{color:black}nav,.toplink{display:none}table{min-width:0}.table-scroll,pre{overflow:visible}pre{white-space:pre-wrap}th{background:#ddd}}
+</style></head><body><main><a class="toplink" href="./">← Quest Lab</a><p class="document-status">Implementation proposal · prepared for Tal · game release v0.5.2 remains the current checkpoint</p><details><summary>Jump to a section</summary><nav id="contents" aria-label="Plan contents"><ol></ol></nav></details><h1 id="ags-proof-0.1.0">AGS proof 0.1.0</h1>
+<p>23 November 2026 · Engine: official AGS 3.6.3.17. This is an original three-room test adventure, not a Quest for Glory port. The existing Quest Lab v0.5.2 is unchanged.</p>
+<p><strong>Decision: promising; full migration remains on hold until an actual Android-browser check passes.</strong></p>
+<h2 id="observed-results">Observed results</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Result and evidence limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create/edit rooms without manual editor work</td>
+<td>Native AGS rooms created through a version-pinned C# adapter; backgrounds, walking masks, hotspot masks, foreground baselines, actors and an item configured. Official AGS compiler builds the project.</td>
+</tr>
+<tr>
+<td>Add a connected room</td>
+<td>Added the garden, reached it through ordinary typed play after earning the reward, and inspected its sunstone.</td>
+</tr>
+<tr>
+<td>Undo</td>
+<td>Restored the prior native room resource, matched its SHA-256 and compiled; restored the edited version and compiled. <code>evidence/revision-check.json</code>.</td>
+</tr>
+<tr>
+<td>Mouse play</td>
+<td>Walk, herb pickup, door, automatic entry greeting, talk, item handover and reward passed in Chromium. No quest flags injected.</td>
+</tr>
+<tr>
+<td>Typed play</td>
+<td>Real AGS <code>Parser.ParseText</code> / <code>Parser.Said</code>: synonyms, unknown words, missing-item refusal, room transitions and the same quest passed.</td>
+</tr>
+<tr>
+<td>Touch</td>
+<td>Chrome desktop's emulated touch events picked up the herb, entered the hut and handed it over. This is not Android hardware.</td>
+</tr>
+<tr>
+<td>Persistent saves</td>
+<td>Closed every game tab, opened a fresh one, restored room, inventory, quest/input state. Two successive saves were serialized and confirmed; latest serial restored.</td>
+</tr>
+<tr>
+<td>Cold offline play</td>
+<td>Stopped the local origin server, closed the game, launched a fresh tab, restored, completed the quest, saved offline, closed/reopened again and restored the offline-created state. Separately, the actual HTTPS GitHub Pages build passed fresh game launches with Chrome networking disabled, restore, quest completion, offline save and restore after closing the game again. Desktop browser evidence, not Android.</td>
+</tr>
+<tr>
+<td>Compatible content edit</td>
+<td>Earlier save restored after adding the room/art changes. General save compatibility across future script/engine changes is not claimed.</td>
+</tr>
+<tr>
+<td>Layout</td>
+<td>360×640 portrait, 915×412 landscape and a reduced412×400 viewport kept game/Save controls visible without horizontal overflow. The reduced viewport is only a keyboard-layout proxy. Final412×640 screenshot is Chrome mobile emulation.</td>
+</tr>
+<tr>
+<td>Actual Android keyboard/storage/offline</td>
+<td><strong>Pending.</strong> No Android debug session was available to the agent. Automatic approval review blocked the attempted device query without a detailed reason. An access question was sent.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="try-it">Try it</h2>
+<p>Desktop shortcut: <strong>Quest Lab - AGS Proof</strong>. Its underlying service passed cold-start and reuse checks; automatic approval review blocked opening the shortcut itself, without a detailed reason. The independent local service uses port4330. Public preview: <a href="https://tals-devbox.github.io/quest-lab/ags-proof/">open the proof</a>. Core offline files total8,789,512bytes before transport compression, approximately8.8MB.</p>
+<p>Save export produced a valid checksummed backup. End-to-end import automation was blocked by the Chrome extension's file-access permission; browser permissions were not changed. Save/load and offline durability checks used ordinary buttons and were completed independently of import.</p>
+<p>Mouse/touch: pick up the small green herb, click the right-hand door, choose Talk and click Mira, then choose Use / give and click her. After the reward, the courtyard's lower-left garden gate opens.</p>
+<p>Typed: switch modes; try <code>get plant</code>, <code>open hut</code>, <code>talk mira</code>, <code>offer herb mira</code>, <code>enter garden</code>, <code>look sunstone</code>. Unknown words and missing prerequisites produce refusals. The browser field handles text entry; parsing and all story consequences run in AGS.</p>
+<p>The graphics are intentionally simple test art. This proof establishes an authoring/runtime route; it does not establish SCI grammar equivalence, original rules/combat, full campaigns or final visual quality.</p>
+<h2 id="short-android-acceptance-check">Short Android acceptance check</h2>
+<ol>
+<li>Open the public link in your normal Android browser and wait for <strong>Offline package ready</strong>. Switch to typed, type/edit a command using the phone keyboard, pick up the herb and enter the hut.</li>
+<li>Save and wait for <strong>Save confirmed on this browser</strong>. Close all proof tabs. Reopen the same URL/profile, press Load, and check the hut and herb (<code>inventory</code>). Rotate the phone; verify keyboard and controls remain usable.</li>
+<li>Turn on airplane mode after the package is cached. Close/reopen the same URL, Load, finish the handover, Save, close/reopen offline and Load again. Check that the garden is available. Also try point-and-click movement and doors.</li>
+</ol>
+<p>Record the phone/browser and any failed step. This is the outstanding platform gate, not a request to certify the reconstructed game.</p>
+<h2 id="implementation-and-reproduction">Implementation and reproduction</h2>
+<ul>
+<li>Native project: <code>game/Game.agf</code>, <code>room1–3.crm</code>, room scripts, shared GlobalScript, views, sprites and inventory. Both input styles use this one compiled game and runtime.</li>
+<li>This is an engine qualification sample: the example quest handlers are in GlobalScript and room entry callbacks in individual room scripts. It is not the finished reusable authoring library or final division of edition/room rules.</li>
+<li><code>tools/Author.cs</code> configures real engine/project objects, with reflection where AGS lacks a public room-authoring interface. It is pinned to3.6.3.17 and needs maintenance if internal APIs change. No unlicensed third-party bridge was used.</li>
+<li><code>tools/build.ps1 -Revision initial|edit</code> runs the adapter and the official <code>/compile</code> command. Failures prevent packaging. <code>tools/revision-check.ps1</code> exercises saved native revisions. Snapshots/vendor binaries are local and ignored by Git.</li>
+<li><code>tools/package-web.mjs</code> bundles the compiled game and official Web runtime. A proportional Web scaling setting avoids integer-scale black borders. The cache ID hashes the actual runtime, config, game and shell files.</li>
+<li>Browser shell: iframe-isolated native HTML text entry, normal action inputs through a bounded FIFO, explicit save confirmation after IndexedDB sync, save export/import integrity checks and scoped offline caching. It contains no quest rules or state mutation/debug endpoint.</li>
+<li>Persistent data is local to browser origin/profile. The prototype serializes filesystem sync requests; exports provide a backup. Abrupt shutdown before confirmation, cleared browser storage, simultaneous tabs and general cross-version save migration are not guaranteed.</li>
+</ul>
+<p>Setup issue: the Windows package needed missing32-bit Microsoft C++ runtime libraries. An attempted system installation was automatically blocked; no system runtime installation was performed. Microsoft-signed libraries were instead extracted into this proof's vendor folder. AGS/source/Web downloads matched the official release checksums.</p>
+<p>Approximately50minutes of wall-clock work to the playable/verified technical checkpoint; package download timestamps start05:37UTC and verification extended through06:25UTC. Token/provider cost was not measured. The Android gate remains open rather than being substituted with emulation.</p>
+<p>Sources and credits: <a href="https://github.com/adventuregamestudio/ags/releases/tag/v3.6.3.17">AGS release</a>, <a href="https://github.com/adventuregamestudio/ags/tree/v3.6.3.17">source</a>, bundled <code>web/licenses/</code>. Runtime, test-art, project and browser changes are separate from the Quest Lab reconstruction. Gauge supplied browser/storage research; Loom implemented and exercised the proof. Full migration has not begun.</p>
+<p class="print-note">This planning document is a separate artifact. Its publication does not imply that its implementation packets have run.</p></main><script>for(const [i,h]of [...document.querySelectorAll('h2')].entries()){h.id||='section-'+(i+1);const li=document.createElement('li'),a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;li.append(a);document.querySelector('#contents ol').append(li)}for(const t of document.querySelectorAll('table')){const w=document.createElement('div');w.className='table-scroll';t.before(w);w.append(t)}</script></body></html>
