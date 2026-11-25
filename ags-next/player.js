@@ -32,7 +32,7 @@ async function acquireSaveLock(key){
  setInterval(()=>{try{if(read()?.token!==token){report('lock-lost',{message:'Single-tab save lease was lost. This player has stopped to protect the save.'});location.replace('about:blank');return;}localStorage.setItem(leaseKey,JSON.stringify({token,expires:Date.now()+15000}));}catch{report('lock-lost',{message:'Single-tab save guard is unavailable. This player has stopped.'});location.replace('about:blank');}},3000);
  report('lock',{exclusive:false,mode:'lease-fallback',message:'Web Locks unavailable: single-tab fallback. Keep only one tab for this game open; full cross-tab exclusion is not guaranteed.'});
 }
-function allowedControl(text){return /^@ack:[0-9]{1,9}:[0-9]{1,3}$/.test(text)||/^@(walk|look|use|talk|dialog-close|begin|load)$/.test(text)||/^@(item|spell|topic|class|drop):[0-9]{1,5}$/.test(text)||/^@stat:[0-9]{2}:[0-3]$/.test(text)||(/^@name:[^\r\n\0]{0,40}$/.test(text));}
+function allowedControl(text){return /^@direction:[0-8]$/.test(text)||/^@playtest:[01]$/.test(text)||/^@consume:[0-9]{1,5}$/.test(text)||/^@ack:[0-9]{1,9}:[0-9]{1,3}$/.test(text)||/^@(walk|look|use|talk|dialog-close|begin|load)$/.test(text)||/^@(item|spell|topic|class|drop):[0-9]{1,5}$/.test(text)||/^@stat:[0-9]{2}:[0-3]$/.test(text)||(/^@name:[^\r\n\0]{0,40}$/.test(text));}
 function focusScene(){canvas.focus({preventScroll:true});}
 function enqueue(text){if(manifest?.edition!=='ega'&&/^@(walk|look|talk|use|item:|spell:|begin|load)/.test(text))focusScene();if(inputs.length>=64)throw Error('The input queue is full.');inputs.push(text);questNativePlayer.queueLength=inputs.length;const modes={'@walk':0,'@look':1,'@use':2,'@talk':3};if(text in modes)pendingMode=modes[text];if(text.startsWith('@item:'))pendingMode=5;if(text.startsWith('@spell:'))pendingMode=4;updatePointer();pump();}
 // Route one real pointer gesture through the native input FIFO. AGS clears SDL's
@@ -106,3 +106,6 @@ var Module={noInitialRun:true,arguments:[],canvas,print:t=>console.log(t),printE
  hasSave=!!slot();report('ready',{pack:manifest,bytes:record.bytes,hasSave});started=true;setInterval(poll,40);canvas.focus();
  Module.callMain(['/'+manifest.game,'--windowed','--background','--no-message-box','--localuserconf','--shared-data-dir',appdata,'--user-data-dir',saveDir]);
 }catch(e){document.querySelector('#error').textContent=e.message;fail(e);}}};
+
+const directionKeys={ArrowUp:1,ArrowRight:3,ArrowDown:5,ArrowLeft:7,Numpad8:1,Numpad9:2,Numpad6:3,Numpad3:4,Numpad2:5,Numpad1:6,Numpad4:7,Numpad7:8,Numpad5:0,Escape:0};
+window.addEventListener('keydown',e=>{if(!state?.playtest||state.creating||state.dead||e.ctrlKey||e.altKey||e.metaKey||e.isComposing||e.target.closest?.('input,textarea,select,[contenteditable=true]'))return;const d=directionKeys[e.code]??directionKeys[e.key];if(d===undefined)return;e.preventDefault();e.stopImmediatePropagation();if(!e.repeat&&!state.busy&&!saveWaiting)try{enqueue('@direction:'+d);}catch(error){fail(error);}},true);
