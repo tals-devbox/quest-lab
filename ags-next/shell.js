@@ -1,5 +1,5 @@
 'use strict';
-const CLIENT_BUILD='44aa502e0ba857c84f74';
+const CLIENT_BUILD='423bd7fbb0edb7259443';
 const q=s=>document.querySelector(s),frame=q('#game');
 const APP_VERSION='0.4.2',FEATURED_VERSION='0.5.1';
 const routeNames={home:'Home',play:'Play',library:'Library',help:'Help'};

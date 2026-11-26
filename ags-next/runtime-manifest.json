@@ -2,7 +2,7 @@
   "format": 1,
   "version": "0.4.2",
   "engine": "AGS3.6.3.17",
-  "build": "44aa502e0ba857c84f74",
+  "build": "423bd7fbb0edb7259443",
   "privateGameFiles": 0,
   "files": [
     {
@@ -28,7 +28,7 @@
     {
       "name": "shell.js",
       "bytes": 33269,
-      "sha256": "1d10a6db1ea32bd9a85feac9fc72ec5ed9dd8b689629d5fd623de5d477d9d33a"
+      "sha256": "df717e4055559eb434566433c0b7762f4b2b4bc81b6150c970fa1084981b0d47"
     },
     {
       "name": "player.js",
@@ -132,8 +132,8 @@
     },
     {
       "name": "sw.js",
-      "bytes": 1715,
-      "sha256": "9f9948aa17c3e6d376995670076a19a4fedef10f111cf73c3d443cc9fd7b868f"
+      "bytes": 3382,
+      "sha256": "a95b5912c01adb40081c63d2dde17415c813b621dcd5a88424c63521c75087e6"
     }
   ]
 }
