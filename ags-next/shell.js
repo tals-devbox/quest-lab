@@ -1,5 +1,5 @@
 'use strict';
-const CLIENT_BUILD='36245558daeb79778129';
+const CLIENT_BUILD='44aa502e0ba857c84f74';
 const q=s=>document.querySelector(s),frame=q('#game');
 const APP_VERSION='0.4.2',FEATURED_VERSION='0.5.1';
 const routeNames={home:'Home',play:'Play',library:'Library',help:'Help'};
@@ -129,7 +129,7 @@ function classicParser(){return typedDefault()&&finePointer.matches;}
 function syncParser(){const classic=classicParser();document.body.classList.toggle('classic-parser',classic);document.body.classList.toggle('command-open',classic&&parserOpen);const form=q('#command-form');if(classic){if(form.parentNode!==q('#stage'))q('#stage').append(form);form.hidden=!parserOpen||!state||!!state.creating||!!state.dead;}else{if(form.parentNode!==parserOrigin)parserOrigin.insertBefore(form,parserAfter);form.hidden=active?.manifest.edition!=='ega';}if(q('#parser-toggle'))q('#parser-toggle').textContent=classic?'Type a command':'Show command input';}
 function adventureKey(key,target,repeat){
  if(currentView!=='play'||!state||state.creating||busy()||repeat)return false;
- if(target?.closest?.('input,textarea,select,[contenteditable=true]')){if(target===q('#command')&&key==='Escape'){parserOpen=false;q('#command').value='';syncParser();send('focus');return true;}return false;}
+ if(target?.closest?.('input,textarea,select,[contenteditable=true]')){if(target===q('#command')&&key==='Enter'&&unread()&&!q('#command').value.trim()){parserOpen=false;syncParser();q('#next-message').click();return true;}if(target===q('#command')&&key==='Escape'){parserOpen=false;q('#command').value='';syncParser();send('focus');return true;}return false;}
  if(key==='Enter'&&unread()){q('#next-message').click();return true;}
  if(state.dead||!classicParser())return false;
  if(key==='Escape'){parserOpen=false;q('#command').value='';syncParser();send('focus');return true;}
