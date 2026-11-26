@@ -1,24 +1,24 @@
 {
   "format": 1,
-  "version": "0.4.1",
+  "version": "0.4.2",
   "engine": "AGS3.6.3.17",
-  "build": "37e8fad793df81d66592",
+  "build": "36245558daeb79778129",
   "privateGameFiles": 0,
   "files": [
     {
       "name": "index.html",
-      "bytes": 19385,
-      "sha256": "a9ec3e4dea4a1030c3ca99058899deadd4dd5a5e8bcdc5bc42a78acd8636b5b6"
+      "bytes": 19430,
+      "sha256": "f016988bb0a6c2eb1d5bd0db5ec48e5629fb98e5a72911261480d983625e4c43"
     },
     {
       "name": "style.css",
-      "bytes": 30759,
-      "sha256": "63549a8370fd74b9bb312299f071b51cf48d6b6d692bbec74aaab377e6d99934"
+      "bytes": 31608,
+      "sha256": "959e43c0704553c77a50228416a91529dfaf14ee5c5d4808b357d316d5993884"
     },
     {
       "name": "player.html",
-      "bytes": 825,
-      "sha256": "5d55cc30dfd841c3e21787e88780c1be179ee3452542aaea0de8decad53cf410"
+      "bytes": 867,
+      "sha256": "b9d55789964b4e05e45a641661faf165caab138e4f6692a7baae2d5f5c4d45dc"
     },
     {
       "name": "storage.js",
@@ -27,13 +27,13 @@
     },
     {
       "name": "shell.js",
-      "bytes": 30965,
-      "sha256": "a50b844cf9a45a7bcfd2f5ccd536fc983e4f1de085f427b26dc2f35b9d582031"
+      "bytes": 33118,
+      "sha256": "d6c562df5456516b7b3dd233b9ac8e7494faee34a5d006e8d72ec3da0d845143"
     },
     {
       "name": "player.js",
-      "bytes": 14862,
-      "sha256": "ae2c317b6678066582c51a1a8f17edc98d019b1a26bad8dc8b43265b19529b47"
+      "bytes": 15358,
+      "sha256": "999d935d70829f504d21cf9900812db093f0666366611b36d36a12d0f110e88f"
     },
     {
       "name": "ags.js",
@@ -123,7 +123,7 @@
     {
       "name": "downloads.json",
       "bytes": 1823,
-      "sha256": "86a4855803afa4153ad5db415cb0c00474c090dae45711e42344837df246d6af"
+      "sha256": "1a2d38697bc6f4f41e9499671f6ae1adea413b324869022d31d3114e30729bf9"
     },
     {
       "name": "delivery.js",
@@ -133,7 +133,7 @@
     {
       "name": "sw.js",
       "bytes": 1715,
-      "sha256": "d918018b6eb16ac76c6f4dc50067f76d2fc82abeb4878f6a9676c108dfc3c361"
+      "sha256": "026713902bceb7cb1ba1c62e10fda30b3430331bb0e2d542de0b0057538360b6"
     }
   ]
 }

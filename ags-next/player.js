@@ -111,3 +111,6 @@ var Module={noInitialRun:true,arguments:[],canvas,print:t=>engineLine(t),printEr
 
 const directionKeys={ArrowUp:1,ArrowRight:3,ArrowDown:5,ArrowLeft:7,Numpad8:1,Numpad9:2,Numpad6:3,Numpad3:4,Numpad2:5,Numpad1:6,Numpad4:7,Numpad7:8,Numpad5:0,Escape:0};
 window.addEventListener('keydown',e=>{if(!state?.playtest||state.creating||state.dead||e.ctrlKey||e.altKey||e.metaKey||e.isComposing||e.target.closest?.('input,textarea,select,[contenteditable=true]'))return;const d=directionKeys[e.code]??directionKeys[e.key];if(d===undefined)return;e.preventDefault();e.stopImmediatePropagation();if(!e.repeat&&!state.busy&&!saveWaiting)try{enqueue('@direction:'+d);}catch(error){fail(error);}},true);
+
+// Forward parser/ack keys from the native iframe; SDL must not consume them.
+window.addEventListener('keydown',e=>{if(manifest?.edition!=='ega'||!state||state.creating||state.busy||e.ctrlKey||e.altKey||e.metaKey||e.isComposing)return;if(e.target.closest?.('input,textarea,select,[contenteditable=true]'))return;if((!state.dead&&(e.key==='Escape'||e.key.length===1))||e.key==='Enter'){e.preventDefault();e.stopImmediatePropagation();report('adventure-key',{key:e.key,repeat:e.repeat});}},true);

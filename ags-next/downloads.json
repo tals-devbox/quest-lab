@@ -1,24 +1,24 @@
 {
   "format": 1,
-  "version": "0.5.0",
-  "releaseVersion": "0.5.0",
-  "appVersion": "0.4.1",
+  "version": "0.5.1",
+  "releaseVersion": "0.5.1",
+  "appVersion": "0.4.2",
   "engine": "AGS3.6.3.17",
   "private": true,
   "repository": "tals-devbox/quest-lab-downloads",
-  "tag": "ags-v0.5.0",
-  "releaseUrl": "https://github.com/tals-devbox/quest-lab-downloads/releases/tag/ags-v0.5.0",
+  "tag": "ags-v0.5.1",
+  "releaseUrl": "https://github.com/tals-devbox/quest-lab-downloads/releases/tag/ags-v0.5.1",
   "artifacts": [
     {
       "id": "questlab-ega",
       "edition": "ega",
       "title": "Quest Lab EGA · The Closest Shave",
-      "version": "0.5.0",
-      "file": "questlab-ega-0.5.0.qlags",
-      "bytes": 4032203,
-      "sha256": "27fac17040c151ee73b0384358db738ffc70d5c48a1ad7cc048597acc40fefb2",
-      "gameSha256": "73e0b3ab60ae184c186e9143b757e40d0ea3d73a8bcd56a4d782bf9d6fc19bc9",
-      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.5.0/questlab-ega-0.5.0.qlags"
+      "version": "0.5.1",
+      "file": "questlab-ega-0.5.1.qlags",
+      "bytes": 4041540,
+      "sha256": "e9457bea30e70552ecf46e674813e9bcfb73b961a1bbf7a12ce71012b47dd2dc",
+      "gameSha256": "1b7fe05edcbd866a9b218a0855da1c9c2533b6d890758ad99fe6fa99b50a069d",
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.5.1/questlab-ega-0.5.1.qlags"
     },
     {
       "id": "questlab-vga",
@@ -29,7 +29,7 @@
       "bytes": 1801091,
       "sha256": "26392d47f23a63c9aa796470b024343070f8f4ba8fc732a11dc35143f209858f",
       "gameSha256": "db859cac48e69bd5103bebf7639b8a866e2d04d1b2e0bb0c1e5b4c2bc7b34200",
-      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.5.0/questlab-vga-0.2.1.qlags"
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.5.1/questlab-vga-0.2.1.qlags"
     },
     {
       "id": "questlab-vga-combat",
@@ -40,7 +40,7 @@
       "bytes": 1801127,
       "sha256": "7f8d419dfcf8b8d5d7dbe623601cf22581531c09c4bd05b5c957cfce33241bfd",
       "gameSha256": "6790a47bf69554aee7ecf9297c320e871e5a300d6ca645b4490d13678280dc22",
-      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.5.0/questlab-vga-combat-0.2.1.qlags"
+      "url": "https://github.com/tals-devbox/quest-lab-downloads/releases/download/ags-v0.5.1/questlab-vga-combat-0.2.1.qlags"
     }
   ]
 }
