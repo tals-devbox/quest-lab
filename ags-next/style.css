@@ -98,3 +98,10 @@ body[data-page=quests] #quest-viewer{display:block;width:100%;height:max(400px,c
 }
 /* The rehearsal's native HERO HP/SP is authoritative; hide adventure vitals. */
 body.combat-rehearsal #vitals{display:none!important}
+/* Restart belongs beside fullscreen, outside the collapsed developer tools. */
+.play-heading #restart{font-size:11px;min-height:36px;padding:7px 10px;white-space:nowrap}
+.play-heading>div:first-child{flex:1;min-width:0}
+dialog#restart-confirmation{position:fixed;inset:0;margin:auto;width:min(440px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 16px 64px #0005;color:#24372c;z-index:1000}
+dialog#restart-confirmation::backdrop{background:#07120bc9}
+#adventure:is(:fullscreen,.fullscreen-fallback) .play-heading #restart{position:absolute;top:max(6px,env(safe-area-inset-top));right:calc(max(6px,env(safe-area-inset-right)) + 112px);min-height:36px;pointer-events:auto;color:#fff;background:#101810e8;border:1px solid #ffffff80;opacity:.6}
+#adventure:is(:fullscreen,.fullscreen-fallback) .play-heading #restart:hover,#adventure:is(:fullscreen,.fullscreen-fallback) .play-heading #restart:focus-visible{opacity:1}
