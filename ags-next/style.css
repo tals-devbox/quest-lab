@@ -96,3 +96,5 @@ body[data-page=quests] #quest-viewer{display:block;width:100%;height:max(400px,c
  body[data-page=quests] #quest-pack{width:100%;max-width:none;flex:0 0 auto}
  body[data-page=quests] #quest-viewer{height:max(400px,calc(100dvh - 230px))}
 }
+/* The rehearsal's native HERO HP/SP is authoritative; hide adventure vitals. */
+body.combat-rehearsal #vitals{display:none!important}

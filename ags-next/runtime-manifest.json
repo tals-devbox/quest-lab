@@ -1,19 +1,19 @@
 {
   "format": 1,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "engine": "AGS3.6.3.17",
-  "build": "7dc9197b1cf94d8c3f9a",
+  "build": "6b0b22b631495ff644d2",
   "privateGameFiles": 0,
   "files": [
     {
       "name": "index.html",
       "bytes": 20616,
-      "sha256": "f10d65fef2030b07bcd4e86366b777d69212d4f284fd76fbaed31abb15014d49"
+      "sha256": "3a59ee8907b92db11fda460001f77cacd4b623e5bd7c91ce8dcc374c8635c9f8"
     },
     {
       "name": "style.css",
-      "bytes": 44512,
-      "sha256": "efd1421c2d98485113c4f74673b4293a9b56b15f8d4a4c534ca3e047dcd3a020"
+      "bytes": 44647,
+      "sha256": "758dbbd9bf16b22d4ef78877e166d0be6f44a716cab067e879d0dd5dbd03237c"
     },
     {
       "name": "player.html",
@@ -27,8 +27,8 @@
     },
     {
       "name": "shell.js",
-      "bytes": 42450,
-      "sha256": "b3866526dd4c9a9bb65396c8fa087f367947c0a3e1a99434d75a317f51d0145f"
+      "bytes": 42673,
+      "sha256": "4370c3085d65e41c1f046d540a94e94987c86a26196a62653dee2195c6455087"
     },
     {
       "name": "player.js",
@@ -148,7 +148,7 @@
     {
       "name": "downloads.json",
       "bytes": 1816,
-      "sha256": "b9f2a49366a933f9915a174a8f3f0a9ba2430515e685aade4cab0acdcfe9972b"
+      "sha256": "648a2aaf1eb5fdb0ff85ce9d318bb15ac1e6b576150a23bbecf6161c69623d1c"
     },
     {
       "name": "delivery.js",
@@ -158,7 +158,7 @@
     {
       "name": "sw.js",
       "bytes": 3496,
-      "sha256": "f130acd1a0e5554cc4fecc13b9ed486980116bacb516d1545920a281bd895f33"
+      "sha256": "def9fd6ae0622cb581a04dd90009ed5e7dffe761d224a3b301af4b818756a4fe"
     }
   ]
 }
