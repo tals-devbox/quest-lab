@@ -121,3 +121,7 @@ body[data-page=play] .play-heading #restart{right:calc(max(12px,(100vw - 1200px)
 /* Leave room for the site header when focusing controls inside the quest iframe. */
 html:has(body[data-page=quests]){scroll-padding-top:128px}
 body[data-page=quests] #quest-viewer{scroll-margin-top:128px}
+@media (hover:hover) and (pointer:fine){
+ body.combat-live #combat-actions{display:none!important}
+ #combat-debug>summary{display:none}
+}
