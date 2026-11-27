@@ -32,7 +32,7 @@ async function acquireSaveLock(key){
  setInterval(()=>{try{if(read()?.token!==token){report('lock-lost',{message:'Single-tab save lease was lost. This player has stopped to protect the save.'});location.replace('about:blank');return;}localStorage.setItem(leaseKey,JSON.stringify({token,expires:Date.now()+15000}));}catch{report('lock-lost',{message:'Single-tab save guard is unavailable. This player has stopped.'});location.replace('about:blank');}},3000);
  report('lock',{exclusive:false,mode:'lease-fallback',message:'Web Locks unavailable: single-tab fallback. Keep only one tab for this game open; full cross-tab exclusion is not guaranteed.'});
 }
-function allowedControl(text){return /^@pause:[01]$/.test(text)||/^@direction:[0-8]$/.test(text)||/^@playtest:[01]$/.test(text)||/^@consume:[0-9]{1,5}$/.test(text)||/^@ack:[0-9]{1,9}:[0-9]{1,3}$/.test(text)||/^@(walk|look|use|talk|dialog-close|begin|load)$/.test(text)||/^@(item|spell|topic|class|drop):[0-9]{1,5}$/.test(text)||/^@stat:[0-9]{2}:[0-3]$/.test(text)||(/^@name:[^\r\n\0]{0,40}$/.test(text));}
+function allowedControl(text){return /^@combat-tune:[0-5]:[0-9]{1,3}$/.test(text)||/^@pause:[01]$/.test(text)||/^@direction:[0-8]$/.test(text)||/^@playtest:[01]$/.test(text)||/^@consume:[0-9]{1,5}$/.test(text)||/^@ack:[0-9]{1,9}:[0-9]{1,3}$/.test(text)||/^@(walk|look|use|talk|dialog-close|begin|load)$/.test(text)||/^@(item|spell|topic|class|drop):[0-9]{1,5}$/.test(text)||/^@stat:[0-9]{2}:[0-3]$/.test(text)||(/^@name:[^\r\n\0]{0,40}$/.test(text));}
 function focusScene(){canvas.focus({preventScroll:true});}
 function enqueue(text){if(manifest?.edition!=='ega'&&/^@(walk|look|talk|use|item:|spell:|begin|load)/.test(text))focusScene();if(inputs.length>=64)throw Error('The input queue is full.');inputs.push(text);questNativePlayer.queueLength=inputs.length;const modes={'@walk':0,'@look':1,'@use':2,'@talk':3};if(text in modes)pendingMode=modes[text];if(text.startsWith('@item:'))pendingMode=5;if(text.startsWith('@spell:'))pendingMode=4;updatePointer();pump();}
 // Route one real pointer gesture through the native input FIFO. AGS clears SDL's
@@ -90,7 +90,7 @@ async function importSave(raw){
 }
 window.addEventListener('message',async e=>{if(e.source!==parent||e.origin!==location.origin||!state||!e.data||typeof e.data.type!=='string')return;const d=e.data;try{
  if(d.type==='focus'){focusScene();}
- else if(d.type==='control'){if(typeof d.text!=='string'||!allowedControl(d.text))throw Error('Unsupported host control.');if(state.busy&&!d.text.startsWith('@ack:'))throw Error('The adventure is finishing its current action.');enqueue(d.text);}
+ else if(d.type==='control'){if(typeof d.text!=='string'||!allowedControl(d.text))throw Error('Unsupported host control.');if(d.text.startsWith('@combat-tune:')&&(state.room!==712||state.goblin?.tuning?.available!==1))throw Error('Fight tuning is unavailable in this scene or game build.');if(state.busy&&!d.text.startsWith('@ack:'))throw Error('The adventure is finishing its current action.');enqueue(d.text);}
  else if(d.type==='command'){if(typeof d.text!=='string'||!d.text.trim()||d.text.length>200||/[\r\n\0@]/.test(d.text))throw Error('Invalid adventure command.');if(state.creating||state.dead||state.busy)throw Error('Commands are unavailable right now.');enqueue(d.text);}
  else if(d.type==='save')await requestSave();
  else if(d.type==='export')await exportSave();else if(d.type==='import')await importSave(d.bytes);

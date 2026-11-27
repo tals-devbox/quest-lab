@@ -105,3 +105,19 @@ dialog#restart-confirmation{position:fixed;inset:0;margin:auto;width:min(440px,c
 dialog#restart-confirmation::backdrop{background:#07120bc9}
 #adventure:is(:fullscreen,.fullscreen-fallback) .play-heading #restart{position:absolute;top:max(6px,env(safe-area-inset-top));right:calc(max(6px,env(safe-area-inset-right)) + 112px);min-height:36px;pointer-events:auto;color:#fff;background:#101810e8;border:1px solid #ffffff80;opacity:.6}
 #adventure:is(:fullscreen,.fullscreen-fallback) .play-heading #restart:hover,#adventure:is(:fullscreen,.fullscreen-fallback) .play-heading #restart:focus-visible{opacity:1}
+#combat-debug{margin:10px 0;border:1px solid #8da399;border-radius:7px;background:#f3f4e9;color:#243a2d;font-size:12px;pointer-events:auto}
+#combat-debug summary{padding:9px 12px;cursor:pointer;font-weight:650;min-height:36px;list-style-position:inside}
+.combat-debug-body{padding:0 12px 12px;max-height:min(65dvh,470px);overflow:auto}
+.combat-debug-body p{font-size:11px;line-height:1.4;margin:7px 0 12px}
+.combat-debug-row{display:grid;grid-template-columns:1fr auto;gap:4px 10px;margin:12px 0}
+.combat-debug-row label{font-weight:650}.combat-debug-row output{font-variant-numeric:tabular-nums;color:#355c49}
+.combat-debug-row input{grid-column:1/-1;width:100%;min-height:30px;accent-color:#38664c;touch-action:pan-y}
+.combat-debug-body button{font-size:11px;min-height:36px;padding:6px 9px}
+#adventure:is(:fullscreen,.fullscreen-fallback) #combat-debug{position:absolute;z-index:40;right:6px;top:calc(var(--fs-top,0px) + 48px);width:min(300px,calc(100vw - 12px));margin:0;background:#f3f4e9f5;box-shadow:0 6px 30px #0005}
+/* Keep session controls below the sticky site header after canvas focus scrolls. */
+body[data-page=play] .play-heading #restart,body[data-page=play] .play-heading #fullscreen{position:fixed;top:72px;z-index:40;min-height:36px;background:#f4f2e6;border:1px solid #b5c2b4;box-shadow:0 2px 8px #0002}
+body[data-page=play] .play-heading #fullscreen{right:max(12px,calc((100vw - 1200px)/2))}
+body[data-page=play] .play-heading #restart{right:calc(max(12px,(100vw - 1200px)/2) + 116px)}
+/* Leave room for the site header when focusing controls inside the quest iframe. */
+html:has(body[data-page=quests]){scroll-padding-top:128px}
+body[data-page=quests] #quest-viewer{scroll-margin-top:128px}
