@@ -1,0 +1,66 @@
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#28261f;background:#f4f1e8;line-height:1.5;font-size:16px}*{box-sizing:border-box}body{margin:0}button,.button{font:inherit;cursor:pointer;border:0;border-radius:7px;background:#365a4c;color:white;padding:.68rem 1rem;font-weight:650;display:inline-block;text-decoration:none}button:hover,.button:hover{filter:brightness(.94)}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,.button:focus-within{outline:3px solid #c58532;outline-offset:3px}.secondary{background:#fff;color:#365a4c;border:1px solid #b6c4b8}.quiet{background:transparent;color:#365a4c;padding:.4rem}.top{height:68px;border-bottom:1px solid #dedbd1;display:flex;align-items:center;gap:1.5rem;padding:0 max(24px,calc((100vw - 1200px)/2));background:#faf9f4}.top a{color:#365a4c;font-weight:700;text-decoration:none;white-space:nowrap}.top span{color:#84877a;font-size:.72rem;letter-spacing:.15em;font-weight:700;flex:1}main{max-width:1200px;margin:auto;padding:48px 24px 70px}.intro{display:grid;grid-template-columns:1fr 290px;gap:40px;align-items:start;margin-bottom:42px}.eyebrow{font-size:.75rem;letter-spacing:.16em;font-weight:800;color:#a66f36}h1{font-family:Georgia,serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.1;max-width:650px;margin:.35rem 0 1rem;font-weight:500}h2,h3{line-height:1.2}h2{font-family:Georgia,serif;font-size:1.8rem;font-weight:500;margin:0 0 .5rem}.intro p{color:#62655a;max-width:600px}.source,.panel{background:#fff;border:1px solid #e1e0d7;border-radius:10px;padding:20px}.source p{font-size:.9rem;margin:.4rem 0 1rem}.source small{display:block;color:#74786d;margin-top:.7rem}.source .button{font-size:.88rem}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:30px 0 16px}.muted{color:#71766b}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.card{display:block;text-align:left;width:100%;background:#fff;color:#292b25;border:1px solid #e1e0d7;padding:22px;min-height:150px}.card:hover{border-color:#7b9a87}.card h3{font-family:Georgia,serif;font-size:1.35rem;font-weight:500;margin:12px 0 8px}.card p{color:#686d61;font-weight:400;margin:0}.tag{display:inline-block;background:#e9f0e8;color:#3f654e;border-radius:30px;padding:3px 9px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.flow{display:grid;gap:8px}.step{display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:12px;width:100%;text-align:left;color:#292b25;background:white;border:1px solid #e1e0d7;padding:14px}.step .number{border-radius:50%;height:34px;width:34px;display:grid;place-items:center;background:#edf1e9;color:#41624c}.step small{display:block;color:#777b70;font-weight:400}.step .arrow{font-size:1.2rem;color:#62806d}.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px}.details{display:grid;gap:14px}.detail-block h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:#7b8074;margin:0 0 8px}.detail-block ul{margin:0;padding-left:1.2rem}.detail-block li{margin:.3rem 0;overflow-wrap:anywhere}.detail-block p{white-space:pre-wrap;overflow-wrap:anywhere}.detail-block code{background:#f0f2eb;padding:2px 5px;border-radius:3px;white-space:pre-wrap}.note{border-top:1px solid #e4e5dd;padding:15px 0}.note p{white-space:pre-wrap;overflow-wrap:anywhere}.note small{color:#74786c}.warning{color:#88551b;font-weight:700}.note-actions{display:flex;gap:8px}.note-actions button{padding:.4rem .6rem;font-size:.85rem}.note-review h3{margin:.8rem 0}.comment-text{white-space:pre-wrap;overflow-wrap:anywhere}.note-review pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f5ef;padding:12px;border-radius:6px}.note-review summary{cursor:pointer;color:#365a4c;font-weight:650}.note-review .note-actions{margin-top:16px}.notes-tools{border-top:1px solid #d9ddd2;margin-top:55px;padding-top:24px;display:flex;justify-content:space-between;gap:20px}.notes-tools h2{font-size:1.3rem}.notes-tools p{color:#6f7468;margin:0}.actions{display:flex;align-items:start;gap:8px;flex-wrap:wrap}textarea{font:inherit;border:1px solid #bfc7ba;border-radius:6px;width:100%;min-height:110px;padding:10px;resize:vertical}label.field{display:block;font-weight:700;margin:18px 0 8px}#crumbs{margin-bottom:20px;color:#6f756b}#crumbs button{padding:0;background:none;color:#365a4c;text-decoration:underline;font-weight:500}#message:not(:empty){padding:12px;margin:10px 0;background:#fbf0d9;border-radius:6px}footer{border-top:1px solid #dedbd1;padding:24px max(24px,calc((100vw - 1200px)/2));font-size:.8rem;color:#70766a}footer span{float:right}@media(max-width:700px){main{padding:30px 18px}.intro,.layout{grid-template-columns:1fr;gap:20px}.intro{margin-bottom:30px}.top{padding:0 18px;gap:6px;font-size:.85rem}.top span{display:none}.top button:first-of-type{margin-left:auto}.notes-tools{display:block}.actions{margin-top:15px}footer span{float:none;display:block;margin-top:5px}}
+:root .export-panel{margin-top:18px}.export-panel h2{font-size:1.3rem}.export-panel p{margin:.4rem 0 1rem;color:#62655a}.export-panel label{display:block;font-weight:650;margin-bottom:.4rem}.export-panel textarea{display:block;margin-bottom:.7rem;font-family:ui-monospace,Consolas,monospace;font-size:.85rem}.export-panel #copy-status{margin-left:.7rem;color:#62655a}
+:root #quest-search{display:block;width:min(100%,420px);min-height:44px;padding:9px 12px;border:1px solid #bfc7ba;border-radius:6px;background:#fff;font:inherit}:root label[for=quest-search]{display:block;margin:18px 0 6px;font-weight:650}
+:root .paste-review{margin-top:18px;border-top:1px solid #d9ddd2;padding-top:12px}:root .paste-review summary{cursor:pointer;color:#365a4c;font-weight:650}:root .paste-review label{display:block;margin:12px 0 6px;font-weight:650}:root .paste-review textarea{display:block;margin-bottom:8px;font-family:ui-monospace,Consolas,monospace;font-size:.85rem}:root .paste-review #paste-status{display:inline-block;margin-left:8px;color:#62655a}
+
+/* Compact explorer chrome so the quest cards start near the top of its embedded viewport. */
+.top{height:48px;gap:.9rem;padding:0 max(18px,calc((100vw - 1200px)/2))}
+main{padding:16px 24px 36px}
+.intro{grid-template-columns:minmax(0,1fr) 250px;gap:24px;align-items:start;margin-bottom:14px}
+.intro h1{font-size:1.5rem;line-height:1.15;max-width:none;margin:.1rem 0 .4rem}
+.intro p{font-size:.86rem;line-height:1.4;margin:0 0 .5rem}
+.intro label[for=quest-search]{margin:8px 0 4px}
+:root #quest-search{width:min(100%,420px);min-height:38px;padding:7px 10px}
+.source{padding:12px}
+.source p{font-size:.83rem;line-height:1.35;margin:.25rem 0 .5rem}
+.source small{margin-top:.35rem}
+.section-head{margin:16px 0 10px}
+.grid{gap:12px}
+.card{min-height:120px;padding:18px}
+#crumbs{margin-bottom:8px}
+@media(max-width:700px){
+ .top{height:48px;padding:0 14px;gap:5px;font-size:.8rem}
+ .top span{display:none}
+ .top button:first-of-type{margin-left:auto}
+ main{padding:14px 14px 30px}
+ .intro,.layout{grid-template-columns:minmax(0,1fr);gap:12px}
+ .intro{margin-bottom:14px}
+ .intro h1{font-size:1.4rem}
+ .source{padding:12px}
+ .section-head{margin:16px 0 10px}
+}
+
+/* A compact explorer header when the Quest Lab shell supplies the game and data source. */
+html.embedded .top{height:40px;gap:.45rem;padding:0 12px}
+html.embedded .top span{display:none}
+html.embedded .top a{font-size:.82rem}
+html.embedded .top button{min-height:30px;padding:.2rem .45rem;font-size:.78rem}
+html.embedded main{padding:8px 14px 24px}
+html.embedded .intro{display:block;margin:0 0 8px}
+html.embedded .intro>div:first-child{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);grid-template-rows:auto auto;align-items:center;column-gap:12px;row-gap:0}
+html.embedded .intro h1{grid-column:1;grid-row:1;font-size:1.25rem;line-height:1.15;margin:0}
+html.embedded .intro p{grid-column:2;grid-row:1;font-size:.78rem;line-height:1.25;margin:0;max-width:none;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+html.embedded .intro label[for=quest-search]{grid-column:1;grid-row:2;margin:0;font-size:.78rem;line-height:1.2}
+html.embedded #quest-search{grid-column:2;grid-row:2;width:100%;min-height:34px;padding:5px 8px}
+html.embedded .source{display:none}
+html.embedded #message:not(:empty){padding:6px 8px;margin:2px 0;line-height:1.3}
+html.embedded #crumbs{margin:0 0 5px;font-size:.78rem}
+html.embedded .section-head{display:block;margin:8px 0}
+html.embedded .section-head>div{min-width:0}
+html.embedded .section-head h2{font-size:1.25rem;margin:0}
+html.embedded .section-head p{font-size:.74rem;line-height:1.25;margin:2px 0 0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+html.embedded .grid{gap:10px}
+html.embedded .card{min-height:100px;padding:14px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+html.embedded .card h3{order:-1;font-size:1.1rem;margin:0}
+html.embedded .card .tag{font-size:.72rem;line-height:1.3;font-weight:500;letter-spacing:0;text-transform:none;border-radius:5px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+@media(max-width:700px){
+ html.embedded .top{height:42px;padding:0 10px;gap:3px;font-size:.76rem}
+ html.embedded .top button{padding:.18rem .3rem;font-size:.72rem}
+ html.embedded main{padding:8px 10px 20px}
+ html.embedded .intro>div:first-child{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;row-gap:2px}
+ html.embedded .intro h1,html.embedded .intro p,html.embedded .intro label[for=quest-search],html.embedded #quest-search{grid-column:1;grid-row:auto}
+ html.embedded .intro h1{font-size:1.18rem}
+ html.embedded .intro p{font-size:.76rem}
+ html.embedded #quest-search{max-width:none}
+ html.embedded .section-head h2{font-size:1.2rem}
+}

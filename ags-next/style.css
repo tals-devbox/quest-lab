@@ -17,3 +17,82 @@ button[aria-pressed=true]{background:#dce5ce;border-color:#889d77;color:var(--fo
 .classic-parser #stage{position:relative}.classic-parser #command-form{position:absolute;bottom:8px;left:8px;right:8px;z-index:12;display:flex;margin:0;background:#fffbed;border:2px solid #28523f;border-radius:4px;padding:9px;box-shadow:0 3px 14px #0008}.classic-parser #command-form[hidden]{display:none!important}.classic-parser #command-form input{flex:1;min-width:0;min-height:40px;font:16px ui-monospace,monospace;color:#162d23;background:#fffbed}.classic-parser.command-open #dialogue{display:none!important}.classic-parser #command-form button{min-width:60px}#game{cursor:default!important}#inventory{min-height:44px}.classic-parser .play-controls:before{content:'Type a command · Enter closes messages';font-size:11px;color:#3a5947}
 
 .classic-parser #message{display:none}
+
+/* Native adventure full screen and its mobile/browser fallback. */
+#command-form{flex-wrap:wrap}#command-status{flex:0 0 100%;font-size:11px;line-height:1.35;color:var(--forest);margin:0}#command-status[hidden]{display:none!important}
+.classic-parser #command-form{flex-wrap:wrap}.classic-parser #command-form #command-status{padding:1px 3px}.classic-parser.command-open #dialogue:not([hidden]){display:block!important;top:8px;bottom:auto;max-height:48%}.classic-parser.command-open #dialogue[hidden]{display:none!important}
+#adventure:fullscreen,#adventure.fullscreen-fallback{position:fixed;inset:0;z-index:1000;width:100vw;height:100dvh;max-height:100dvh;margin:0;padding:8px;background:#0b1711;color:#e9eddd;display:grid;grid-template-rows:auto minmax(0,1fr);gap:7px;overflow:hidden}
+body.fullscreen-fallback{overflow:hidden}#adventure:fullscreen .play-heading,#adventure.fullscreen-fallback .play-heading{min-height:42px;margin:0;align-items:center}.play-heading #fullscreen{min-width:104px;white-space:nowrap}
+#adventure:fullscreen .play-heading h2,#adventure.fullscreen-fallback .play-heading h2{color:#f3f1e3;font-size:16px}#adventure:fullscreen .play-heading .eyebrow,#adventure.fullscreen-fallback .play-heading .eyebrow{display:none}#adventure:fullscreen .play-meta p,#adventure.fullscreen-fallback .play-meta p{font-size:9px;color:#d0d9c5}#adventure:fullscreen #completion-note,#adventure.fullscreen-fallback #completion-note{font-size:9px;color:#d0d9c5}
+#adventure:fullscreen .play-layout,#adventure.fullscreen-fallback .play-layout{height:100%;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:8px;overflow:hidden}
+#adventure:fullscreen .play-column,#adventure.fullscreen-fallback .play-column{min-width:0;min-height:0;height:100%;display:grid;grid-template-columns:minmax(0,1fr) 230px;align-items:center;gap:12px}
+#adventure:fullscreen #stage,#adventure.fullscreen-fallback #stage{width:min(100%,calc((100dvh - 84px)*1.333333));max-height:calc(100dvh - 84px);margin:0 auto;box-shadow:0 0 0 3px #35493a,0 10px 28px #0007}
+#adventure:fullscreen .play-controls,#adventure.fullscreen-fallback .play-controls{width:100%;max-height:100%;min-height:0;overflow:auto;display:flex;gap:6px;padding:9px;background:#e8eadc;color:var(--ink)}body.creating #adventure:fullscreen .play-controls,body.creating #adventure.fullscreen-fallback .play-controls{display:none}
+#adventure:fullscreen #verbs button,#adventure.fullscreen-fallback #verbs button{min-height:38px;font-size:11px}#adventure:fullscreen #movement button,#adventure.fullscreen-fallback #movement button{min-height:38px}#adventure:fullscreen #storage-status,#adventure.fullscreen-fallback #storage-status{font-size:10px}
+#adventure:fullscreen .play-layout:has(#side-column>section:not([hidden])),#adventure.fullscreen-fallback .play-layout:has(#side-column>section:not([hidden])){grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:minmax(0,1fr)}
+#adventure:fullscreen .play-layout:has(#side-column>section:not([hidden])) .play-column,#adventure.fullscreen-fallback .play-layout:has(#side-column>section:not([hidden])) .play-column{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-content:center}
+#adventure:fullscreen #side-column,#adventure.fullscreen-fallback #side-column{min-width:0;max-height:100%;overflow:auto}#adventure:fullscreen #creation,#adventure.fullscreen-fallback #creation,#adventure:fullscreen #bag,#adventure.fullscreen-fallback #bag{max-height:100%;overflow:auto;padding:12px}
+#adventure:fullscreen #dialogue,#adventure.fullscreen-fallback #dialogue{z-index:10;font-size:clamp(13px,1.4vw,18px);padding:clamp(12px,2vw,24px)}#adventure:fullscreen #command-form,#adventure.fullscreen-fallback #command-form{z-index:12}
+@media(max-width:700px){
+ #adventure:fullscreen,#adventure.fullscreen-fallback{padding:5px;gap:5px;grid-template-rows:auto minmax(0,1fr)}
+ #adventure:fullscreen .play-heading,#adventure.fullscreen-fallback .play-heading{min-height:38px}#adventure:fullscreen .play-heading h2,#adventure.fullscreen-fallback .play-heading h2{font-size:14px}
+ #adventure:fullscreen .play-layout,#adventure.fullscreen-fallback .play-layout{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr) auto;overflow:auto;align-content:start}
+ #adventure:fullscreen .play-column,#adventure.fullscreen-fallback .play-column{height:auto;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:6px;align-content:start}
+ #adventure:fullscreen #stage,#adventure.fullscreen-fallback #stage{width:min(100%,calc((100dvh - 250px)*1.333333));max-height:calc(100dvh - 250px);min-width:0}
+ #adventure:fullscreen .play-controls,#adventure.fullscreen-fallback .play-controls{max-height:none;overflow:visible;padding:7px;gap:5px}
+ #adventure:fullscreen .play-layout:has(#side-column>section:not([hidden])),#adventure.fullscreen-fallback .play-layout:has(#side-column>section:not([hidden])){grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr) auto auto}
+ #adventure:fullscreen .play-layout:has(#side-column>section:not([hidden])) .play-column,#adventure.fullscreen-fallback .play-layout:has(#side-column>section:not([hidden])) .play-column{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}
+ #adventure:fullscreen #side-column,#adventure.fullscreen-fallback #side-column{max-height:none;overflow:visible}
+}
+@media(max-width:700px) and (orientation:landscape){
+ #adventure:fullscreen .play-layout,#adventure.fullscreen-fallback .play-layout{grid-template-columns:minmax(0,1fr) 220px!important;grid-template-rows:minmax(0,1fr)}
+ #adventure:fullscreen .play-column,#adventure.fullscreen-fallback .play-column{height:100%;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}
+ #adventure:fullscreen #stage,#adventure.fullscreen-fallback #stage{width:min(100%,calc((100dvh - 72px)*1.333333));max-height:calc(100dvh - 72px)}
+ #adventure:fullscreen .play-layout:has(#side-column>section:not([hidden])),#adventure.fullscreen-fallback .play-layout:has(#side-column>section:not([hidden])){grid-template-columns:minmax(0,1fr) 220px!important;grid-template-rows:minmax(0,1fr)}
+ #adventure:fullscreen .play-layout:has(#side-column>section:not([hidden])) .play-column,#adventure.fullscreen-fallback .play-layout:has(#side-column>section:not([hidden])) .play-column{grid-template-rows:minmax(0,1fr) auto}
+}
+
+#quest-viewer{width:100%;height:max(680px,80dvh);border:1px solid var(--border,#c4bba8);border-radius:12px;background:#f7f4ed}#quest-pack{max-width:100%}body[data-page=quests] .view{max-width:1500px}
+
+/* Fullscreen scene: controls float over the fitted 4:3 image, never beside it. */
+#adventure:is(:fullscreen,.fullscreen-fallback){--fs-width:min(100vw,133.333333dvh);--fs-height:calc(var(--fs-width)*.75);--fs-left:calc((100vw - var(--fs-width))/2);--fs-top:calc((100dvh - var(--fs-height))/2);position:fixed;inset:0;z-index:1000;width:100vw;height:100dvh;max-height:100dvh;margin:0;padding:0;display:block;overflow:hidden;background:#000}
+#adventure:is(:fullscreen,.fullscreen-fallback) .play-heading{position:absolute;inset:0;z-index:30;display:block;min-height:0;margin:0;padding:0;pointer-events:none}
+#adventure:is(:fullscreen,.fullscreen-fallback) .play-heading>div{display:none}
+#adventure:is(:fullscreen,.fullscreen-fallback) #fullscreen{position:absolute;top:max(6px,env(safe-area-inset-top));right:max(6px,env(safe-area-inset-right));min-width:0;min-height:36px;padding:7px 10px;color:#fff;background:#101810c9;border:1px solid #ffffff80;opacity:.35;pointer-events:auto}
+#adventure:is(:fullscreen,.fullscreen-fallback) #fullscreen:hover,#adventure:is(:fullscreen,.fullscreen-fallback) #fullscreen:focus-visible{opacity:1}
+#adventure:is(:fullscreen,.fullscreen-fallback) .play-layout,#adventure:is(:fullscreen,.fullscreen-fallback) .play-layout:has(#side-column>section:not([hidden])){position:absolute;inset:0;display:block!important;width:100%;height:100%;min-height:0;overflow:hidden}
+#adventure:is(:fullscreen,.fullscreen-fallback) .play-column,#adventure:is(:fullscreen,.fullscreen-fallback) .play-layout:has(#side-column>section:not([hidden])) .play-column{display:contents!important}
+#adventure:is(:fullscreen,.fullscreen-fallback) #stage{position:absolute;left:var(--fs-left);top:var(--fs-top);width:var(--fs-width)!important;height:var(--fs-height);max-height:none;min-width:0;margin:0;border:0;border-radius:0;box-shadow:none;overflow:hidden}
+#adventure:is(:fullscreen,.fullscreen-fallback) .play-controls{display:contents!important}
+#adventure:is(:fullscreen,.fullscreen-fallback) .play-controls:before,#adventure:is(:fullscreen,.fullscreen-fallback) #verbs,#adventure:is(:fullscreen,.fullscreen-fallback) .save-row,#adventure:is(:fullscreen,.fullscreen-fallback) .play-help-link{display:none!important}
+#adventure:is(:fullscreen,.fullscreen-fallback) #vitals{position:absolute;z-index:12;top:calc(var(--fs-top) + 6px);left:calc(var(--fs-left) + 6px);max-width:calc(var(--fs-width) - 110px);margin:0;padding:3px 6px;border-radius:3px;background:#101810b8;color:#fff;font-size:10px;line-height:1.3;pointer-events:none}
+#adventure:is(:fullscreen,.fullscreen-fallback) #command-form:not([hidden]){position:absolute;z-index:20;left:calc(var(--fs-left) + 8px);bottom:calc(var(--fs-top) + 8px);width:calc(var(--fs-width) - 16px);right:auto;display:flex;margin:0;padding:6px;background:#fffbed;border:2px solid #28523f;border-radius:4px}
+#adventure:is(:fullscreen,.fullscreen-fallback) #stage #command-form:not([hidden]){left:8px;right:8px;bottom:8px;width:auto}
+#adventure:is(:fullscreen,.fullscreen-fallback) #command-form[hidden]{display:none!important}
+#adventure:is(:fullscreen,.fullscreen-fallback) #combat-actions:not([hidden]),#adventure:is(:fullscreen,.fullscreen-fallback) #movement:not([hidden]){position:absolute;z-index:14;left:50%;bottom:calc(var(--fs-top) + 6px);transform:translateX(-50%);width:min(calc(var(--fs-width) - 12px),420px);max-width:none;margin:0;padding:4px;gap:3px;background:#17221edc;border-radius:5px}
+#adventure:is(:fullscreen,.fullscreen-fallback) #combat-actions:not([hidden]){display:flex;justify-content:center;flex-wrap:wrap}
+#adventure:is(:fullscreen,.fullscreen-fallback) #combat-actions button,#adventure:is(:fullscreen,.fullscreen-fallback) #movement button{min-height:36px;padding:5px 8px;font-size:11px}
+#adventure:is(:fullscreen,.fullscreen-fallback):has(#combat-actions:not([hidden])) #movement:not([hidden]){bottom:calc(var(--fs-top) + 52px)}
+#adventure:is(:fullscreen,.fullscreen-fallback):has(#command-form:not([hidden])) #movement,#adventure:is(:fullscreen,.fullscreen-fallback):has(#command-form:not([hidden])) #combat-actions{display:none!important}
+#adventure:is(:fullscreen,.fullscreen-fallback) #side-column:has(>section:not([hidden])){position:absolute;z-index:25;inset:0;display:flex;align-items:center;justify-content:center;max-height:none;overflow:hidden;pointer-events:none}
+#adventure:is(:fullscreen,.fullscreen-fallback) #creation:not([hidden]),#adventure:is(:fullscreen,.fullscreen-fallback) #bag:not([hidden]){width:min(440px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;padding:16px;pointer-events:auto}
+#adventure:is(:fullscreen,.fullscreen-fallback) #dialogue{z-index:15}
+@media(hover:hover) and (pointer:fine){#adventure:is(:fullscreen,.fullscreen-fallback) #movement{display:none!important}}
+
+/* Keep the Quests route focused on the embedded quest list. Home and Play retain their full page spacing. */
+body[data-page=quests] #main-content{padding-top:12px}
+body[data-page=quests] #quests-screen{max-width:1500px}
+body[data-page=quests] #quests-screen .page-heading{max-width:none;padding:0 0 8px}
+body[data-page=quests] #quests-title{font-size:24px;line-height:1.16;letter-spacing:-.02em;margin:0 0 4px}
+body[data-page=quests] #quests-screen .page-heading>p:not(#quest-viewer-status){max-width:none;font-size:12px;line-height:1.4;margin:0 0 6px}
+body[data-page=quests] #quests-screen .page-heading>label{display:flex;align-items:center;gap:12px;margin:6px 0;font-size:12px}
+body[data-page=quests] #quest-pack{flex:1 1 320px;width:auto;max-width:460px;min-height:38px;padding:7px 10px}
+body[data-page=quests] #quest-viewer-status{font-size:12px;line-height:1.35;margin:2px 0 0;max-width:none}
+body[data-page=quests] #quest-viewer-status:empty{display:none}
+body[data-page=quests] #quest-viewer{display:block;width:100%;height:max(400px,calc(100dvh - 230px));min-height:400px;border-radius:10px}
+@media(max-width:700px){
+ body[data-page=quests] #main-content{padding:12px 14px 0}
+ body[data-page=quests] #quests-screen .page-heading>label{align-items:flex-start;flex-direction:column;gap:4px;margin:6px 0}
+ body[data-page=quests] #quest-pack{width:100%;max-width:none;flex:0 0 auto}
+ body[data-page=quests] #quest-viewer{height:max(400px,calc(100dvh - 230px))}
+}

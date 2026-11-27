@@ -1,19 +1,19 @@
 {
   "format": 1,
-  "version": "0.4.2",
+  "version": "0.5.0",
   "engine": "AGS3.6.3.17",
-  "build": "423bd7fbb0edb7259443",
+  "build": "7dc9197b1cf94d8c3f9a",
   "privateGameFiles": 0,
   "files": [
     {
       "name": "index.html",
-      "bytes": 19430,
-      "sha256": "f016988bb0a6c2eb1d5bd0db5ec48e5629fb98e5a72911261480d983625e4c43"
+      "bytes": 20616,
+      "sha256": "f10d65fef2030b07bcd4e86366b777d69212d4f284fd76fbaed31abb15014d49"
     },
     {
       "name": "style.css",
-      "bytes": 31608,
-      "sha256": "959e43c0704553c77a50228416a91529dfaf14ee5c5d4808b357d316d5993884"
+      "bytes": 44512,
+      "sha256": "efd1421c2d98485113c4f74673b4293a9b56b15f8d4a4c534ca3e047dcd3a020"
     },
     {
       "name": "player.html",
@@ -22,18 +22,43 @@
     },
     {
       "name": "storage.js",
-      "bytes": 6074,
-      "sha256": "ba61cae17ea99a5c1aba0d4ce2a94975a42d13b3a29c5f1ed0c3df6a194d26f3"
+      "bytes": 9024,
+      "sha256": "4c118be6dce84e3a834f120b09bde7425d801c2df08a9373b20213b86eaf84e6"
     },
     {
       "name": "shell.js",
-      "bytes": 33269,
-      "sha256": "df717e4055559eb434566433c0b7762f4b2b4bc81b6150c970fa1084981b0d47"
+      "bytes": 42450,
+      "sha256": "b3866526dd4c9a9bb65396c8fa087f367947c0a3e1a99434d75a317f51d0145f"
     },
     {
       "name": "player.js",
-      "bytes": 15358,
-      "sha256": "999d935d70829f504d21cf9900812db093f0666366611b36d36a12d0f110e88f"
+      "bytes": 15649,
+      "sha256": "a0ab12fba0580c66da29c8704fa39113f9a50d70f8e8a18b91be1b3236225961"
+    },
+    {
+      "name": "quest-bridge.js",
+      "bytes": 3430,
+      "sha256": "cd9bbb7e301b2d1b6bfbda2bc0041f1e58af8be459dbd1f6a1e284c7a2d0f477"
+    },
+    {
+      "name": "session-trace.js",
+      "bytes": 6906,
+      "sha256": "1382e5e67a1a9241847902176fe121d1a4522d816c1e86f1af298bf39cce243f"
+    },
+    {
+      "name": "quest-viewer/index.html",
+      "bytes": 2577,
+      "sha256": "7fe90eaaa4b94dfacf309fecde92bdb8b5dc38e341d13edf7b473517965785fa"
+    },
+    {
+      "name": "quest-viewer/viewer.css",
+      "bytes": 9843,
+      "sha256": "de67549f722bddf472abe9a78609d5a46e892524fd37665be7397c32bb91c0a0"
+    },
+    {
+      "name": "quest-viewer/viewer.js",
+      "bytes": 20339,
+      "sha256": "39a9df7f68bc8ba10d5264ad104347ac062db5769419a81c6e0273d19458b0d7"
     },
     {
       "name": "ags.js",
@@ -122,8 +147,8 @@
     },
     {
       "name": "downloads.json",
-      "bytes": 1823,
-      "sha256": "1a2d38697bc6f4f41e9499671f6ae1adea413b324869022d31d3114e30729bf9"
+      "bytes": 1816,
+      "sha256": "b9f2a49366a933f9915a174a8f3f0a9ba2430515e685aade4cab0acdcfe9972b"
     },
     {
       "name": "delivery.js",
@@ -132,8 +157,8 @@
     },
     {
       "name": "sw.js",
-      "bytes": 3382,
-      "sha256": "a95b5912c01adb40081c63d2dde17415c813b621dcd5a88424c63521c75087e6"
+      "bytes": 3496,
+      "sha256": "f130acd1a0e5554cc4fecc13b9ed486980116bacb516d1545920a281bd895f33"
     }
   ]
 }
