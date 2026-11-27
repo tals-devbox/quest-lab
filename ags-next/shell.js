@@ -1,7 +1,9 @@
 'use strict';
-const CLIENT_BUILD='dad8e8887ec23de5c0e3';
+const CLIENT_BUILD='70d556dcf1d3ac2d9e00';
 const q=s=>document.querySelector(s),frame=q('#game');
-const APP_VERSION='0.5.3',FEATURED_VERSION='0.6.2',FEATURED_BYTES=15416403;
+const APP_VERSION='0.5.4',FEATURED_VERSION='0.6.2',FEATURED_BYTES=15416403;
+const sessionHeader=q('.site-header');
+if(sessionHeader){const placeSessionControls=()=>document.documentElement.style.setProperty('--session-controls-top',(Math.ceil(sessionHeader.getBoundingClientRect().height)+4)+'px');new ResizeObserver(placeSessionControls).observe(sessionHeader);placeSessionControls();}
 const routeNames={home:'Home',play:'Play',quests:'Quests',library:'Library',help:'Help'};
 let preferredGame=null,resumeRequested=false,restoringSave=false,saveAvailabilityKnown=false,featuredUpdating=false;
 let currentView='home',routeDepth=0,routeInitialized=false,pauseRequest=null;
@@ -11,7 +13,7 @@ const explicitPlaytest=new URL(location.href).searchParams.has('playtest')&&!Obj
 const spellNames={17:'Open',18:'Detect magic',19:'Trigger',20:'Dazzle',21:'Zap',22:'Calm',23:'Flame dart',24:'Fetch'};
 let installed=[],active=null,state=null,ready=false,hasSave=false,pendingSave=false,installing=false,epoch=null,messageIndex=0,messages=[],topicSignature='',creationSignature='',assisted=false,lockNotice='',creationNameDraft=null;
 window.questNative={state:null,pack:null,events:[],offline:false,clientBuild:CLIENT_BUILD};
-if(q('#shell-version'))q('#shell-version').textContent='AGS preview 0.5.3 · '+CLIENT_BUILD.slice(0,8);
+if(q('#shell-version'))q('#shell-version').textContent='AGS preview 0.5.4 · '+CLIENT_BUILD.slice(0,8);
 let reloadAfterSave=false,applyingUpdate=false;
 async function activateAppUpdate(){const r=await navigator.serviceWorker?.getRegistration();if(r?.waiting){applyingUpdate=true;r.waiting.postMessage({type:'activate'});}else location.reload();}
 function offerAppUpdate(build){if(build&&build!==CLIENT_BUILD&&q('#apply-update')){q('#apply-update').hidden=false;q('#apply-update').textContent=state&&!state.creating&&!state.dead?'Save and update app':'Update app';q('#app-update-status').textContent='Updated shell ready. Installed game packs and their saves are retained.';}}

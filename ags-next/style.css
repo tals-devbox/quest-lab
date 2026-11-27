@@ -115,7 +115,7 @@ dialog#restart-confirmation::backdrop{background:#07120bc9}
 .combat-debug-body button{font-size:11px;min-height:36px;padding:6px 9px}
 #adventure:is(:fullscreen,.fullscreen-fallback) #combat-debug{position:absolute;z-index:40;right:6px;top:calc(var(--fs-top,0px) + 48px);width:min(300px,calc(100vw - 12px));margin:0;background:#f3f4e9f5;box-shadow:0 6px 30px #0005}
 /* Keep session controls below the sticky site header after canvas focus scrolls. */
-body[data-page=play] .play-heading #restart,body[data-page=play] .play-heading #fullscreen{position:fixed;top:72px;z-index:40;min-height:36px;background:#f4f2e6;border:1px solid #b5c2b4;box-shadow:0 2px 8px #0002}
+body[data-page=play] .play-heading #restart,body[data-page=play] .play-heading #fullscreen{position:fixed;top:var(--session-controls-top,72px);z-index:40;min-height:36px;background:#f4f2e6;border:1px solid #b5c2b4;box-shadow:0 2px 8px #0002}
 body[data-page=play] .play-heading #fullscreen{right:max(12px,calc((100vw - 1200px)/2))}
 body[data-page=play] .play-heading #restart{right:calc(max(12px,(100vw - 1200px)/2) + 116px)}
 /* Leave room for the site header when focusing controls inside the quest iframe. */
